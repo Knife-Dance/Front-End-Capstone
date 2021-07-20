@@ -1,1 +1,3 @@
-# Front-End-Capstone
+To start the app
+npm run watch
+

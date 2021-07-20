@@ -1,0 +1,39 @@
+{
+  "name": "knife-dance",
+  "version": "1.0.0",
+  "description": "My webpack project",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --mode=production --node-env=production",
+    "build:dev": "webpack --mode=development",
+    "build:prod": "webpack --mode=production --node-env=production",
+    "watch": "webpack --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Knife-Dance/Front-End-Capstone.git"
+  },
+  "author": "RL SP ZK",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Knife-Dance/Front-End-Capstone/issues"
+  },
+  "homepage": "https://github.com/Knife-Dance/Front-End-Capstone#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "nodemon": "^2.0.12",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.14.8",
+    "@babel/core": "^7.14.8",
+    "@babel/preset-env": "^7.14.8",
+    "@babel/preset-react": "^7.14.5",
+    "@webpack-cli/generators": "^2.2.0",
+    "babel-loader": "^8.2.2",
+    "webpack": "^5.45.1",
+    "webpack-cli": "^4.7.2"
+  }
+}
