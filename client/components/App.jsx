@@ -1,14 +1,16 @@
 import React from 'react';
-class App extends React.Component{
+
+class App extends React.Component {
   constructor(props) {
     super(props);
   }
+
   render() {
     return (
       <div>
         <h1>THIS IS KNIFE DANCE!</h1>
       </div>
-    )
+    );
   }
 }
 export default App;
