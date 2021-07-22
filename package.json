@@ -22,9 +22,14 @@
   "homepage": "https://github.com/Knife-Dance/Front-End-Capstone#readme",
   "dependencies": {
     "axios": "^0.21.1",
+<<<<<<< HEAD
+    "bootstrap": "^5.0.2",
+=======
     "moment": "^2.29.1",
+>>>>>>> 971535e7421230b871c6135bc74dbde3a7a7a0e4
     "nodemon": "^2.0.12",
     "react": "^17.0.2",
+    "react-bootstrap": "^2.0.0-beta.4",
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
@@ -34,6 +39,12 @@
     "@babel/preset-react": "^7.14.5",
     "@webpack-cli/generators": "^2.2.0",
     "babel-loader": "^8.2.2",
+    "eslint": "^7.31.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "webpack": "^5.45.1",
     "webpack-cli": "^4.7.2"
   }

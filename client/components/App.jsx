@@ -11,13 +11,14 @@ class App extends React.Component{
       meta: metaData
     }
   }
+
   render() {
     return (
       <div>
         <h1>THIS IS KNIFE DANCE!</h1>
         <ReviewList reviews={this.state.reviews} meta={this.state.meta} />
       </div>
-    )
+    );
   }
 }
 export default App;
