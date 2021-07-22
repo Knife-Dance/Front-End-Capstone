@@ -29,18 +29,15 @@ import Image from '../Image/Image.jsx';
 //   }
 // }
 const Gallery = (props) => {
-  const [main, setMain] = useState(props.style.photos[0])
-  const handlePhotoClick = (event, data) => {
-    setMain(data);
-  }
+
   let key = -1;
   return (
     <div>
-      <img src={main.url} style={{ width: 400, height: 600 }} />
       {props.style.photos.map((current) => {
         key++;
-        return (<Image key={key} photo={current} handlePhotoClick={handlePhotoClick} />)
+        return (<Image key={key} photo={current} handlePhotoClick={props.handlePhotoClick} />)
       })}
+      <img src={props.main.url} style={{ width: 400, height: 600}} />
     </div>
   )
 }
