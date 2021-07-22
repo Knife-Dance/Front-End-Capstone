@@ -6,6 +6,7 @@ const isProduction = process.env.NODE_ENV == 'production';
 
 
 const config = {
+    devtool: source-map,
     entry: './client/index.js',
     output: {
         path: path.resolve(__dirname, 'public'),
