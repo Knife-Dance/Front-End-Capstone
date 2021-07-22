@@ -4,19 +4,17 @@ import React from 'react';
 class ReviewBreakdown extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
-      filteredStars: []
-    }
+    this.filteredStars = [];
     this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick(star) {
-    let index = this.state.filteredStars.indexOf(star);
+    let index = this.filteredStars.indexOf(star);
     if (index === -1) {
-      this.state.filteredStars.push(star);
+      this.filteredStars.push(star);
       this.props.handleFilter(star);
     } else {
-      this.state.filteredStars.splice(index, 1);
+      this.filteredStars.splice(index, 1);
       this.props.handleRemove(star);
     }
   }
