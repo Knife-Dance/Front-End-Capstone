@@ -4,7 +4,7 @@ import Slogan from '../overview/Slogan/Slogan.jsx';
 
 import Gallery from '../overview/Gallery/Gallery.jsx';
 
-import styles from './Overview.module.css';
+// import styles from './Overview.module.css';
 
 import ReviewAverage from '../overview/ReviewAverage/ReviewAverage.jsx';
 
