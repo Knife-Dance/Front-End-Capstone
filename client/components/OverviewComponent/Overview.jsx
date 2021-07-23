@@ -4,7 +4,7 @@ import Slogan from '../overview/Slogan/Slogan.jsx';
 
 import Gallery from '../overview/Gallery/Gallery.jsx';
 
-// import styless from './Overview.module.css';
+import styles from './Overview.module.css';
 
 import ReviewAverage from '../overview/ReviewAverage/ReviewAverage.jsx';
 
@@ -76,7 +76,7 @@ const Overview = (props) => {
       handlePhotoClick={handlePhotoClick}/>
       <ReviewAverage reviews={reviews}/>
       <h3>{product.category}</h3>
-      <h2>{product.name}</h2>
+      <h2 className={name} >{product.name}</h2>
       {handlePrice()}
       <StyleSelector handleStyleSelect={handleStyleSelect}
       styles={exampleStyles}/>
