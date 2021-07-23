@@ -4,6 +4,8 @@ import Slogan from '../overview/Slogan/Slogan.jsx';
 
 import Gallery from '../overview/Gallery/Gallery.jsx';
 
+// import styless from './Overview.module.css';
+
 import ReviewAverage from '../overview/ReviewAverage/ReviewAverage.jsx';
 
 import StyleSelector from '../overview/StyleSelector/StyleSelector.jsx';

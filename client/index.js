@@ -5,4 +5,4 @@ import ReactDOM from 'react-dom';
 import App from './components/App.jsx';
 import Relate from './components/related/product-card/Related-product.jsx'
 
-ReactDOM.render(<Relate/>, document.getElementById('app'));
+ReactDOM.render(<App/>, document.getElementById('app'));
