@@ -3,42 +3,20 @@ const moment = require('moment');
 
 function ReviewItem(props) {
   return (
-    <table border="1px" width="750" height="250">
-      <tbody>
-        <tr>
-          <td>Star Rating: {props.rating}</td>
-          <td>User: {props.author}</td>
-          <td>Created: {moment(props.date).format("MMMM, Do YYYY")}</td>
-        </tr>
-        <tr>
-          <td colSpan="3">{props.summary}</td>
-        </tr>
-        <tr>
-          <td colSpan="3">{props.body}</td>
-        </tr>
-        {props.recommend === true &&
-          <tr>
-            <td colSpan="3"><u>I recommend this product</u></td>
-          </tr>
-        }
-        {props.response !== null &&
-          <tr>
-            <td>{props.response}</td>
-          </tr>
-        }
-        <tr>
-          <td>Helpful?</td>
-          <td><a href="" target="_blank">Yes</a>: {props.helpfulness}</td>
-          <td><a href="" target="_blank">Report</a></td>
-        </tr>
-        <tr>
-          {props.photos.map((photo) =>
-            <td key={photo.id}><img src={photo.url} height="100" width="100"/></td>
-          )}
-        </tr>
-      </tbody>
-    </table>
+    <div>
+      <div>Star rating: {props.rating}</div>
+      <div>Date: {props.date}</div>
+      <div><b>{props.summary}</b></div>
+      <div>{props.body}</div>
+      <div>{props.photos.map((photo) => <img key={photo.id} src={photo.url} height="100" width="100"/>)}</div>
+      {props.recommend === true && <div>I recommend this product</div>}
+      <div>-verified- {props.author}</div>
+      {props.response !== null && <div>Response from seller: {props.response}</div>}
+      <div>Was this review helpful? <span><a href="">Yes</a> ({props.helpful})</span> <span><a href="">No</a> -count-</span></div>
+      <span>----------------------------------------------------------</span>
+    </div>
   );
 }
+
 
 export default ReviewItem;
