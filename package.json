@@ -8,7 +8,8 @@
     "build": "npx webpack --mode=production --node-env=production",
     "build:dev": "npx webpack --mode=development",
     "build:prod": "npx webpack --mode=production --node-env=production",
-    "watch": "npx webpack --watch"
+    "watch": "npx webpack --watch",
+    "start": "nodemon ./server/index.js"
   },
   "repository": {
     "type": "git",
@@ -23,10 +24,7 @@
   "dependencies": {
     "axios": "^0.21.1",
     "bootstrap": "^5.0.2",
-<<<<<<< HEAD
-=======
     "cors": "^2.8.5",
->>>>>>> 9bcc71e2cbfcab84e4297ae235168f4bd0c49bf0
     "express": "^4.17.1",
     "moment": "^2.29.1",
     "nodemon": "^2.0.12",
