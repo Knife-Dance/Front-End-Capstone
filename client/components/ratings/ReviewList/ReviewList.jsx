@@ -1,12 +1,13 @@
 import React from 'react';
-import ReviewItem from './ReviewItem/ReviewItem.jsx';
+import ReviewItem from '../ReviewItem/ReviewItem.jsx';
+import styles from './ReviewList.module.css';
 const moment = require('moment');
 
 
 function ReviewList(props) {
   return (
     <div>
-      <div>
+      <div className={ styles.reviewList }>
         {props.reviews.map((review) =>
           <ReviewItem
             key={review.review_id}

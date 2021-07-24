@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import FilterRatings from './ratings/FilterRatings/FilterRatings.jsx';
-import ReviewList from './ratings/ReviewList.jsx';
+import ReviewList from './ratings/ReviewList/ReviewList.jsx';
 import CreateReview from './ratings/CreateReview.jsx';
 import SortReviews from './ratings/SortReviews.jsx';
 
