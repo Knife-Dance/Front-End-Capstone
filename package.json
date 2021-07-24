@@ -8,7 +8,8 @@
     "build": "npx webpack --mode=production --node-env=production",
     "build:dev": "npx webpack --mode=development",
     "build:prod": "npx webpack --mode=production --node-env=production",
-    "watch": "npx webpack --watch"
+    "watch": "npx webpack --watch",
+    "start": "nodemon ./server/index.js"
   },
   "repository": {
     "type": "git",
@@ -39,12 +40,14 @@
     "@babel/preset-react": "^7.14.5",
     "@webpack-cli/generators": "^2.2.0",
     "babel-loader": "^8.2.2",
+    "css-loader": "^6.2.0",
     "eslint": "^7.31.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "style-loader": "^3.2.1",
     "webpack": "^5.45.1",
     "webpack-cli": "^4.7.2"
   }
