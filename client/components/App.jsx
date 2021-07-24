@@ -23,7 +23,8 @@ class App extends React.Component{
         <h1>THIS IS KNIFE DANCE!</h1>
         <Ratings reviews={this.state.reviews} meta={this.state.meta} />
         <Overview />
-        <Related cards={dataUrl}/>
+        {/* <Related cards={dataUrl}/> */}
+
       </div>
     );
   }

@@ -5,6 +5,7 @@ const StyleSelector = (props) => {
   console.log(props.handleStyleSelect)
   return (
     <div>
+      <h4>{props.style.name}</h4>
       {props.styles.map((style) => {
         key++;
         // console.log(style)
