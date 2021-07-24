@@ -10,6 +10,8 @@ import ReviewAverage from '../overview/ReviewAverage/ReviewAverage.jsx';
 
 import StyleSelector from '../overview/StyleSelector/StyleSelector.jsx';
 
+import SocialMedia from '../overview/SocialMedia/SocialMedia.jsx'
+
 const exampleReviews = require('../overview/exampleReviewsData.js');
 const exampleStyles = require('../overview/exampleStylesData.js');
 
@@ -55,8 +57,8 @@ const Overview = (props) => {
       if (style.sale_price) {
         return (
         <div>
-          <div>{style.original_price}</div>
-          <div>{style.sale_price}</div>
+          <div className={css.original}>{style.original_price}</div>
+          <div className={css.sale}>{style.sale_price}</div>
         </div>)
       } else {
         return (<div>{style.original_price}</div>)
@@ -78,7 +80,9 @@ const Overview = (props) => {
       <h3>{product.category}</h3>
       <h2 className={css.name} >{product.name}</h2>
       {handlePrice()}
-      <StyleSelector handleStyleSelect={handleStyleSelect}
+      <SocialMedia />
+      <StyleSelector style={style}
+      handleStyleSelect={handleStyleSelect}
       styles={exampleStyles}/>
       <Slogan product={product}/>
     </div>
