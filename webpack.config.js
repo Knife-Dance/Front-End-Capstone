@@ -17,6 +17,15 @@ const config = {
     ],
     module: {
         rules: [
+
+            {
+                test: /\.css$/i,
+                use: ["style-loader", "css-loader"],
+            },
+            {
+                test: /\.css$/i,
+                use: ["style-loader", "css-loader"],
+            },
             {
                 test: /\.css$/i,
                 use: ["style-loader", "css-loader"],
@@ -30,9 +39,9 @@ const config = {
                 type: 'asset',
             },
 
-            // Add your rules for custom modules here
-            // Learn more about loaders from https://webpack.js.org/loaders/
+
         ],
+
     },
 };
 
