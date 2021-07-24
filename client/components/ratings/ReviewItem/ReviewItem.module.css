@@ -1,0 +1,54 @@
+.box {
+  display: flex;
+  flex-direction: row;
+  width: 700px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.boxCol {
+  display: flex;
+  flex-direction: column;
+  width: 700px;
+  gap: 10px;
+}
+
+.author {
+  margin-left: auto;
+  font-style: italic;
+}
+
+.rating {
+
+}
+
+.date {
+
+}
+
+.summary {
+
+}
+
+.body {
+
+}
+
+.photos {
+
+}
+
+.response {
+
+}
+
+.helpful {
+  padding-bottom: 10px;
+  border-bottom: .5px solid;
+}
+
+.recommend {
+
+}
+
+
