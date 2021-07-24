@@ -1,0 +1,10 @@
+.bar {
+  height: 5px;
+  width: 200px;
+  background-color: lightgray;
+}
+
+.productBreakdown {
+  display: flex;
+  flex-direction: column;
+}
