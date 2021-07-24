@@ -1,0 +1,36 @@
+.averageRating {
+  font-size: 34px;
+}
+
+.recommendPercent {
+
+}
+
+.starBreakdown {
+  width: 75px;
+}
+
+.fiveStar:hover {
+  color:blueviolet;
+  cursor: pointer;
+}
+
+.fourStar:hover {
+  color:blueviolet;
+  cursor: pointer;
+}
+
+.threeStar:hover {
+  color:blueviolet;
+  cursor: pointer;
+}
+
+.twoStar:hover {
+  color:blueviolet;
+  cursor: pointer;
+}
+
+.oneStar:hover {
+  color:blueviolet;
+  cursor: pointer;
+}
