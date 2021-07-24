@@ -1,5 +1,5 @@
 
-const relatedId =
+export const relatedId =
 [
   17068,
   17069,
@@ -7,14 +7,9 @@ const relatedId =
   17073
 ]
 
-const imgUrl= [
-{url : "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80"},
-{url : "https://images.unsplash.com/photo-1548133464-29abc661eb5c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80"},
-{url : "https://images.unsplash.com/photo-1562542082-519ebcdb43e6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80"},
-{url : "https://images.unsplash.com/photo-1520904549193-5ab0027b3fa6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80"},
-]
 
-const related = [
+
+export const related = [
   {
     "id": 17068,
     "campus": "hr-rfp",
@@ -115,7 +110,7 @@ const related = [
 
 
 
-const dataUrl = [
+export const dataUrl = [
 {
   "product_id": "17068",
   "results": [
@@ -1715,4 +1710,3 @@ const dataUrl = [
 
 
 
-export default {related, relatedId, dataUrl, imgUrl}

@@ -21,6 +21,7 @@ class App extends React.Component{
       <div>
         <h1>THIS IS KNIFE DANCE!</h1>
         <Overview />
+        <Related cards={dataUrl}/>
 
         <ReviewList reviews={this.state.reviews} meta={this.state.meta} />
       </div>
