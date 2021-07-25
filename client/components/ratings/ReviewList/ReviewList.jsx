@@ -25,7 +25,7 @@ function ReviewList(props) {
         <div id="bottom"></div>
       </div>
       <div>
-        {props.filtered.length === 0 && props.reviews.length > 0 && <button onClick={() => props.moreReviews()}>MORE REVIEWS</button>}
+        {props.filtered.length === 0 && props.reviews.length > 0 && props.count > props.reviews.length && <button onClick={() => props.moreReviews()}>MORE REVIEWS</button>}
         {props.filtered.length === 0 && props.reviews.length > 2 && <button onClick={() => props.lessReviews()}>LESS REVIEWS</button>}
         <button>ADD A REVIEW +</button>
       </div>

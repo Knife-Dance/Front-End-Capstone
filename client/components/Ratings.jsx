@@ -11,7 +11,8 @@ class Ratings extends React.Component {
     this.state = {
       reviews: [],
       filtered: [],
-      stars: []
+      stars: [],
+      count: props.reviews.length
     }
     this.addFilter = this.addFilter.bind(this);
     this.removeFilter = this.removeFilter.bind(this);
@@ -77,6 +78,7 @@ class Ratings extends React.Component {
           moreReviews={this.moreReviews}
           lessReviews={this.lessReviews}
           filtered={this.state.filtered}
+          count={this.state.count}
           />
         <CreateReview />
       </div>
