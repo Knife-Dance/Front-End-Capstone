@@ -39,7 +39,11 @@
 }
 
 .response {
-
+  background-color: lightgray;
+  position: relative;
+  width: 300px;
+  left: 15px;
+  padding: 5px;
 }
 
 .helpful {
