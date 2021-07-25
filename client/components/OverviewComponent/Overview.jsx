@@ -67,7 +67,7 @@ const Overview = (props) => {
   const handleStyleSelect = (event, data) => {
     setStyle(data);
     setMain(data.photos[0])
-    console.log(style);
+    // console.log(style);
   }
   const handlePhotoClick = (event, data) => {
     setMain(data);
