@@ -13,15 +13,19 @@ const Modal = ({showModal, setShowModal}) => {
           <button onClick={() => setShowModal(prev => !prev)}className={css.closeModalBtn}>X</button>
 
           <div>
-            Model Content
+            <h3>Comparing</h3>
+            <table>
+              <tr>
+                <th>Current Product Name</th>
+                <th>*</th>
+                <th>Compared Product Name</th>
+              </tr>
+            </table>
+
           </div>
           </div>
           </div>
           ): null}
-
-
-
-
 
     </div>
   )

@@ -24,7 +24,7 @@ class App extends React.Component{
         <Overview />
         <Relate cards={dataUrl}/>
 
-        <ReviewList reviews={this.state.reviews} meta={this.state.meta} />
+        {/* <ReviewList reviews={this.state.reviews} meta={this.state.meta} /> */}
       </div>
     );
   }
