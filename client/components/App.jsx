@@ -1,5 +1,6 @@
 import React from 'react';
 import Overview from './OverviewComponent/Overview.jsx';
+import Ratings from './Ratings.jsx';
 import ReviewList from './ratings/ReviewList.jsx';
 import Relate from './related/product-card/Related-product.jsx'
 import dataUrl from './related/sample-data.js'
