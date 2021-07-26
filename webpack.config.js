@@ -18,10 +18,6 @@ const config = {
     module: {
         rules: [
             {
-                test: /\.css$/i,
-                use: ["style-loader", "css-loader"],
-            },
-            {
                 test: /\.(js|jsx)$/i,
                 loader: 'babel-loader',
             },
