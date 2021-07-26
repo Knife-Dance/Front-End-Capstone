@@ -2,47 +2,22 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="210mm"
-   height="297mm"
-   viewBox="0 0 210 297"
+   width="576"
+   height="512"
+   viewBox="0 0 152.4 135.46667"
    version="1.1"
    id="svg5"
-   sodipodi:docname="threequarterstar.svg"
-   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
-  <sodipodi:namedview
-     id="namedview7"
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1.0"
-     inkscape:pageshadow="2"
-     inkscape:pageopacity="0.0"
-     inkscape:pagecheckerboard="0"
-     inkscape:document-units="mm"
-     showgrid="false"
-     inkscape:zoom="1.3416246"
-     inkscape:cx="362.62007"
-     inkscape:cy="354.04837"
-     inkscape:window-width="1182"
-     inkscape:window-height="1020"
-     inkscape:window-x="1927"
-     inkscape:window-y="42"
-     inkscape:window-maximized="0"
-     inkscape:current-layer="layer1" />
   <defs
      id="defs2" />
   <g
-     inkscape:label="Layer 1"
-     inkscape:groupmode="layer"
-     id="layer1">
+     id="layer1"
+     transform="matrix(11.134956,0,0,11.134956,5.1983489,-2.9402188)">
     <path
        fill="currentColor"
-       d="M 145.17188,71.510197 106.51625,65.874572 89.23896,30.843738 c -3.095625,-6.244167 -12.065,-6.323542 -15.187084,0 L 56.774585,65.874572 18.11896,71.510197 c -6.932083,1.005416 -9.7102085,9.551458 -4.683125,14.44625 L 41.402293,113.20853 34.78771,151.7054 c -1.190625,6.95854 6.138333,12.17083 12.276666,8.91646 l 34.581042,-18.17688 34.581042,18.17688 c 6.13833,3.22791 13.46729,-1.95792 12.27667,-8.91646 L 121.88854,113.20853 149.855,85.956447 c 5.02709,-4.894792 2.24896,-13.440834 -4.68312,-14.44625 z M 108.2625,108.76353 114.53313,145.38186 81.645418,128.10457 98.103,139.66274 v -19.46096 -10.31424 l -4.99e-4,-32.39776 -16.457083,-33.3375 16.457083,33.3375 36.777089,5.344583 z"
+       d="M 12.056763,4.340331 8.6059305,3.8336296 7.0635665,0.68399262 c -0.2763501,-0.5614157 -1.0770567,-0.56855233 -1.3557688,0 L 4.1654335,3.8336296 0.71460045,4.340331 C 0.09576518,4.4307284 -0.15224131,5.1991067 0.2965323,5.6391995 L 2.793131,8.089446 2.2026394,11.550715 C 2.0963508,12.176361 2.7506156,12.645 3.2985918,12.352398 l 3.0870903,-1.634292 3.0870901,1.634292 c 0.5479748,0.290223 1.2022408,-0.176037 1.0959518,-0.801683 L 9.9782333,8.089446 12.474832,5.6391995 C 12.923606,5.1991067 12.675599,4.4307284 12.056763,4.340331 Z M 8.7618204,7.6897937 9.3216071,10.982163 6.3856821,9.4287551 7.8548698,10.467954 V 8.7182117 7.7908546 L 7.8548253,4.8779578 6.3856821,1.8805692 7.8548253,4.8779578 11.137959,5.3584916 Z"
        id="path17"
-       style="stroke-width:0.264583"
-       sodipodi:nodetypes="ccccccccccccccccccccccccccc" />
+       style="stroke-width:0.0237041" />
   </g>
 </svg>

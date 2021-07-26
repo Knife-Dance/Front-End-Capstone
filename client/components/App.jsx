@@ -2,7 +2,6 @@ import React from 'react';
 import Overview from './OverviewComponent/Overview.jsx';
 import Ratings from './Ratings.jsx';
 import ReviewList from './ratings/ReviewList.jsx';
-
 import { sampleData } from '../sampleData.js';
 import { metaData } from '../metaData.js';
 
