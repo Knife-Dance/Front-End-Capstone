@@ -1,10 +1,63 @@
 .cardContainer {
-  border: 1px solid black;
   display: block;
+  position: relative;
   /* margin-top: 20rem; */
+
 }
 
 .gridContainer {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-};
+  gap: 1rem;
+
+}
+
+.productItem {
+  position: relative;
+  height: 30rem;
+}
+
+.productItem span {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.productItem img {
+  height: 15rem;
+
+}
+
+
+
+.productImageContainer {
+  width: 100%;
+  background-color: lightgray;
+  display: flex;
+  justify-content: center;
+}
+
+.btnNext, .btnPrev {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+
+}
+.btnNext {
+  right: 0;
+  padding-right: 1rem;
+}
+
+
+.btnPrev {
+  left: 0;
+}
+
+.salePrice {
+  color: red;
+}
+
+.lineThrough {
+  text-decoration: line-through;
+}

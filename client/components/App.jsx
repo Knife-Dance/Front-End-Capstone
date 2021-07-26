@@ -20,8 +20,8 @@ class App extends React.Component{
   render() {
     return (
       <div>
-        <h1>THIS IS KNIFE DANCE!</h1>
-        <Overview />
+        {/* <h1>THIS IS KNIFE DANCE!</h1> */}
+        {/* <Overview /> */}
         <Relate cards={dataUrl}/>
 
         {/* <ReviewList reviews={this.state.reviews} meta={this.state.meta} /> */}

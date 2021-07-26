@@ -19,6 +19,9 @@
   align-items: center;
 
 }
+.modalBox table {
+  width: 100%;
+}
 
 .modalContainer {
   opacity: 100%;
