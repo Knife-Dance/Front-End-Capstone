@@ -10,7 +10,9 @@ import ReviewAverage from '../overview/ReviewAverage/ReviewAverage.jsx';
 
 import StyleSelector from '../overview/StyleSelector/StyleSelector.jsx';
 
-import SocialMedia from '../overview/SocialMedia/SocialMedia.jsx'
+import SocialMedia from '../overview/SocialMedia/SocialMedia.jsx';
+
+import AddToCart from '../overview/AddToCart/AddToCart.jsx';
 
 const exampleReviews = require('../overview/exampleReviewsData.js');
 const exampleStyles = require('../overview/exampleStylesData.js');
@@ -63,6 +65,7 @@ const Overview = (props) => {
       <StyleSelector style={style}
       handleStyleSelect={handleStyleSelect}
       styles={exampleStyles}/>
+      <AddToCart style={style}/>
       <Slogan product={product}/>
     </div>
   )
