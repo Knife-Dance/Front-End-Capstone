@@ -12,6 +12,7 @@ class Ratings extends React.Component {
       reviews: [],
       filtered: [],
       stars: [],
+      photo: 'photoUrl',
       count: props.reviews.length
     }
     this.addFilter = this.addFilter.bind(this);
@@ -20,6 +21,7 @@ class Ratings extends React.Component {
     this.moreReviews = this.moreReviews.bind(this);
     this.lessReviews = this.lessReviews.bind(this);
     this.handleReviewFilter = this.handleReviewFilter.bind(this);
+    this.setPhoto = this.setPhoto.bind(this);
   }
 
   //FILTER METHODS
@@ -56,6 +58,9 @@ class Ratings extends React.Component {
     let less = this.state.reviews.slice(0, this.state.reviews.length - 2);
     this.setState({reviews: less});
   }
+  setPhoto(url) {
+    this.setState({photo: url});
+  }
 
   //PAGE RENDERS
   componentDidMount() {
@@ -79,6 +84,8 @@ class Ratings extends React.Component {
           lessReviews={this.lessReviews}
           filtered={this.state.filtered}
           count={this.state.count}
+          photo={this.state.photo}
+          setPhoto={this.setPhoto}
           />
         <CreateReview />
       </div>

@@ -20,6 +20,8 @@ function ReviewList(props) {
             response={review.response}
             helpful={review.helpfulness}
             photos={review.photos}
+            clickedPhoto={props.photo}
+            setPhoto={props.setPhoto}
             />
         )}
         <div id="bottom"></div>
