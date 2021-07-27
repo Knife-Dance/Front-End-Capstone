@@ -10,6 +10,10 @@ import ReviewAverage from '../overview/ReviewAverage/ReviewAverage.jsx';
 
 import StyleSelector from '../overview/StyleSelector/StyleSelector.jsx';
 
+import SocialMedia from '../overview/SocialMedia/SocialMedia.jsx';
+
+import AddToCart from '../overview/AddToCart/AddToCart.jsx';
+
 const exampleReviews = require('../overview/exampleReviewsData.js');
 const exampleStyles = require('../overview/exampleStylesData.js');
 
@@ -25,27 +29,6 @@ let exampleProduct = {
   "updated_at": "2021-02-23T04:22:44.728Z"
 };
 
-// class Overview extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       product: exampleProduct,
-//       style: exampleStyle,
-//       reviews: exampleReviews.results
-//     }
-//   }
-//   render() {
-//     return (
-//       <div>
-//         <Gallery style={this.state.style} />
-//         <ReviewAverage reviews={this.state.reviews}/>
-//         <h3>{this.state.product.category}</h3>
-//         <h2>{this.state.product.name}</h2>
-//         <Slogan product={this.state.product}/>
-//       </div>
-//     )
-//   }
-// }
 const Overview = (props) => {
   const [style, setStyle] = useState(exampleStyles[0]);
   const [product, setProduct] = useState(exampleProduct);
@@ -55,8 +38,8 @@ const Overview = (props) => {
       if (style.sale_price) {
         return (
         <div>
-          <div>{style.original_price}</div>
-          <div>{style.sale_price}</div>
+          <div className={css.original}>{style.original_price}</div>
+          <div className={css.sale}>{style.sale_price}</div>
         </div>)
       } else {
         return (<div>{style.original_price}</div>)
@@ -65,7 +48,7 @@ const Overview = (props) => {
   const handleStyleSelect = (event, data) => {
     setStyle(data);
     setMain(data.photos[0])
-    console.log(style);
+    // console.log(style);
   }
   const handlePhotoClick = (event, data) => {
     setMain(data);
@@ -78,8 +61,11 @@ const Overview = (props) => {
       <h3>{product.category}</h3>
       <h2 className={css.name} >{product.name}</h2>
       {handlePrice()}
-      <StyleSelector handleStyleSelect={handleStyleSelect}
+      <SocialMedia />
+      <StyleSelector style={style}
+      handleStyleSelect={handleStyleSelect}
       styles={exampleStyles}/>
+      <AddToCart style={style}/>
       <Slogan product={product}/>
     </div>
   )

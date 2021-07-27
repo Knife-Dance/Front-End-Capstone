@@ -4,7 +4,7 @@
   "description": "My webpack project",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npx jest",
     "build": "npx webpack --mode=production --node-env=production",
     "build:dev": "npx webpack --mode=development",
     "build:prod": "npx webpack --mode=production --node-env=production",
@@ -28,6 +28,7 @@
     "cors": "^2.8.5",
     "css-loader": "^6.2.0",
     "express": "^4.17.1",
+    "html-react-parser": "^1.2.7",
     "moment": "^2.29.1",
     "nodemon": "^2.0.12",
     "path": "^0.12.7",
@@ -50,7 +51,9 @@
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "file-loader": "^6.2.0",
     "jest": "^27.0.6",
+    "style-loader": "^3.2.1",
     "webpack": "^5.45.1",
     "webpack-cli": "^4.7.2"
   }

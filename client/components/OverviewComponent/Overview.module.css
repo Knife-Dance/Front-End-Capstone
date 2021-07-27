@@ -1,3 +1,9 @@
 .name{
   background-color: blueviolet;
 }
+.original{
+  text-decoration: line-through;
+}
+.sale{
+  color: red;
+}
