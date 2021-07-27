@@ -64,7 +64,7 @@ class Ratings extends React.Component {
   render() {
     return (
       <div>
-        <h1>Ratings & Reviews</h1>
+        <h1>Ratings and Reviews</h1>
         <SortReviews />
         <FilterRatings
           meta={this.props.meta}
