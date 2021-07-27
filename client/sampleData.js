@@ -8,7 +8,7 @@ export const sampleData = {
           "rating": 5,
           "summary": "Hello",
           "recommend": true,
-          "response": null,
+          "response": "Thank you for your feedback",
           "body": "This is the demo for FEC to upload some pictures here you go. ",
           "date": "2021-06-18T00:00:00.000Z",
           "reviewer_name": "jack",
