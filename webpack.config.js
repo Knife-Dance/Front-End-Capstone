@@ -18,6 +18,10 @@ const config = {
     module: {
         rules: [
             {
+                test: /\.css$/i,
+                use: ["style-loader", "css-loader"],
+            },
+            {
                 test: /\.(js|jsx)$/i,
                 loader: 'babel-loader',
             },
@@ -28,12 +32,12 @@ const config = {
             {
                 test: /\.(png|jp(e*)g|svg|gif)$/,
                 use: [
-                  {
-                    loader: 'file-loader',
-                    options: {
-                      name: 'images/[hash]-[name].[ext]',
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: 'images/[hash]-[name].[ext]',
+                        },
                     },
-                  },
                 ],
             },
         ],
