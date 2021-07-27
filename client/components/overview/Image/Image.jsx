@@ -1,11 +1,11 @@
 import React from 'react';
+import css from './Image.module.css';
 
 const Image = (props) => {
   let data = props.photo;
   return (
     <div style={{float: 'left'}}>
-      <img src={props.photo.thumbnail_url}
-      style={{height: 150, width: 100}}
+      <img className={css.thumb} src={props.photo.thumbnail_url}
       onClick={(event) => {props.handlePhotoClick(event, data)}}/>
 
     </div>
