@@ -16,7 +16,7 @@ const Provider = ({children}) => {
   const [related, setRelated] = useState([]);
 
 
-  useEffect(async() => {
+  useEffect( async() => {
     try {
       const {data} = await axios.get('/products')
       setProducts(data);
@@ -78,14 +78,14 @@ const Provider = ({children}) => {
         let arr = [];
 
         for (let i in data) {
-          let product = await handleGetProductById(data[i].id);
-          let style = await handleGetStyleById(data[i].id)
-          let rate= await handleGetRateById(data[i].id)
+          let product = await handleGetProductById(data[i]);
+          let style = await handleGetStyleById(data[i])
+          let rate= await handleGetRateById(data[i])
           arr.push({product, style, rate})
         }
         setRelated(data)
       } catch(err) {
-        console.log(err)
+        console.error(err)
       }
     }
   }, [selectedProduct])

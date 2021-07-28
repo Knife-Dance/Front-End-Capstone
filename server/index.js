@@ -53,7 +53,7 @@ app.get('/products/:id', (req, res) => {
 
 
 app.get('/products/:id/review', (req, res) => {
-  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/review/meta?product_id=${req.params.id}}`, {
+  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/meta?product_id=${req.params.id}`, {
     headers: {
       'Authorization': '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'
     }
