@@ -964,7 +964,7 @@ export const review = [
 
 
 
-export const related = [
+export const relatedProduct = [
   {
     "id": 17068,
     "campus": "hr-rfp",
