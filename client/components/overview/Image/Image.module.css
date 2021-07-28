@@ -1,9 +1,9 @@
 .thumb {
   border: solid 1px;
-  width: 80px;
-  height: 80px;
+  border-radius: 10px;
+  width: 75px;
+  height: 75px;
   object-fit: cover;
-
 }
 .thumb {
   cursor: zoom-in;

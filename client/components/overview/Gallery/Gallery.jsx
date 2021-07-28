@@ -13,10 +13,8 @@ const Gallery = (props) => {
           return (<Image key={key} photo={current} handlePhotoClick={props.handlePhotoClick} />)
         })}
       </div>
-      <i class="fas fa-chevron-left"></i>
       <span>
       <img className={css.main} src={props.main.url} />
-      <i class="fas fa-chevron-right"></i>
       </span>
     </div>
   )

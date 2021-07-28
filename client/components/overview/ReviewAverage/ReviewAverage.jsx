@@ -2,17 +2,11 @@ import React from 'react';
 import parser from 'html-react-parser';
 const ReviewAverage = (props) => {
   let total = 0;
-  // console.log(props.reviews)
-  for (var review of props.reviews) {
-    total += review.rating
-  }
-  let average = total/props.reviews.length;
+  // console.log(props.average)
+
+  let average = props.average
   average = Math.round(average/0.25) * 0.25;
-  const handleSeeAll = () => {
-    if (props.reviews.length) {
-      return (<div>see all {props.reviews.length.toString()} reviews </div>);
-    }
-  };
+// console.log(average)
 
   const handleStar = (num) => {
     let htmlString = '';
@@ -39,7 +33,6 @@ const ReviewAverage = (props) => {
   return (
     <div>
       <div>{parser(handleStar(average))}</div>
-      {handleSeeAll()}
     </div>
   )
 }
