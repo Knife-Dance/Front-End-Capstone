@@ -2,7 +2,7 @@ import React from 'react';
 import parser from 'html-react-parser';
 const ReviewAverage = (props) => {
   let total = 0;
-  console.log(props.reviews)
+  // console.log(props.reviews)
   for (var review of props.reviews) {
     total += review.rating
   }

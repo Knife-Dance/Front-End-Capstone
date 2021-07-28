@@ -1,0 +1,103 @@
+import React, { useState, useEffect} from 'react';
+import MainContext from './MainContext';
+import axios from 'axios';
+
+const Provider = ({children}) => {
+  //the whole product
+  const [products, setProducts] = useState([]);
+
+  //the whole style obj with url
+  const [styles, setStyles] = useState(null);
+
+  //it is set to the overview component at first and then it changes when user clicks on a card
+  const [selectedProduct, setSelectedProduct] = useState();
+
+  //it gets the related array data
+  const [related, setRelated] = useState([]);
+
+
+  useEffect( async() => {
+    try {
+      const {data} = await axios.get('/products')
+      setProducts(data);
+      setSelectedProduct(data[0])
+    }
+    catch(err) {
+    console.log(err)
+    }
+  }, [])
+
+  const handleGetStyleById = async (id) => {
+    try {
+      const {data} = await axios.get(`/products/${id}/styles`);
+      return data
+    }
+    catch(err) {
+    console.log(err);
+    }
+
+  }
+
+  const handleGetProductById = async (id) => {
+    try {
+        const {data} = await axios.get(`/products/${id}`);
+      return data;
+    }
+    catch(err) {
+      console.log(err);
+    }
+  }
+
+  const handleGetReviewById = async(id) => {
+    try {
+      const {data} = await axios.get(`/products/${id}/review`);
+      let sum = 0;
+      let count = 0;
+      for (let i = 0; i < 5; i++) {
+        let num = +data.ratings[i]
+        if (num) {
+          count += num;
+          sum = num * i;
+        }
+
+      }
+      let rating = sum / count;
+      return rating
+    }
+    catch(err) {
+      console.log(err);
+    }
+  }
+
+  useEffect (async () => {
+    if (selectedProduct) {
+      try {
+        let productStyle = await handleGetStyleById(selectedProduct.id);
+        setStyles(productStyle);
+        const {data} = await axios.get(`/products/${id}/related`);
+        let arr = [];
+
+        for (let i in data) {
+          let product = await handleGetProductById(data[i]);
+          let style = await handleGetStyleById(data[i])
+          let rate= await handleGetRateById(data[i])
+          arr.push({product, style, rate})
+        }
+        setRelated(data)
+      } catch(err) {
+        console.error(err)
+      }
+    }
+  }, [selectedProduct])
+
+
+  return (
+    <MainContext.Provider value={{products, handleGetStyleById, selectedProduct, setSelectedProduct, styles, related}}>
+
+      {children}
+
+    </MainContext.Provider>
+  )
+}
+
+export default Provider
