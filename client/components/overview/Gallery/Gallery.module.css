@@ -12,17 +12,17 @@
 .gallerybigcontainer{
   position: relative;
   height: 100%;
-  width: 100;
+  width: 100%;
   max-height:600px;
-  max-width:600px;
+  max-width: 60%;
   overflow-y: hidden;
   overflow-x: hidden;
-
+  object-fit: cover;
 }
 .main {
 
-  max-height:600px;
-  max-width:600x;
+  height:600px;
+  width:100%;
   object-fit: cover;
 
 

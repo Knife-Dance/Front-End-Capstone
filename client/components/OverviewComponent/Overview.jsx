@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Slogan from '../overview/Slogan/Slogan.jsx';
 
@@ -31,19 +31,18 @@ let exampleProduct = {
 
 const Overview = (props) => {
   const [style, setStyle] = useState(exampleStyles[0]);
-  const [product, setProduct] = useState(exampleProduct);
   const [reviews, setReviews] = useState(exampleReviews.results);
   const [main, setMain] = useState(style.photos[0])
   const handlePrice = () => {
-      if (style.sale_price) {
-        return (
+    if (style.sale_price) {
+      return (
         <div>
           <div className={css.original}>{style.original_price}</div>
           <div className={css.sale}>{style.sale_price}</div>
         </div>)
-      } else {
-        return (<div>{style.original_price}</div>)
-      }
+    } else {
+      return (<div>{style.original_price}</div>)
+    }
   }
   const handleStyleSelect = (event, data) => {
     setStyle(data);
@@ -55,18 +54,30 @@ const Overview = (props) => {
   }
   return (
     <div>
-      <Gallery style={style} main={main}
-      handlePhotoClick={handlePhotoClick}/>
-      <ReviewAverage reviews={reviews}/>
-      <h3>{product.category}</h3>
-      <h2 className={css.name} >{product.name}</h2>
-      {handlePrice()}
-      <SocialMedia />
-      <StyleSelector style={style}
-      handleStyleSelect={handleStyleSelect}
-      styles={exampleStyles}/>
-      <AddToCart style={style}/>
-      <Slogan product={product}/>
+      <div className={css.overContainer}>
+        <Gallery style={style} main={main}
+          handlePhotoClick={handlePhotoClick} />
+        <div className={css.subContainer}>
+          <ReviewAverage reviews={reviews} />
+          <h3>{props.products[0].category}</h3>
+          <h2 className={css.name} >{props.products[0].name}</h2>
+          {handlePrice()}
+          <SocialMedia />
+          <StyleSelector style={style}
+            handleStyleSelect={handleStyleSelect}
+            styles={exampleStyles} />
+          <AddToCart style={style} />
+
+        </div>
+
+      </div>
+      <div className={css.banner}>
+        <Slogan product={props.products[0]} />
+        <div className={css.phrases}>
+          <p>Pasture Raised</p>
+          <p>Knife Dance~!</p>
+        </div>
+      </div>
     </div>
   )
 }

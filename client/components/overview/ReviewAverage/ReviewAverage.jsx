@@ -39,6 +39,7 @@ const ReviewAverage = (props) => {
   return (
     <div>
       <div>{parser(handleStar(average))}</div>
+      {handleSeeAll()}
     </div>
   )
 }

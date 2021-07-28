@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import parser from 'html-react-parser';
+import css from './AddToCart.module.css';
 
 const AddToCart = (props) => {
-  console.log(props.style.skus)
+  // console.log(props.style.skus)
   const [size, setSize] = useState(null);
   const [sku, setSku] = useState(null);
   const [amount, setAmount] = useState(null);
@@ -24,12 +25,12 @@ const AddToCart = (props) => {
     let temp = JSON.parse(e.target.value);
     setSize(temp[1].quantity)
     setSku(temp[0])
-    console.log(size)
-    console.log(sku)
+    // console.log(size)
+    // console.log(sku)
   }
 
   const handleQuantity = (stock) => {
-    console.log(stock);
+    // console.log(stock);
     let quantityString = '';
     if (stock > 15) {
       for (var i = 1; i <= 15; i++) {
@@ -51,16 +52,23 @@ const AddToCart = (props) => {
     e.preventDefault();
     console.log({sku, amount}) // post request to API to save cart
   }
+
+  const handleButton = () => {
+    if (sku) {
+      return (<button>Add To Cart</button>)
+    }
+  }
+
   return (
-    <form onSubmit={handleAdd}>AddToCart
+    <form className={css.container} onSubmit={handleAdd}>
       <select onChange={handleSizeSelect}>
         <option value="0">Select Size</option>
         {parser(handleSize(props.style.skus))}
       </select>
       <select onChange={handleQuantitySelect}>
-        {(size ? parser(handleQuantity(size)) : <option>No Stock</option>)}
+        {(size ? parser(handleQuantity(size)) : <option>-</option>)}
       </select>
-      <button>Add To Cart</button>
+      {handleButton()}
     </form>
 
   )
