@@ -15,12 +15,14 @@ const Provider = ({children}) => {
   //it gets the related array data
   const [related, setRelated] = useState([]);
 
+  const [productFeature, setProductFeature] = useState([])
+
 
   useEffect( async() => {
     try {
       const {data} = await axios.get('/products')
       setProducts(data);
-      setSelectedProduct(data[0])
+      setSelectedProduct(data[0].id)
     }
     catch(err) {
     console.log(err)
@@ -48,18 +50,17 @@ const Provider = ({children}) => {
     }
   }
 
-  const handleGetReviewById = async(id) => {
+  const handleGetRateById = async(id) => {
     try {
       const {data} = await axios.get(`/products/${id}/review`);
       let sum = 0;
       let count = 0;
-      for (let i = 0; i < 5; i++) {
+      for (let i = 1; i < 6; i++) {
         let num = +data.ratings[i]
         if (num) {
           count += num;
-          sum = num * i;
+          sum += num * i;
         }
-
       }
       let rating = sum / count;
       return rating
@@ -72,9 +73,12 @@ const Provider = ({children}) => {
   useEffect (async () => {
     if (selectedProduct) {
       try {
-        let productStyle = await handleGetStyleById(selectedProduct.id);
+        let productStyle = await handleGetStyleById(selectedProduct);
         setStyles(productStyle);
-        const {data} = await axios.get(`/products/${id}/related`);
+        const response = await handleGetProductById(selectedProduct);
+        setProductFeature(response);
+        console.log(response)
+        const {data} = await axios.get(`/products/${selectedProduct}/related`);
         let arr = [];
 
         for (let i in data) {
@@ -83,7 +87,10 @@ const Provider = ({children}) => {
           let rate= await handleGetRateById(data[i])
           arr.push({product, style, rate})
         }
-        setRelated(data)
+
+        setRelated(arr)
+
+
       } catch(err) {
         console.error(err)
       }
@@ -92,7 +99,7 @@ const Provider = ({children}) => {
 
 
   return (
-    <MainContext.Provider value={{products, handleGetStyleById, selectedProduct, setSelectedProduct, styles, related}}>
+    <MainContext.Provider value={{products, handleGetStyleById, selectedProduct, setSelectedProduct, styles, related, productFeature}}>
 
       {children}
 
