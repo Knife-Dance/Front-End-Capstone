@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import Overview from './OverviewComponent/Overview.jsx';
-// import Ratings from './Ratings.jsx';
-import ReviewList from './ratings/ReviewList.jsx';
+import Ratings from './Ratings.jsx';
+import ReviewList from './ratings/ReviewList/ReviewList.jsx';
 import Relate from './related/product-card/Related-product.jsx'
 import dataUrl from './related/sample-data.js'
 import { sampleData } from '../sampleData.js';

@@ -35,11 +35,22 @@
 }
 
 .photos {
-
+  height: 100px;
+  width: 100px;
+  border: 1px solid;
+  margin: 5px;
+}
+.photos:hover {
+  cursor: pointer;
+  border-color: lightskyblue;
 }
 
 .response {
-
+  background-color: lightgray;
+  position: relative;
+  width: 300px;
+  left: 15px;
+  padding: 5px;
 }
 
 .helpful {
@@ -48,6 +59,10 @@
 }
 
 .recommend {
+
+}
+
+.modalPhoto {
 
 }
 
