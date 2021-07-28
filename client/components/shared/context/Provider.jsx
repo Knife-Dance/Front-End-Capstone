@@ -15,6 +15,8 @@ const Provider = ({children}) => {
   //it gets the related array data
   const [related, setRelated] = useState([]);
 
+  const [productFeature, setProductFeature] = useState([])
+
 
   useEffect( async() => {
     try {
@@ -73,6 +75,9 @@ const Provider = ({children}) => {
       try {
         let productStyle = await handleGetStyleById(selectedProduct);
         setStyles(productStyle);
+        const response = await handleGetProductById(selectedProduct);
+        setProductFeature(response);
+        console.log(response)
         const {data} = await axios.get(`/products/${selectedProduct}/related`);
         let arr = [];
 
@@ -82,8 +87,10 @@ const Provider = ({children}) => {
           let rate= await handleGetRateById(data[i])
           arr.push({product, style, rate})
         }
+
         setRelated(arr)
-        console.log(arr)
+
+
       } catch(err) {
         console.error(err)
       }
@@ -92,7 +99,7 @@ const Provider = ({children}) => {
 
 
   return (
-    <MainContext.Provider value={{products, handleGetStyleById, selectedProduct, setSelectedProduct, styles, related}}>
+    <MainContext.Provider value={{products, handleGetStyleById, selectedProduct, setSelectedProduct, styles, related, productFeature}}>
 
       {children}
 
