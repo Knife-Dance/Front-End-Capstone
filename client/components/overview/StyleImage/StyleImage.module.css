@@ -1,0 +1,14 @@
+.thumb{
+  max-width: 64px;
+  max-height: 64px;
+  object-fit: cover;
+  display: inline-block;
+  margin: 5px;
+  border: solid 1px;
+  border-radius: 50%;
+  /* flex: 1 0 21%;
+  height: 100px;
+  width: 100px; */
+  /* height: 64px;
+  width: 64px; */
+}
