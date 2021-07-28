@@ -17,7 +17,7 @@ import AddToCart from '../overview/AddToCart/AddToCart.jsx';
 const exampleReviews = require('../overview/exampleReviewsData.js');
 const exampleStyles = require('../overview/exampleStylesData.js');
 
-let exampleProduct = {
+let exampleProduct = [{
   "id": 17067,
   "campus": "hr-rfp",
   "name": "Camo Onesie",
@@ -27,12 +27,13 @@ let exampleProduct = {
   "default_price": "140.00",
   "created_at": "2021-02-23T04:22:44.728Z",
   "updated_at": "2021-02-23T04:22:44.728Z"
-};
+}];
 
 const Overview = (props) => {
   const [style, setStyle] = useState(exampleStyles[0]);
   const [reviews, setReviews] = useState(exampleReviews.results);
-  const [main, setMain] = useState(style.photos[0])
+  const [main, setMain] = useState(style.photos[0]);
+  const [product, setProduct] = useState(exampleProduct);
   const handlePrice = () => {
     if (style.sale_price) {
       return (
@@ -59,8 +60,8 @@ const Overview = (props) => {
           handlePhotoClick={handlePhotoClick} />
         <div className={css.subContainer}>
           <ReviewAverage reviews={reviews} />
-          <h3>{props.products[0].category}</h3>
-          <h2 className={css.name} >{props.products[0].name}</h2>
+          <h3>{product[0].category}</h3>
+          <h2 className={css.name} >{product[0].name}</h2>
           {handlePrice()}
           <SocialMedia />
           <StyleSelector style={style}
@@ -72,7 +73,7 @@ const Overview = (props) => {
 
       </div>
       <div className={css.banner}>
-        <Slogan product={props.products[0]} />
+        <Slogan product={product[0]} />
         <div className={css.phrases}>
           <p>Pasture Raised</p>
           <p>Knife Dance~!</p>
