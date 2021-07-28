@@ -6,7 +6,7 @@ const Gallery = (props) => {
 
   let key = -1;
   return (
-    <div>
+    <div className={css.gallerybigcontainer}>
       <div className={css.container}>
         {props.style.photos.map((current) => {
           key++;
@@ -14,7 +14,7 @@ const Gallery = (props) => {
         })}
       </div>
       <span>
-      <img src={props.main.url} style={{ width: 400, height: 600 }} />
+      <img className={css.main} src={props.main.url} />
       </span>
     </div>
   )

@@ -10,8 +10,6 @@ import axios from 'axios';
 import Provider from './shared/context/Provider.jsx'
 
 
-
-
 const App = (props) => {
   const [data, setData] = useState(sampleData.results);
   const [meta, setMeta] = useState(metaData);
@@ -19,10 +17,10 @@ const App = (props) => {
   return (
     <Provider>
 
-      {/* <Overview /> */}
+      <Overview />
       <Relate cards={dataUrl} />
 
-      {/* <Ratings reviews={data} meta={meta} /> */}
+      <Ratings reviews={data} meta={meta} />
     </Provider>
   )
 }

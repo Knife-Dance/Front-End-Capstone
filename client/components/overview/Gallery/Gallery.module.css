@@ -1,5 +1,29 @@
 .container{
-  float: left;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  bottom: 0;
+  right: -17px;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+.gallerybigcontainer{
+  position: relative;
+  height: 100%;
+  width: 100%;
+  max-height:600px;
+  max-width: 60%;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  object-fit: cover;
+}
+.main {
+
+  height:600px;
+  width:100%;
+  object-fit: cover;
+  border-radius: 20px;
+
 }
