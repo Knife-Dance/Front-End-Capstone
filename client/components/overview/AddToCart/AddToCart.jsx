@@ -54,6 +54,7 @@ const AddToCart = (props) => {
     e.preventDefault();
     console.log(size)
     if (size === null) {
+      alert('Please select a size.')
       $('#size').attr('size', '10');
     } else {
       console.log({ sku, amount }) // post request to API to save cart
