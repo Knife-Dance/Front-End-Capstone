@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {dataUrl, related} from '../sample-data';
 import css from './modal.module.css'
-
+/////
 
 
 const Modal = ({showModal, setShowModal, productData}) => {
