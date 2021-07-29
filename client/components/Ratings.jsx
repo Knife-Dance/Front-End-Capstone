@@ -5,6 +5,7 @@ import CreateReview from './ratings/CreateReview.jsx';
 import SortReviews from './ratings/SortReviews/SortReviews.jsx';
 import ModalPhoto from './ratings/ModalPhoto/ModalPhoto.jsx';
 
+
 function Ratings(props) {
   const [reviews, setReviews] = useState([]);
   const [filtered, setFiltered] = useState([]);
@@ -56,6 +57,15 @@ function Ratings(props) {
     setModal(true);
   };
 
+  //REVIEWS ARE SORTED
+  useEffect(() => {
+    if (filtered.length > 0) {
+      setFiltered(props.reviews.slice(0, filtered.length));
+    } else {
+      setReviews(props.reviews.slice(0, reviews.length));
+    }
+  }, [props.reviews]);
+
   //PAGE RENDERS
   useEffect(() => {
     setReviews(props.reviews.slice(0, 2));
@@ -64,7 +74,7 @@ function Ratings(props) {
   return (
     <div>
       <h1>Ratings & Reviews</h1>
-      <SortReviews numberOfReviews={props.reviews.length}/>
+      <SortReviews sort={props.sort}/>
       <FilterRatings
         meta={props.meta}
         handleClick={handleReviewFilter}
