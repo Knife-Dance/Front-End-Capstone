@@ -22,7 +22,9 @@
   position: absolute;
   top: 1rem;
   right: 1rem;
+  padding: 10px
 }
+
 
 .productItem img {
   height: 15rem;
