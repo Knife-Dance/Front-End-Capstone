@@ -44,6 +44,7 @@ const Relate = ({cards}) => {
             setShowModal(true);
             e.stopPropagation();
 
+
         }
 
 
@@ -55,7 +56,7 @@ const Relate = ({cards}) => {
 
         // }
 
-       
+
 
         return (
             <>
@@ -102,7 +103,7 @@ const Relate = ({cards}) => {
 
                 </div>
                 {showModal ? <Modal cardData={selectedRelatedProduct} productData={productFeature}  setShowModal={setShowModal}/> : null}
-                <Outfit/>
+                
 
             </div>
             </>

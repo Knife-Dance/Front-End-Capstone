@@ -8,6 +8,8 @@ import { sampleData } from '../sampleData.js';
 import { metaData } from '../metaData.js';
 import axios from 'axios';
 import Provider from './shared/context/Provider.jsx'
+import Outfit from './related/outfit/Outfit.jsx';
+
 
 
 const App = (props) => {
@@ -19,8 +21,9 @@ const App = (props) => {
 
       <Overview />
       <Relate cards={dataUrl} />
-
+      <Outfit/>
       <Ratings reviews={data} meta={meta} />
+
     </Provider>
   )
 }

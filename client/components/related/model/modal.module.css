@@ -6,6 +6,15 @@
 
 }
 
+.tableHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modalBox h3 {
+  align-self: left;
+
+}
 .modalBox {
   position: fixed;
   top: 0;
@@ -20,12 +29,26 @@
 
 }
 .modalBox table {
-  width: 100%;
+  /* width: 100%; */
+  margin: auto;
 }
 
+.modalBox table td {
+ padding: 5px 20px;
+ text-align: center;
+ min-width: 150px;
+}
+.modalBox table th {
+  padding: 0 20px;
+  text-align: center;
+  min-width: 150px;
+}
+
+
 .modalContainer {
+  padding: 50px;
   opacity: 100%;
-  width: 800px;
+  width: auto;
   height: 500px;
   box-shadow: 0 5px 16px rgba(0,0,0, 0.2);
   background: #fff;
@@ -36,7 +59,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  text-align: center;
+  text-align: left;
 }
 
 .closeModalBtn  {
@@ -52,3 +75,11 @@
   border: none;
 
 }
+
+.leftCheck {
+  text-align: left !important;
+}
+.rightCheck {
+  text-align: right !important;
+}
+
