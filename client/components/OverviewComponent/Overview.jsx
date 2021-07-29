@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 
 import Slogan from '../overview/Slogan/Slogan.jsx';
 
@@ -14,67 +14,21 @@ import SocialMedia from '../overview/SocialMedia/SocialMedia.jsx';
 
 import AddToCart from '../overview/AddToCart/AddToCart.jsx';
 
+import MainContext from '../shared/context/MainContext.js';
+
 const exampleReviews = require('../overview/exampleReviewsData.js');
 const exampleStyles = require('../overview/exampleStylesData.js');
 
-let exampleProduct = [{
-  "id": 17067,
-  "campus": "hr-rfp",
-  "name": "Camo Onesie",
-  "slogan": "Blend in to your crowd",
-  "description": "The So Fatigues will wake you up and fit you in. This high energy camo will have you blending in to even the wildest surroundings.",
-  "category": "Jackets",
-  "default_price": "140.00",
-  "created_at": "2021-02-23T04:22:44.728Z",
-  "updated_at": "2021-02-23T04:22:44.728Z"
-}];
-let exampleMeta = {
-  "product_id": "17067",
-  "ratings": {
-      "1": "3",
-      "2": "10",
-      "3": "34",
-      "4": "72",
-      "5": "64"
-  },
-  "recommended": {
-      "false": "63",
-      "true": "120"
-  },
-  "characteristics": {
-      "Fit": {
-          "id": 57222,
-          "value": "2.5975609756097561"
-      },
-      "Length": {
-          "id": 57223,
-          "value": "2.8101265822784810"
-      },
-      "Comfort": {
-          "id": 57224,
-          "value": "3.1000000000000000"
-      },
-      "Quality": {
-          "id": 57225,
-          "value": "3.1463414634146341"
-      }
-  }
-};
-let total = 0
-let num = 0
-console.log(exampleMeta.ratings)
-for (var key in exampleMeta.ratings) {
-  total += (Number(key) * Number(exampleMeta.ratings[key]));
-  num += (Number(exampleMeta.ratings[key]));
-}
-let average = total/num;
 
 
 const Overview = (props) => {
-  const [style, setStyle] = useState(exampleStyles[0]);
-  const [reviews, setReviews] = useState(exampleReviews.results);
-  const [main, setMain] = useState(style.photos[0]);
-  const [product, setProduct] = useState(exampleProduct);
+  const [style, setStyle] = useState(null);
+  const [styles, setStyles] = useState(null);
+  const [reviews, setReviews] = useState(null);
+  const [main, setMain] = useState(null);
+  const [num, setNum] = useState(null);
+  const {selectedProduct, handleGetStyleById, handleGetRateById} = useContext(MainContext);
+  // console.log(selectedProduct, handleGetStyleById);
   const handlePrice = () => {
     if (style.sale_price) {
       return (
@@ -92,37 +46,61 @@ const Overview = (props) => {
     // console.log(style);
   }
   const handlePhotoClick = (event, data) => {
+    // console.log(data);
     setMain(data);
   }
-  return (
-    <div>
-      <div className={css.overContainer}>
-        <Gallery style={style} main={main}
-          handlePhotoClick={handlePhotoClick} />
-        <div className={css.subContainer}>
-          <ReviewAverage average={average} />
-          {num ? <span>see all {num} Reviews</span> : null}
-          <h3>{product[0].category}</h3>
-          <h2 className={css.name} >{product[0].name}</h2>
-          {handlePrice()}
-          <SocialMedia />
-          <StyleSelector style={style}
-            handleStyleSelect={handleStyleSelect}
-            styles={exampleStyles} />
-          <AddToCart style={style} />
+  useEffect(() => {
+    if (selectedProduct) {
+      // console.log(selectedProduct.id)
+      handleGetStyleById(selectedProduct.id)
+        .then(data => {
+          // console.log(data);
+          setStyles(data.results)
+          setStyle(data.results[0])
+          setMain(data.results[0].photos[0])
+        })
+      handleGetRateById(selectedProduct.id)
+        .then(data => {
+          setNum(data[1]);
+          setReviews(data[0]);
+        })
+      // console.log(style);
+    }
+  }, [selectedProduct])
+  if (selectedProduct && style && styles && main) {
+
+    return (
+      <div>
+        <div className={css.overContainer}>
+          <Gallery style={style} main={main}
+            handlePhotoClick={handlePhotoClick} />
+          <div className={css.subContainer}>
+            <ReviewAverage average={reviews} />
+            {num ? <span>see all {num} Reviews</span> : null}
+            <h3>{selectedProduct.category}</h3>
+            <h2 className={css.name} >{selectedProduct.name}</h2>
+            {handlePrice()}
+            <SocialMedia />
+            <StyleSelector style={style}
+              handleStyleSelect={handleStyleSelect}
+              styles={styles} />
+            <AddToCart style={style} />
+
+          </div>
 
         </div>
-
-      </div>
-      <div className={css.banner}>
-        <Slogan product={product[0]} />
-        <div className={css.phrases}>
-          <p>Pasture Raised</p>
-          <p>Knife Dance~!</p>
+        <div className={css.banner}>
+          <Slogan product={selectedProduct} />
+          <div className={css.phrases}>
+            <p>Pasture Raised</p>
+            <p>Knife Dance~!</p>
+          </div>
         </div>
       </div>
-    </div>
-  )
+    )
+  } else {
+    return (<div></div>)
+  }
 }
 
 export default Overview

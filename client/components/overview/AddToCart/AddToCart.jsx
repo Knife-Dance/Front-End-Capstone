@@ -55,7 +55,7 @@ const AddToCart = (props) => {
     console.log(size)
     if (size === null) {
       alert('Please select a size.')
-      $('#size').attr('size', '10');
+      $('#size').attr('size', '3');
     } else {
       console.log({ sku, amount }) // post request to API to save cart
     }
