@@ -28,7 +28,7 @@ const Overview = (props) => {
   const [main, setMain] = useState(null);
   const [num, setNum] = useState(null);
   const [product, setProduct] = useState(null);
-  const {selectedProduct, handleGetStyleById, handleGetProductById, handleGetRateById} = useContext(MainContext);
+  const {productFeature, selectedProduct, handleGetStyleById, handleGetProductById, handleGetRateById} = useContext(MainContext);
   // console.log(selectedProduct, handleGetStyleById);
   const handlePrice = () => {
     if (style.sale_price) {

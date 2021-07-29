@@ -32,7 +32,7 @@ const ReviewAverage = (props) => {
   }
   return (
     <div>
-      <div>{parser(handleStar(average))}</div>
+      {parser(handleStar(average))}
     </div>
   )
 }
