@@ -23,26 +23,26 @@ const exampleStyles = require('../overview/exampleStylesData.js');
 
 const Overview = (props) => {
   const [style, setStyle] = useState(null);
-  const [styles, setStyles] = useState(null);
   const [reviews, setReviews] = useState(null);
   const [main, setMain] = useState(null);
   const [num, setNum] = useState(null);
   const [product, setProduct] = useState(null);
-  const {productFeature, selectedProduct, handleGetStyleById, handleGetProductById, handleGetRateById} = useContext(MainContext);
+  const {productFeature, selectedProduct, styles, selectedStyle, setSelectedStyle, handleGetRateById} = useContext(MainContext);
   // console.log(selectedProduct, handleGetStyleById);
   const handlePrice = () => {
-    if (style.sale_price) {
+    if (selectedStyle.sale_price) {
       return (
         <div>
-          <div className={css.original}>{style.original_price}</div>
-          <div className={css.sale}>{style.sale_price}</div>
+          <div className={css.original}>{selectedStyle.original_price}</div>
+          <div className={css.sale}>{selectedStyle.sale_price}</div>
         </div>)
     } else {
-      return (<div>{style.original_price}</div>)
+      return (<div>{selectedStyle.original_price}</div>)
     }
   }
   const handleStyleSelect = (event, data) => {
-    setStyle(data);
+    setSelectedStyle(data);
+    console.log('111111111111111111', data)
     setMain(data.photos[0])
     // console.log(style);
   }
@@ -52,54 +52,54 @@ const Overview = (props) => {
   }
   useEffect(() => {
     if (selectedProduct) {
-      console.log(selectedProduct)
-      handleGetProductById(selectedProduct)
-        .then(data => {
-          setProduct(data);
-          // console.log(data)
-        })
-      handleGetStyleById(selectedProduct)
-        .then(data => {
-          // console.log(data);
-          // console.log(selectedProduct)
-          setStyles(data.results)
-          setStyle(data.results[0])
-          setMain(data.results[0].photos[0])
-        })
+      console.log(selectedProduct);
       handleGetRateById(selectedProduct)
         .then(data => {
           setNum(data[1]);
           setReviews(data[0]);
         })
+
+
       // console.log(style);
     }
   }, [selectedProduct])
-  if (product && selectedProduct && style && styles && main) {
+
+  useEffect(() => {
+    if (selectedStyle) {
+      console.log(selectedStyle)
+      console.log(selectedStyle.photos[0].url)
+      setMain(selectedStyle.photos[0])
+    }
+  }, [selectedStyle])
+
+  if (productFeature && selectedProduct && selectedStyle && styles && main) {
+    // console.log('=============', productFeature)
+    // console.log(styles)
     return (
       <div>
         <div className={css.overContainer}>
-          <Gallery style={style} main={main}
+          <Gallery style={selectedStyle} main={main}
             handlePhotoClick={handlePhotoClick} />
           <div className={css.subContainer}>
             <ReviewAverage average={reviews} />
             {num ? <span>see all {num} Reviews</span> : null}
-            <h3>{product.category}</h3>
-            <h2 className={css.name} >{product.name}</h2>
+            <h3>{productFeature.category}</h3>
+            <h2 className={css.name} >{productFeature.name}</h2>
             {handlePrice()}
             <SocialMedia />
-            <StyleSelector style={style}
+            <StyleSelector style={selectedStyle}
               handleStyleSelect={handleStyleSelect}
-              styles={styles} />
-            <AddToCart style={style} />
+              styles={styles.results} />
+            <AddToCart style={selectedStyle} />
 
           </div>
 
         </div>
         <div className={css.banner}>
-          <Slogan product={product} />
+          <Slogan product={productFeature} />
           <div className={css.phrases}>
-            <p>{product.features[0].value + product.features[0].feature}</p>
-            <p>{product.features[1].value + product.features[1].feature}</p>
+            <p>{productFeature.features[0].value + '~~' + productFeature.features[0].feature}</p>
+            <p>{productFeature.features[1].value + '~~' + productFeature.features[1].feature}</p>
 
           </div>
         </div>
