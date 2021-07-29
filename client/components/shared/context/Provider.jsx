@@ -53,17 +53,19 @@ const Provider = ({children}) => {
   const handleGetRateById = async(id) => {
     try {
       const {data} = await axios.get(`/products/${id}/review`);
+
       let sum = 0;
       let count = 0;
-      for (let i = 1; i < 6; i++) {
-        let num = +data.ratings[i]
+      for (let i = 1; i <= 5; i++) {
+        let num = data.ratings[i]
         if (num) {
-          count += num;
-          sum += num * i;
+          count += parseInt(num);
+          sum += parseInt(num) * i;
         }
       }
       let rating = sum / count;
-      return rating
+      let temp = [rating, count]
+      return temp;
     }
     catch(err) {
       console.log(err);
@@ -99,7 +101,7 @@ const Provider = ({children}) => {
 
 
   return (
-    <MainContext.Provider value={{products, handleGetStyleById, selectedProduct, setSelectedProduct, styles, related, productFeature}}>
+    <MainContext.Provider value={{products, handleGetStyleById, selectedProduct, setSelectedProduct, styles, related, handleGetRateById, productFeature}}>
 
       {children}
 
