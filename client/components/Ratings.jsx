@@ -1,96 +1,88 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React, { useState, useEffect } from 'react';
 import FilterRatings from './ratings/FilterRatings/FilterRatings.jsx';
 import ReviewList from './ratings/ReviewList/ReviewList.jsx';
 import CreateReview from './ratings/CreateReview.jsx';
-import SortReviews from './ratings/SortReviews.jsx';
+import SortReviews from './ratings/SortReviews/SortReviews.jsx';
+import ModalPhoto from './ratings/ModalPhoto/ModalPhoto.jsx';
 
-class Ratings extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      reviews: [],
-      filtered: [],
-      stars: [],
-      photo: 'photoUrl',
-      count: props.reviews.length
-    }
-    this.addFilter = this.addFilter.bind(this);
-    this.removeFilter = this.removeFilter.bind(this);
-    this.clearFilter = this.clearFilter.bind(this);
-    this.moreReviews = this.moreReviews.bind(this);
-    this.lessReviews = this.lessReviews.bind(this);
-    this.handleReviewFilter = this.handleReviewFilter.bind(this);
-    this.setPhoto = this.setPhoto.bind(this);
-  }
+function Ratings(props) {
+  const [reviews, setReviews] = useState([]);
+  const [filtered, setFiltered] = useState([]);
+  const [stars, setStars] = useState([]);
+  const [count, setCount] = useState(props.reviews.length);
+  const [clickedPhoto, setClickedPhoto] = useState('');
+  const [modal, setModal] = useState(false);
 
   //FILTER METHODS
-  addFilter(star) {
-    let selected = this.props.reviews.filter((review) => review.rating === star);
-    let joinSelected = selected.concat(this.state.filtered);
-    let addStar = this.state.stars.concat([star]);
-    this.setState({filtered: joinSelected, stars: addStar});
-  }
-  removeFilter(star) {
-    let unselected = this.state.filtered.filter((review) => review.rating !== star);
-    let index = this.state.stars.indexOf(star)
-    let newStars = this.state.stars;
+  const addFilter = (star) => {
+    let selected = props.reviews.filter((review) => review.rating === star);
+    let joinSelected = selected.concat(filtered);
+    let addStar = stars.concat([star]);
+    setFiltered(joinSelected);
+    setStars(addStar);
+  };
+  const removeFilter = (star) => {
+    let unselected = filtered.filter((review) => review.rating !== star);
+    let index = stars.indexOf(star)
+    let newStars = stars;
     newStars.splice(index, 1);
-    this.setState({filtered: unselected, stars: newStars});
-  }
-  handleReviewFilter(star) {
-    if (this.state.stars.indexOf(star) === -1) {
-      this.addFilter(star);
+    setFiltered(unselected);
+    setStars(newStars);
+  };
+  const handleReviewFilter = (star) => {
+    if (stars.indexOf(star) === -1) {
+      addFilter(star);
     } else {
-      this.removeFilter(star);
+      removeFilter(star);
     }
-  }
-  clearFilter() {
-    this.setState({filtered: []});
-  }
+  };
+  const clearFilter = () => {
+    setFiltered([]);
+  };
 
   //REVIEW LIST METHODS
-  moreReviews() {
-    let more = this.props.reviews.slice(0, this.state.reviews.length + 2);
-    this.setState({reviews: more});
-  }
-  lessReviews() {
-    let less = this.state.reviews.slice(0, this.state.reviews.length - 2);
-    this.setState({reviews: less});
-  }
-  setPhoto(url) {
-    this.setState({photo: url});
-  }
+  const moreReviews = () => {
+    let more = props.reviews.slice(0, reviews.length + 2);
+    setReviews(more);
+  };
+  const lessReviews = () => {
+    let less = reviews.slice(0, reviews.length - 2);
+    setReviews(less);
+  };
+
+  //MODAL METHODS
+  const handlePhotoClick = (url) => {
+    setClickedPhoto(url);
+    setModal(true);
+  };
 
   //PAGE RENDERS
-  componentDidMount() {
-    this.setState({reviews: this.props.reviews.slice(0, 2)});
-  }
+  useEffect(() => {
+    setReviews(props.reviews.slice(0, 2));
+  }, []);
 
-  render() {
-    return (
-      <div>
-        <h1>Ratings & Reviews</h1>
-        <SortReviews />
-        <FilterRatings
-          meta={this.props.meta}
-          handleClick={this.handleReviewFilter}
-          clearFilter={this.clearFilter}
-          />
-        <ReviewList
-          reviews={this.state.filtered.length === 0 ? this.state.reviews : this.state.filtered}
-          meta={this.props.meta}
-          moreReviews={this.moreReviews}
-          lessReviews={this.lessReviews}
-          filtered={this.state.filtered}
-          count={this.state.count}
-          photo={this.state.photo}
-          setPhoto={this.setPhoto}
-          />
-        <CreateReview />
-      </div>
-    );
-  }
+  return (
+    <div>
+      <h1>Ratings & Reviews</h1>
+      <SortReviews numberOfReviews={props.reviews.length}/>
+      <FilterRatings
+        meta={props.meta}
+        handleClick={handleReviewFilter}
+        clearFilter={clearFilter}
+      />
+      <ModalPhoto photo={clickedPhoto} showModal={modal} hideModal={setModal}/>
+      <ReviewList
+        reviews={filtered.length === 0 ? reviews : filtered}
+        meta={props.meta}
+        moreReviews={moreReviews}
+        lessReviews={lessReviews}
+        filtered={filtered}
+        count={count}
+        photoClick={handlePhotoClick}
+      />
+      <CreateReview />
+    </div>
+  );
 }
 
 export default Ratings;

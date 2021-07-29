@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './ReviewItem.module.css';
-const moment = require('moment');
 
 function ReviewItem(props) {
   return (
@@ -13,7 +12,7 @@ function ReviewItem(props) {
         <div className={ styles.summary }><b>{props.summary}</b></div>
         <div className={ styles.body }>{props.body}</div>
         <div>
-          {props.photos.map((photo) => <img key={photo.id} src={photo.url} className={ styles.photos } onClick={() => props.setPhoto(photo.url)}/>)}
+          {props.photos.map((photo) => <img key={photo.id} src={photo.url} className={ styles.photos } onClick={() => props.photoClick(photo.url)}/>)}
         </div>
         {props.recommend === true && <div className={ styles.recommend }><i className="fas fa-check"></i> I recommend this product</div>}
         {props.response !== null && <div className={ styles.response }><b>Response from seller:</b> <div>{props.response}</div></div>}
