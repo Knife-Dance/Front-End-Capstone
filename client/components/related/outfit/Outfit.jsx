@@ -50,7 +50,10 @@ const Outfit = ({productData}) => {
                             <div key={key}
                             style={{border: '1px solid gray'}} className={css.productItem}>
 
-                                <button onClick={() => removeOutfit(item.style.id)}>
+                                <button onClick={() => {
+                                  // console.log('-------------', item);
+                                  removeOutfit(item.style.style_id)
+                                  }}>
                                 <i className="fas fa-times"></i>
                                 </button>
 

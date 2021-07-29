@@ -155,7 +155,8 @@ const Provider = ({children}) => {
   }
 
   const removeOutfit = (id) => {
-    setOutfits(outfits.filter(each => each.style.id !== id))
+    // console.log('~~~~~~~~~', id)
+    setOutfits(outfits.filter(each => each.style.style_id !== id))
   }
 
 
