@@ -20,10 +20,10 @@ const Relate = ({cards}) => {
     ///How to import context
     //remember to import useContext and MainContext
     const { related,setSelectedProduct, products, selectedProduct, productFeature, handleGetStyleById, handleGetProductById } = useContext(MainContext)
-console.log(related)
+
 
     // return useMemo(() => {
-        console.log(related)
+
         const handlePrevClick = () => {
             setFirstItemIndexToShow(firstItemIndexToShow - 1)
         }
@@ -35,22 +35,28 @@ console.log(related)
             return [...acc, ...newItem.style.results.map(item => ({...item, id: newItem.product.id}))]
         }, []);
 
-        console.log(dataToShow)
 
 
-        const openModal = (item) => {
+
+        const openModal = (item, e) => {
             const findProduct = related.find(each => each.product.id === item.id).product;
             setSelectedRelatedProduct(findProduct);
-
             setShowModal(true);
+            e.stopPropagation();
+
 
         }
 
-        const hideModal = () => {
-            setShowModal(false);
-        }
 
-        console.log(showModal)
+
+        // const updatingOverview = (id, e) => {
+        //     setSelectedProduct(id);
+        //     e.stopPropagation();
+
+
+        // }
+
+
 
         return (
             <>
@@ -72,14 +78,14 @@ console.log(related)
 
                     {
                         dataToShow.slice(firstItemIndexToShow, firstItemIndexToShow + 4).map((item, key) => (
-                            <div key={key}
+                            <div onClick={() => setSelectedProduct(item.id)} key={key}
                             style={{border: '1px solid gray'}} className={css.productItem}>
 
-                                <span onClick={() => openModal(item)}>
+                                <button onClick={(e) => openModal(item,e)}>
                                 <i className="far fa-star star"></i>
-                                </span>
+                                </button>
 
-                                {item.photos[0].thumbnail_url ? <div onClick={() => setSelectedProduct(item.id)} className={css.productImageContainer}><img  src={item.photos[0].thumbnail_url}/></div> :
+                                {item.photos[0].thumbnail_url ? <div  className={css.productImageContainer}><img  src={item.photos[0].thumbnail_url}/></div> :
                                 <div className={css.productImageContainer}>
                                     <img className={css.noImg} src={noImgFound}/> </div>}
                                 <p>{related.find(_ => _.product.id === +item.id).product.category}</p>
@@ -97,7 +103,7 @@ console.log(related)
 
                 </div>
                 {showModal ? <Modal cardData={selectedRelatedProduct} productData={productFeature}  setShowModal={setShowModal}/> : null}
-                <Outfit/>
+                
 
             </div>
             </>

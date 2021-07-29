@@ -8,9 +8,14 @@ const MainContext = createContext({
   styles: {},
   related: [],
   productFeature: [],
-  handleGetStyleById: () => {},
+
   handleGetProductById: () => {},
   handleGetRateById: () => {},
+  setProductFeature: () => {},
+  outfits: [],
+  setSelectedStyle: () => {},
+  addOutfit:() => {},
+  removeOutfit:() => {}
 
 
 
