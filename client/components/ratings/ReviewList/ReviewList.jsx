@@ -20,14 +20,13 @@ function ReviewList(props) {
             response={review.response}
             helpful={review.helpfulness}
             photos={review.photos}
-            clickedPhoto={props.photo}
-            setPhoto={props.setPhoto}
+            photoClick={props.photoClick}
             />
         )}
         <div id="bottom"></div>
       </div>
       <div>
-        {props.filtered.length === 0 && props.reviews.length > 0 && props.count > props.reviews.length && <button onClick={() => props.moreReviews()}>MORE REVIEWS</button>}
+        {props.filtered.length === 0 && props.reviews.length > 0 && props.count > props.reviews.length && <a href="#bottom"><button onClick={() => props.moreReviews()}>MORE REVIEWS</button></a>}
         {props.filtered.length === 0 && props.reviews.length > 2 && <button onClick={() => props.lessReviews()}>LESS REVIEWS</button>}
         <button>ADD A REVIEW +</button>
       </div>
