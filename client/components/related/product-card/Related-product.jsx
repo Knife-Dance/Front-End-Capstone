@@ -6,6 +6,7 @@ import ReviewAverage from '../../overview/ReviewAverage/ReviewAverage.jsx'
 import MainContext from '../../shared/context/MainContext';
 
 import { noImgFound } from './staticImg';
+import Outfit from '../outfit/Outfit.jsx';
 
 
 
@@ -15,8 +16,11 @@ const Relate = ({cards}) => {
     const [selectedRelatedProduct, setSelectedRelatedProduct] = useState();
     const [firstItemIndexToShow, setFirstItemIndexToShow] = useState(0)
 
-    const { related,setSelectedProduct, products, selectedProduct, productFeature } = useContext(MainContext)
 
+    ///How to import context
+    //remember to import useContext and MainContext
+    const { related,setSelectedProduct, products, selectedProduct, productFeature, handleGetStyleById, handleGetProductById } = useContext(MainContext)
+console.log(related)
 
     // return useMemo(() => {
         console.log(related)
@@ -50,7 +54,7 @@ const Relate = ({cards}) => {
 
         return (
             <>
-            <h2>RELATED PRODUCTS</h2>
+            <h3>RELATED PRODUCTS</h3>
 
             <div className={css.cardContainer}>
                 {firstItemIndexToShow !== 0 &&
@@ -68,13 +72,14 @@ const Relate = ({cards}) => {
 
                     {
                         dataToShow.slice(firstItemIndexToShow, firstItemIndexToShow + 4).map((item, key) => (
-                            <div key={key} onClick={() => setSelectedProduct(item.id)}style={{border: '1px solid gray'}} className={css.productItem}>
+                            <div key={key}
+                            style={{border: '1px solid gray'}} className={css.productItem}>
 
-                                <button onClick={() => openModal(item)}>
+                                <span onClick={() => openModal(item)}>
                                 <i className="far fa-star star"></i>
-                                </button>
+                                </span>
 
-                                {item.photos[0].thumbnail_url ? <div className={css.productImageContainer}><img src={item.photos[0].thumbnail_url}/></div> :
+                                {item.photos[0].thumbnail_url ? <div onClick={() => setSelectedProduct(item.id)} className={css.productImageContainer}><img  src={item.photos[0].thumbnail_url}/></div> :
                                 <div className={css.productImageContainer}>
                                     <img className={css.noImg} src={noImgFound}/> </div>}
                                 <p>{related.find(_ => _.product.id === +item.id).product.category}</p>
@@ -83,7 +88,7 @@ const Relate = ({cards}) => {
                                 {item.sale_price ?  <p className={css.lineThrough}>${item.original_price}</p> : <p className={css.nolineThrough}>${item.original_price}</p>}
 
                                 {item.sale_price !== null ? <p className={css.salePrice}>{item.sale_price}</p> : null}
-                                {/* <ReviewAverage average={related.find(each => each.product.id === item.id).rate}/> */}
+                                <ReviewAverage average={related.find(each => each.product.id === item.id).rate[0]}/>
 
 
                             </div>
@@ -92,6 +97,7 @@ const Relate = ({cards}) => {
 
                 </div>
                 {showModal ? <Modal cardData={selectedRelatedProduct} productData={productFeature}  setShowModal={setShowModal}/> : null}
+                <Outfit/>
 
             </div>
             </>
