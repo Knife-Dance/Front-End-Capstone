@@ -54,8 +54,7 @@ const Overview = (props) => {
       // console.log(selectedProduct.id)
       handleGetStyleById(selectedProduct)
         .then(data => {
-          console.log(data);
-          console.log(selectedProduct)
+
           setStyles(data.results)
           setStyle(data.results[0])
           setMain(data.results[0].photos[0])

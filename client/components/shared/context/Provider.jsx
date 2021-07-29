@@ -26,7 +26,7 @@ const Provider = ({children}) => {
 
     }
     catch(err) {
-    console.log(err)
+    console.log(err.message)
     }
   }, [])
 
@@ -36,7 +36,7 @@ const Provider = ({children}) => {
       return data
     }
     catch(err) {
-    console.log(err);
+    console.log(err.message);
     }
 
   }
@@ -47,13 +47,14 @@ const Provider = ({children}) => {
       return data;
     }
     catch(err) {
-      console.log(err);
+      console.log(err.message);
     }
   }
 
   const handleGetRateById = async(id) => {
     try {
       const {data} = await axios.get(`/products/${id}/review`);
+
 
       let sum = 0;
       let count = 0;
@@ -69,7 +70,7 @@ const Provider = ({children}) => {
       return temp;
     }
     catch(err) {
-      console.log(err);
+      console.log(err.message);
     }
   }
 
@@ -80,7 +81,7 @@ const Provider = ({children}) => {
         setStyles(productStyle);
         const response = await handleGetProductById(selectedProduct);
         setProductFeature(response);
-        console.log(response)
+
         const {data} = await axios.get(`/products/${selectedProduct}/related`);
         let arr = [];
 
@@ -96,14 +97,14 @@ const Provider = ({children}) => {
 
 
       } catch(err) {
-        console.error(err)
+        console.error(err.message)
       }
     }
   }, [selectedProduct])
 
 
   return (
-    <MainContext.Provider value={{products, handleGetStyleById, selectedProduct, setSelectedProduct, styles, related, productFeature, handleGetStyleById, handleGetProductById, handleGetRateById}}>
+    <MainContext.Provider value={{products, handleGetStyleById, selectedProduct, setSelectedProduct, styles, related, productFeature, handleGetProductById, handleGetRateById, setProductFeature}}>
 
 
       {children}

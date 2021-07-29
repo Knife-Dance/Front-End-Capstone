@@ -44,6 +44,7 @@ const Relate = ({cards}) => {
             setShowModal(true);
             e.stopPropagation();
 
+
         }
 
 
@@ -55,7 +56,7 @@ const Relate = ({cards}) => {
 
         // }
 
-       
+
 
         return (
             <>

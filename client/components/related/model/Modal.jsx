@@ -45,9 +45,10 @@ console.log(Array.from(featureArr))
               {Array.from(featureArr).map((item, key) => (
                 <>
                 <tr>
-                {dataA.includes(item) ? <th><i class="fas fa-check"></i></th> : null}
-                  <td>{item}</td>
-                  {dataB.includes(item) ? <th><i class="fas fa-check"></i></th> : null}
+                {dataA.includes(item) ? <td className={"fas fa-check"}></td> : null}
+
+                  <th>{item}</th>
+                  {dataB.includes(item) ? <td className={"fas fa-check"}></td> : null}
                 </tr>
                 </>
               ))}
