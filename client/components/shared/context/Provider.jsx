@@ -30,7 +30,7 @@ const Provider = ({children}) => {
     try {
       const {data} = await axios.get('/products')
       setProducts(data);
-      console.log(products)
+      // console.log(products)
       setSelectedProduct(data[0].id)
 
     }
@@ -100,10 +100,10 @@ const Provider = ({children}) => {
         let productStyle = await handleGetStyleById(selectedProduct);
         setStyles(productStyle);
 
-        console.log('--------------', productStyle)
+        // console.log('--------------', productStyle)
         const response = await handleGetProductById(selectedProduct);
         setProductFeature(response);
-        console.log('==============', response);
+        // console.log('==============', response);
 
         const {data} = await axios.get(`/products/${selectedProduct}/related`);
         let arr = [];
@@ -160,7 +160,7 @@ const Provider = ({children}) => {
 
 
   return (
-    <MainContext.Provider value={{products, handleGetStyleById, selectedProduct, setSelectedProduct, styles, related, productFeature, handleGetProductById, handleGetRateById, setProductFeature, outfits, setSelectedStyle, addOutfit, removeOutfit}}>
+    <MainContext.Provider value={{products, handleGetStyleById, selectedProduct, setSelectedProduct, styles, related, productFeature, handleGetProductById, handleGetRateById, setProductFeature, outfits, selectedStyle, setSelectedStyle, addOutfit, removeOutfit}}>
 
 
       {children}

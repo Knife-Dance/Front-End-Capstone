@@ -10,7 +10,7 @@
 .overContainer {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 .subContainer {
   display: flex;
@@ -20,8 +20,9 @@
 }
 .banner {
   display: flex;
+
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 .phrases {
   display: flex;
