@@ -27,7 +27,8 @@ const Overview = (props) => {
   const [reviews, setReviews] = useState(null);
   const [main, setMain] = useState(null);
   const [num, setNum] = useState(null);
-  const {selectedProduct, handleGetStyleById, handleGetRateById} = useContext(MainContext);
+  const [product, setProduct] = useState(null);
+  const {selectedProduct, handleGetStyleById, handleGetProductById, handleGetRateById} = useContext(MainContext);
   // console.log(selectedProduct, handleGetStyleById);
   const handlePrice = () => {
     if (style.sale_price) {
@@ -51,16 +52,21 @@ const Overview = (props) => {
   }
   useEffect(() => {
     if (selectedProduct) {
-      // console.log(selectedProduct.id)
+      console.log(selectedProduct)
+      handleGetProductById(selectedProduct)
+        .then(data => {
+          setProduct(data);
+          // console.log(data)
+        })
       handleGetStyleById(selectedProduct)
         .then(data => {
-          console.log(data);
-          console.log(selectedProduct)
+          // console.log(data);
+          // console.log(selectedProduct)
           setStyles(data.results)
           setStyle(data.results[0])
           setMain(data.results[0].photos[0])
         })
-      handleGetRateById(selectedProduct.id)
+      handleGetRateById(selectedProduct)
         .then(data => {
           setNum(data[1]);
           setReviews(data[0]);
@@ -68,8 +74,7 @@ const Overview = (props) => {
       // console.log(style);
     }
   }, [selectedProduct])
-  if (selectedProduct && style && styles && main) {
-
+  if (product && selectedProduct && style && styles && main) {
     return (
       <div>
         <div className={css.overContainer}>
@@ -78,8 +83,8 @@ const Overview = (props) => {
           <div className={css.subContainer}>
             <ReviewAverage average={reviews} />
             {num ? <span>see all {num} Reviews</span> : null}
-            <h3>{selectedProduct.category}</h3>
-            <h2 className={css.name} >{selectedProduct.name}</h2>
+            <h3>{product.category}</h3>
+            <h2 className={css.name} >{product.name}</h2>
             {handlePrice()}
             <SocialMedia />
             <StyleSelector style={style}
@@ -91,10 +96,11 @@ const Overview = (props) => {
 
         </div>
         <div className={css.banner}>
-          <Slogan product={selectedProduct} />
+          <Slogan product={product} />
           <div className={css.phrases}>
-            <p>Pasture Raised</p>
-            <p>Knife Dance~!</p>
+            <p>{product.features[0].value + product.features[0].feature}</p>
+            <p>{product.features[1].value + product.features[1].feature}</p>
+
           </div>
         </div>
       </div>
