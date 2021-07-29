@@ -45,9 +45,9 @@ console.log(Array.from(featureArr))
               {Array.from(featureArr).map((item, key) => (
                 <>
                 <tr>
-                <td>{dataA.includes(item)}</td>
+                {dataA.includes(item) ? <td><i class="fas fa-check"></i></td> : null}
                   <td>{item}</td>
-                  <td>{dataB.includes(item)}</td>
+                  {dataB.includes(item) ? <td><i class="fas fa-check"></i></td> : null}
                 </tr>
                 </>
               ))}

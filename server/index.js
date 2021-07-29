@@ -72,6 +72,24 @@ app.get('/products/:id/review', (req, res) => {
   .catch(err => res.status(400).send(err.message))
 })
 
+
+
+// app.get('/products/:id/sophie', (req, res) => {
+//   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/meta?product_id=${req.params.id}`, {
+//     headers: {
+//       'Authorization': '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'
+//     }
+//   })
+//   .then(data => res.send(data.data))
+//   .catch(err => res.status(400).send(err.message))
+//   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${req.query.id}/styles`, {
+//     headers: {
+//       'Authorization': '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'
+//     }
+//   })
+//   .then(data => res.send(data.data))
+//   .catch(err => res.status(400).send(err.message))
+// })
 app.listen(port, () => {
   console.log(`listening on ${port}`);
 })

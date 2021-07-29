@@ -7,7 +7,9 @@ const MainContext = createContext({
   setSelectedProduct: () => {},
   styles: {},
   related: [],
-  productFeature: []
+  productFeature: [],
+  handleGetStyleById: () => {},
+  handleGetProductById: () => {}
 
 
 })

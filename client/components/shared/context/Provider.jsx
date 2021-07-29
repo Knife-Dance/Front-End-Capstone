@@ -23,6 +23,7 @@ const Provider = ({children}) => {
       const {data} = await axios.get('/products')
       setProducts(data);
       setSelectedProduct(data[0].id)
+
     }
     catch(err) {
     console.log(err)
@@ -55,15 +56,16 @@ const Provider = ({children}) => {
       const {data} = await axios.get(`/products/${id}/review`);
       let sum = 0;
       let count = 0;
-      for (let i = 1; i < 6; i++) {
+      for (let i = 1; i <= 5; i++) {
         let num = +data.ratings[i]
         if (num) {
-          count += num;
-          sum += num * i;
+          count += parseInt(num);
+          sum += parseInt(num) * i;
         }
       }
       let rating = sum / count;
-      return rating
+      let temp = [rating, count]
+      return temp
     }
     catch(err) {
       console.log(err);
@@ -81,6 +83,7 @@ const Provider = ({children}) => {
         const {data} = await axios.get(`/products/${selectedProduct}/related`);
         let arr = [];
 
+        //send one here and from the server send 3 request to the API 
         for (let i in data) {
           let product = await handleGetProductById(data[i]);
           let style = await handleGetStyleById(data[i])
@@ -99,7 +102,7 @@ const Provider = ({children}) => {
 
 
   return (
-    <MainContext.Provider value={{products, handleGetStyleById, selectedProduct, setSelectedProduct, styles, related, productFeature}}>
+    <MainContext.Provider value={{products, handleGetStyleById, selectedProduct, setSelectedProduct, styles, related, productFeature, handleGetStyleById, handleGetProductById}}>
 
       {children}
 
