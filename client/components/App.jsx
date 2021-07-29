@@ -20,7 +20,7 @@ const App = (props) => {
     <Provider>
 
       <Overview />
-      <Relate cards={dataUrl} />
+      <Relate  />
       <Outfit/>
       <Ratings reviews={data} meta={meta} />
 

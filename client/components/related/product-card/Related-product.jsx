@@ -11,7 +11,7 @@ import Outfit from '../outfit/Outfit.jsx';
 
 
 
-const Relate = ({cards}) => {
+const Relate = () => {
     const [showModal, setShowModal] = useState(false);
     const [selectedRelatedProduct, setSelectedRelatedProduct] = useState();
     const [firstItemIndexToShow, setFirstItemIndexToShow] = useState(0)
@@ -103,7 +103,7 @@ const Relate = ({cards}) => {
 
                 </div>
                 {showModal ? <Modal cardData={selectedRelatedProduct} productData={productFeature}  setShowModal={setShowModal}/> : null}
-                
+
 
             </div>
             </>
