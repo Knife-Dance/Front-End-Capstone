@@ -17,8 +17,8 @@ app.get('/products', (req, res) => {
       'Authorization': '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'
     }
   })
-  .then(data => res.send(data.data))
-  .catch(err => res.status(400).send(err.message))
+    .then(data => res.send(data.data))
+    .catch(err => res.status(400).send(err.message))
 })
 
 app.get('/products/:id/styles', (req, res) => {
@@ -27,8 +27,8 @@ app.get('/products/:id/styles', (req, res) => {
       'Authorization': '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'
     }
   })
-  .then(data => res.send(data.data))
-  .catch(err => res.status(400).send(err.message))
+    .then(data => res.send(data.data))
+    .catch(err => res.status(400).send(err.message))
 })
 
 app.get('/products/:id/related', (req, res) => {
@@ -37,8 +37,8 @@ app.get('/products/:id/related', (req, res) => {
       'Authorization': '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'
     }
   })
-  .then(data => res.send(data.data))
-  .catch(err => res.status(400).send(err.message))
+    .then(data => res.send(data.data))
+    .catch(err => res.status(400).send(err.message))
 })
 
 app.get('/products/:id', (req, res) => {
@@ -47,8 +47,8 @@ app.get('/products/:id', (req, res) => {
       'Authorization': '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'
     }
   })
-  .then(data => res.send(data.data))
-  .catch(err => res.status(400).send(err.message))
+    .then(data => res.send(data.data))
+    .catch(err => res.status(400).send(err.message))
 })
 
 app.get('/styles', (req, res) => {
@@ -58,8 +58,8 @@ app.get('/styles', (req, res) => {
       'Authorization': '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'
     }
   })
-  .then(data => res.send(data.data))
-  .catch(err => res.status(400).send(err.message))
+    .then(data => res.send(data.data))
+    .catch(err => res.status(400).send(err.message))
 })
 
 app.get('/products/:id/review', (req, res) => {
@@ -68,8 +68,8 @@ app.get('/products/:id/review', (req, res) => {
       'Authorization': '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'
     }
   })
-  .then(data => res.send(data.data))
-  .catch(err => res.status(400).send(err.message))
+    .then(data => res.send(data.data))
+    .catch(err => res.status(400).send(err.message))
 })
 
 
