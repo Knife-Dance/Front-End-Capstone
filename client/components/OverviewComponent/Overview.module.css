@@ -1,9 +1,30 @@
-.name{
-  background-color: blueviolet;
+.name {
+
 }
-.original{
+.original {
   text-decoration: line-through;
 }
-.sale{
+.sale {
   color: red;
+}
+.overContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.subContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 350px;
+}
+.banner {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.phrases {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }

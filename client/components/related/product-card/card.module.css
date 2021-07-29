@@ -15,16 +15,22 @@
 .productItem {
   position: relative;
   height: 30rem;
+
 }
 
 .productItem span {
   position: absolute;
   top: 1rem;
   right: 1rem;
+  padding: 10px
 }
+
 
 .productItem img {
   height: 15rem;
+  width: 100%;
+
+  object-fit: cover;
 
 }
 
@@ -52,12 +58,21 @@
 
 .btnPrev {
   left: 0;
+  padding-left: 1rem;
+
 }
 
+.nolineThrough,
+.salePrice,
+.lineThrough {
+  display: inline-block;
+}
 .salePrice {
   color: red;
+
 }
 
 .lineThrough {
   text-decoration: line-through;
+  margin-right: 5px;
 }

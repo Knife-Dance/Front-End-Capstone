@@ -1,0 +1,10 @@
+.thumb {
+  border: solid 1px;
+  border-radius: 10px;
+  width: 75px;
+  height: 75px;
+  object-fit: cover;
+}
+.thumb {
+  cursor: zoom-in;
+}

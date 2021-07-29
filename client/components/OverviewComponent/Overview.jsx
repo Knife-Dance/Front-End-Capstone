@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 
 import Slogan from '../overview/Slogan/Slogan.jsx';
 
@@ -14,36 +14,31 @@ import SocialMedia from '../overview/SocialMedia/SocialMedia.jsx';
 
 import AddToCart from '../overview/AddToCart/AddToCart.jsx';
 
+import MainContext from '../shared/context/MainContext.js';
+
 const exampleReviews = require('../overview/exampleReviewsData.js');
 const exampleStyles = require('../overview/exampleStylesData.js');
 
-let exampleProduct = {
-  "id": 17067,
-  "campus": "hr-rfp",
-  "name": "Camo Onesie",
-  "slogan": "Blend in to your crowd",
-  "description": "The So Fatigues will wake you up and fit you in. This high energy camo will have you blending in to even the wildest surroundings.",
-  "category": "Jackets",
-  "default_price": "140.00",
-  "created_at": "2021-02-23T04:22:44.728Z",
-  "updated_at": "2021-02-23T04:22:44.728Z"
-};
+
 
 const Overview = (props) => {
-  const [style, setStyle] = useState(exampleStyles[0]);
-  const [product, setProduct] = useState(exampleProduct);
-  const [reviews, setReviews] = useState(exampleReviews.results);
-  const [main, setMain] = useState(style.photos[0])
+  const [style, setStyle] = useState(null);
+  const [styles, setStyles] = useState(null);
+  const [reviews, setReviews] = useState(null);
+  const [main, setMain] = useState(null);
+  const [num, setNum] = useState(null);
+  const {selectedProduct, handleGetStyleById, handleGetRateById} = useContext(MainContext);
+  // console.log(selectedProduct, handleGetStyleById);
   const handlePrice = () => {
-      if (style.sale_price) {
-        return (
+    if (style.sale_price) {
+      return (
         <div>
           <div className={css.original}>{style.original_price}</div>
           <div className={css.sale}>{style.sale_price}</div>
         </div>)
-      } else {
-        return (<div>{style.original_price}</div>)
-      }
+    } else {
+      return (<div>{style.original_price}</div>)
+    }
   }
   const handleStyleSelect = (event, data) => {
     setStyle(data);
@@ -51,24 +46,62 @@ const Overview = (props) => {
     // console.log(style);
   }
   const handlePhotoClick = (event, data) => {
+    // console.log(data);
     setMain(data);
   }
-  return (
-    <div>
-      <Gallery style={style} main={main}
-      handlePhotoClick={handlePhotoClick}/>
-      <ReviewAverage reviews={reviews}/>
-      <h3>{product.category}</h3>
-      <h2 className={css.name} >{product.name}</h2>
-      {handlePrice()}
-      <SocialMedia />
-      <StyleSelector style={style}
-      handleStyleSelect={handleStyleSelect}
-      styles={exampleStyles}/>
-      <AddToCart style={style}/>
-      <Slogan product={product}/>
-    </div>
-  )
+  useEffect(() => {
+    if (selectedProduct) {
+      // console.log(selectedProduct.id)
+      handleGetStyleById(selectedProduct)
+        .then(data => {
+          console.log(data);
+          console.log(selectedProduct)
+          setStyles(data.results)
+          setStyle(data.results[0])
+          setMain(data.results[0].photos[0])
+        })
+      handleGetRateById(selectedProduct.id)
+        .then(data => {
+          setNum(data[1]);
+          setReviews(data[0]);
+        })
+      // console.log(style);
+    }
+  }, [selectedProduct])
+  if (selectedProduct && style && styles && main) {
+
+    return (
+      <div>
+        <div className={css.overContainer}>
+          <Gallery style={style} main={main}
+            handlePhotoClick={handlePhotoClick} />
+          <div className={css.subContainer}>
+            <ReviewAverage average={reviews} />
+            {num ? <span>see all {num} Reviews</span> : null}
+            <h3>{selectedProduct.category}</h3>
+            <h2 className={css.name} >{selectedProduct.name}</h2>
+            {handlePrice()}
+            <SocialMedia />
+            <StyleSelector style={style}
+              handleStyleSelect={handleStyleSelect}
+              styles={styles} />
+            <AddToCart style={style} />
+
+          </div>
+
+        </div>
+        <div className={css.banner}>
+          <Slogan product={selectedProduct} />
+          <div className={css.phrases}>
+            <p>Pasture Raised</p>
+            <p>Knife Dance~!</p>
+          </div>
+        </div>
+      </div>
+    )
+  } else {
+    return (<div></div>)
+  }
 }
 
 export default Overview
