@@ -2,6 +2,8 @@ import React, { useState, useEffect} from 'react';
 import MainContext from './MainContext';
 import axios from 'axios';
 
+
+
 const Provider = ({children}) => {
   //the whole product
   const [products, setProducts] = useState([]);
@@ -16,6 +18,12 @@ const Provider = ({children}) => {
   const [related, setRelated] = useState([]);
 
   const [productFeature, setProductFeature] = useState([])
+
+  const [outfits, setOutfits] = useState([]);
+
+  const[ selectedStyle, setSelectedStyle] = useState()
+
+
 
 
   useEffect( async() => {
@@ -57,6 +65,17 @@ const Provider = ({children}) => {
       const {data} = await axios.get(`/products/${id}/review`);
 
 
+      return getRateById(data)
+    }
+    catch(err) {
+      console.log(err.message);
+    }
+  }
+
+
+
+  const getRateById = (data) => {
+    try {
       let sum = 0;
       let count = 0;
       for (let i = 1; i <= 5; i++) {
@@ -80,20 +99,41 @@ const Provider = ({children}) => {
       try {
         let productStyle = await handleGetStyleById(selectedProduct);
         setStyles(productStyle);
+
+        console.log('--------------', productStyle)
         const response = await handleGetProductById(selectedProduct);
         setProductFeature(response);
+        console.log('==============', response);
 
         const {data} = await axios.get(`/products/${selectedProduct}/related`);
         let arr = [];
 
         //send one here and from the server send 3 request to the API
-        for (let i in data) {
-          let product = await handleGetProductById(data[i]);
-          let style = await handleGetStyleById(data[i])
-          let rate= await handleGetRateById(data[i])
-          arr.push({product, style, rate})
-        }
+        // for (let i in data) {
+        //   let product = await handleGetProductById(data[i]);
+        //   let style = await handleGetStyleById(data[i])
+        //   let rate= await handleGetRateById(data[i])
+        //   arr.push({product, style, rate})
+        // }
 
+
+
+        let promises = []
+        for (let i in data) {
+
+          promises.push(axios.get(`/products/${data[i]}`),axios.get(`/products/${data[i]}/styles`),  axios.get(`/products/${data[i]}/review`))
+        }
+       const a = await Promise.all(promises)
+       for (let i = 0 ; i < a.length; i += 3) {
+        arr.push({
+          product: a[i].data,
+          style: a[i + 1].data,
+          rate: getRateById(a[i + 2].data)
+        })
+
+       }
+
+        setSelectedStyle(productStyle.results[0])
         setRelated(arr)
 
 
@@ -103,9 +143,24 @@ const Provider = ({children}) => {
     }
   }, [selectedProduct])
 
+  const addOutfit = async () => {
+    let copyOutfit = [...outfits];
+        copyOutfit.push({
+          product: productFeature,
+          style: selectedStyle,
+          rate: (await handleGetRateById(productFeature.id))[0]
+        })
+
+        setOutfits(copyOutfit)
+  }
+
+  const removeOutfit = (id) => {
+    setOutfits(outfits.filter(each => each.style.id !== id))
+  }
+
 
   return (
-    <MainContext.Provider value={{products, handleGetStyleById, selectedProduct, setSelectedProduct, styles, related, productFeature, handleGetProductById, handleGetRateById, setProductFeature}}>
+    <MainContext.Provider value={{products, handleGetStyleById, selectedProduct, setSelectedProduct, styles, related, productFeature, handleGetProductById, handleGetRateById, setProductFeature, outfits, setSelectedStyle, addOutfit, removeOutfit}}>
 
 
       {children}

@@ -73,6 +73,7 @@ const AddToCart = (props) => {
       <span>
         <select id="size" onChange={handleSizeSelect}>
           <option value="" disabled selected>Select Size</option>
+          {console.log(props.style.skus)}
           {parser(handleSize(props.style.skus))}
         </select>
       </span>
