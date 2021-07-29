@@ -51,15 +51,15 @@ const Overview = (props) => {
   }
   useEffect(() => {
     if (selectedProduct) {
-      // console.log(selectedProduct.id)
-      handleGetStyleById(selectedProduct.id)
+      console.log(selectedProduct)
+      handleGetStyleById(selectedProduct)
         .then(data => {
           // console.log(data);
           setStyles(data.results)
           setStyle(data.results[0])
           setMain(data.results[0].photos[0])
         })
-      handleGetRateById(selectedProduct.id)
+      handleGetRateById(selectedProduct)
         .then(data => {
           setNum(data[1]);
           setReviews(data[0]);

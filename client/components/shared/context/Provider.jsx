@@ -22,6 +22,7 @@ const Provider = ({children}) => {
     try {
       const {data} = await axios.get('/products')
       setProducts(data);
+      console.log(products)
       setSelectedProduct(data[0].id)
     }
     catch(err) {
