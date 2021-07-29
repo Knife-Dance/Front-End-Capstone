@@ -15,12 +15,14 @@ const Provider = ({children}) => {
   //it gets the related array data
   const [related, setRelated] = useState([]);
 
+  const [productFeature, setProductFeature] = useState([])
+
 
   useEffect( async() => {
     try {
       const {data} = await axios.get('/products')
       setProducts(data);
-      setSelectedProduct(data[0])
+      setSelectedProduct(data[0].id)
     }
     catch(err) {
     console.log(err)
@@ -60,7 +62,6 @@ const Provider = ({children}) => {
           count += parseInt(num);
           sum += parseInt(num) * i;
         }
-
       }
       let rating = sum / count;
       let temp = [rating, count]
@@ -74,9 +75,12 @@ const Provider = ({children}) => {
   useEffect (async () => {
     if (selectedProduct) {
       try {
-        let productStyle = await handleGetStyleById(selectedProduct.id);
+        let productStyle = await handleGetStyleById(selectedProduct);
         setStyles(productStyle);
-        const {data} = await axios.get(`/products/${id}/related`);
+        const response = await handleGetProductById(selectedProduct);
+        setProductFeature(response);
+        console.log(response)
+        const {data} = await axios.get(`/products/${selectedProduct}/related`);
         let arr = [];
 
         for (let i in data) {
@@ -85,7 +89,10 @@ const Provider = ({children}) => {
           let rate= await handleGetRateById(data[i])
           arr.push({product, style, rate})
         }
-        setRelated(data)
+
+        setRelated(arr)
+
+
       } catch(err) {
         console.error(err)
       }
@@ -94,7 +101,7 @@ const Provider = ({children}) => {
 
 
   return (
-    <MainContext.Provider value={{products, handleGetStyleById, selectedProduct, setSelectedProduct, styles, related, handleGetRateById}}>
+    <MainContext.Provider value={{products, handleGetStyleById, selectedProduct, setSelectedProduct, styles, related, handleGetRateById, productFeature}}>
 
       {children}
 
