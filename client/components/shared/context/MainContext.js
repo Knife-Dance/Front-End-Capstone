@@ -13,7 +13,7 @@ const MainContext = createContext({
   handleGetRateById: () => {},
   allReviews: [],
   metaReviews: {},
-  setAllReviews: () => {}
+  setAllReviews: () => {},
   setProductFeature: () => {},
   outfits: [],
   selectedStyle: [],

@@ -23,11 +23,9 @@ const Provider = ({children}) => {
 
   const [metaReviews, setMetaReviews] = useState(null);
 
-  const [productFeature, setProductFeature] = useState([])
-
   const [outfits, setOutfits] = useState([]);
 
-  const[ selectedStyle, setSelectedStyle] = useState()
+  const[ selectedStyle, setSelectedStyle] = useState();
 
   useEffect(() => {
     axios.get('/products')
@@ -44,6 +42,7 @@ const Provider = ({children}) => {
         setMetaReviews(data.data);
       })
       .catch(err => console.log(err.message));
+  }, []);
 
 
   const handleGetStyleById = async (id) => {
@@ -174,7 +173,7 @@ const Provider = ({children}) => {
       {children}
 
     </MainContext.Provider>
-  )
+  );
 }
 
-export default Provider
+export default Provider;
