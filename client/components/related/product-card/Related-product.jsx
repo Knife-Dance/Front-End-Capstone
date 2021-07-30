@@ -48,16 +48,6 @@ const Relate = () => {
         }
 
 
-
-        // const updatingOverview = (id, e) => {
-        //     setSelectedProduct(id);
-        //     e.stopPropagation();
-
-
-        // }
-
-
-
         return (
             <>
             <h3>RELATED PRODUCTS</h3>

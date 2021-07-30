@@ -21,7 +21,9 @@ const Provider = ({children}) => {
 
   const [outfits, setOutfits] = useState([]);
 
-  const[ selectedStyle, setSelectedStyle] = useState()
+  const[ selectedStyle, setSelectedStyle] = useState();
+
+  const [allReviews, setAllReviews] = useState()
 
 
 
@@ -32,6 +34,8 @@ const Provider = ({children}) => {
       setProducts(data);
       // console.log(products)
       setSelectedProduct(data[0].id)
+      const response = await axios.get(`/review/${data[0].id}`)
+      setAllreviews(response.data)
 
     }
     catch(err) {
@@ -155,12 +159,12 @@ const Provider = ({children}) => {
   }
 
   const removeOutfit = (id) => {
-    setOutfits(outfits.filter(each => each.style.id !== id))
+    setOutfits(outfits.filter(each => each.style.style_id !== id))
   }
 
 
   return (
-    <MainContext.Provider value={{products, handleGetStyleById, selectedProduct, setSelectedProduct, styles, related, productFeature, handleGetProductById, handleGetRateById, setProductFeature, outfits, selectedStyle, setSelectedStyle, addOutfit, removeOutfit}}>
+    <MainContext.Provider value={{products, handleGetStyleById, selectedProduct, setSelectedProduct, styles, related, productFeature, handleGetProductById, handleGetRateById, setProductFeature, outfits, selectedStyle, setSelectedStyle, addOutfit, removeOutfit, allReviews, setAllReviews}}>
 
 
       {children}
