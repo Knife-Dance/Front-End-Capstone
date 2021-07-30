@@ -76,8 +76,8 @@ const AddToCart = (props) => {
   return (
     <form className={css.container} onSubmit={handleAdd}>
       <span>
-        <select id="size" onChange={handleSizeSelect}>
-          <option value="" >Select Size</option>
+        <select defaultValue="start" id="size" onChange={handleSizeSelect}>
+          <option value="start" disabled >Select Size</option>
           {/* {console.log(props.style.skus)} */}
           {parser(handleSize(props.style.skus))}
         </select>

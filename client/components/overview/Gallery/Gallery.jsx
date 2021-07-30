@@ -6,8 +6,8 @@ const Gallery = (props) => {
 
   let key = -1;
   return (
-    <div className={css.gallerybigcontainer}>
-      <div className={css.container}>
+    <div className={css.bigcontainer}>
+      <div className={css.sidecontainer}>
         {props.style.photos.map((current) => {
           key++;
           return (<Image key={key} photo={current} handlePhotoClick={props.handlePhotoClick} />)
