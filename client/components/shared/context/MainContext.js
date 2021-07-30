@@ -14,6 +14,7 @@ const MainContext = createContext({
   allReviews: [],
   metaReviews: {},
   setAllReviews: () => {},
+  setMetaReviews: () => {},
   setProductFeature: () => {},
   outfits: [],
   selectedStyle: [],

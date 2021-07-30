@@ -54,7 +54,7 @@ const Provider = ({children}) => {
     console.log(err.message);
     }
 
-  }
+  };
 
   const handleGetProductById = async (id) => {
     try {
@@ -64,7 +64,7 @@ const Provider = ({children}) => {
     catch(err) {
       console.log(err.message);
     }
-  }
+  };
 
   const handleGetRateById = async(id) => {
     try {
@@ -77,8 +77,6 @@ const Provider = ({children}) => {
       console.log(err.message);
     }
   }
-
-
 
   const getRateById = (data) => {
     try {
@@ -98,7 +96,7 @@ const Provider = ({children}) => {
     catch(err) {
       console.log(err.message);
     }
-  }
+  };
 
   useEffect (async () => {
     if (selectedProduct) {
@@ -147,7 +145,8 @@ const Provider = ({children}) => {
         console.error(err.message)
       }
     }
-  }, [selectedProduct])
+  }, [selectedProduct]);
+
 
   const addOutfit = async () => {
     let copyOutfit = [...outfits];
@@ -158,17 +157,17 @@ const Provider = ({children}) => {
         })
 
         setOutfits(copyOutfit)
-  }
+  };
 
   const removeOutfit = (id) => {
     // console.log('~~~~~~~~~', id)
     setOutfits(outfits.filter(each => each.style.style_id !== id))
-  }
+  };
 
 
   return (
 
-    <MainContext.Provider value={{products, handleGetStyleById, selectedProduct, setSelectedProduct, styles, related, productFeature, handleGetProductById, handleGetRateById, allReviews, metaReviews, setAllReviews, setProductFeature, outfits, selectedStyle, setSelectedStyle, addOutfit, removeOutfit}}>
+    <MainContext.Provider value={{products, handleGetStyleById, selectedProduct, setSelectedProduct, styles, related, productFeature, handleGetProductById, handleGetRateById, allReviews, metaReviews, setAllReviews, setMetaReviews, setProductFeature, outfits, selectedStyle, setSelectedStyle, addOutfit, removeOutfit}}>
 
       {children}
 

@@ -12,7 +12,7 @@ const AddToCart = (props) => {
   const handleSize = (sizes) => {
     // console.log(sizes)
     if (sizes[null]) {
-      return '<option value="" disabled selected> OUT OF STOCK </option>'
+      return '<option value=""> OUT OF STOCK </option>'
     }
 
     let stock = false;
