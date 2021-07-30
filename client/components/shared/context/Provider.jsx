@@ -23,7 +23,7 @@ const Provider = ({children}) => {
 
   const[ selectedStyle, setSelectedStyle] = useState();
 
-  const [allReviews, setAllReviews] = useState(null)
+  const [allReviews, setAllReviews] = useState(null);
 
 
 
