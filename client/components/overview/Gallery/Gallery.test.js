@@ -3,6 +3,7 @@ import { shallow } from 'enzyme';
 import Enzyme from 'enzyme';
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 import React from 'react';
+
 Enzyme.configure({ adapter: new Adapter() });
 
 let example = {"photos": [
@@ -32,7 +33,7 @@ let example = {"photos": [
   }
 ]}
 describe("Gallery", () => {
-  it("should render review average component", () => {
-    const wrapper = shallow(<Gallery style={example}/>);
+  it("should render Gallery component", () => {
+    const wrapper = shallow(<Gallery main={example.photos[0]} style={example}/>);
   });
-}
+})
