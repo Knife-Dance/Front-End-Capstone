@@ -10,6 +10,11 @@ const AddToCart = (props) => {
   const [amount, setAmount] = useState(1);
   // console.log(size)
   const handleSize = (sizes) => {
+    // console.log(sizes)
+    if (sizes[null]) {
+      return '<option value="" disabled selected> OUT OF STOCK </option>'
+    }
+
     let stock = false;
     let htmlString = '';
     for (var key in sizes) {
@@ -73,6 +78,7 @@ const AddToCart = (props) => {
       <span>
         <select id="size" onChange={handleSizeSelect}>
           <option value="" disabled selected>Select Size</option>
+          {/* {console.log(props.style.skus)} */}
           {parser(handleSize(props.style.skus))}
         </select>
       </span>

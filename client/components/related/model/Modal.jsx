@@ -6,8 +6,7 @@ import css from './modal.module.css'
 
 const Modal = ({setShowModal, productData, cardData}) => {
   let dataA, dataB, featureArr;
-  console.log(productData)
-    console.log(cardData)
+
 
   if (productData && cardData) {
 
@@ -20,12 +19,11 @@ const Modal = ({setShowModal, productData, cardData}) => {
     });
 
      featureArr = [...dataA, ...dataB];
-    console.log(featureArr)
+
     featureArr = new Set(featureArr);
 
   }
-  console.log(featureArr)
-console.log(Array.from(featureArr))
+
 
   return (
     <div >
@@ -34,20 +32,22 @@ console.log(Array.from(featureArr))
           <div className={css.modalContainer}>
           <button onClick={() => setShowModal(prev => !prev)}className={css.closeModalBtn}>X</button>
 
-          <div>
+          <div >
             <h3>Comparing</h3>
+            <div className={css.tableHeader}>
+              <p >{productData.name}</p>
+              <p>{cardData.name}</p>
+            </div>
+
             <table>
-              <tr>
-                <th>{productData.name}</th>
-                <th></th>
-                <th>{cardData.name}</th>
-              </tr>
+
               {Array.from(featureArr).map((item, key) => (
                 <>
                 <tr>
-                {dataA.includes(item) ? <td><i class="fas fa-check"></i></td> : null}
+                <td className={css.leftCheck}>{dataA.includes(item) ? <i className={"fas fa-check"}></i> : ''}</td>
+
                   <td>{item}</td>
-                  {dataB.includes(item) ? <td><i class="fas fa-check"></i></td> : null}
+                  <td className={css.rightCheck}>{dataB.includes(item) ? <i className={"fas fa-check"}></i> : ''}</td>
                 </tr>
                 </>
               ))}

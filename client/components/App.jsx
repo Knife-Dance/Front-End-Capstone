@@ -3,13 +3,10 @@ import Overview from './OverviewComponent/Overview.jsx';
 import Ratings from './Ratings.jsx';
 import ReviewList from './ratings/ReviewList/ReviewList.jsx';
 import Relate from './related/product-card/Related-product.jsx'
-import dataUrl from './related/sample-data.js'
-import { sampleData } from '../sampleData.js';
-import { metaData } from '../metaData.js';
 import Provider from './shared/context/Provider.jsx';
 import MainContext from './shared/context/MainContext.js';
-const token = require('../../server/config.js');
-const axios = require('axios');
+import Outfit from './related/outfit/Outfit.jsx';
+
 
 
 const App = (props) => {
@@ -20,9 +17,10 @@ const App = (props) => {
     <Provider>
 
       <Overview />
-      {/* <Relate /> */}
-
+      <Relate />
+      <Outfit/>
       <Ratings />
+
     </Provider>
   );
 }

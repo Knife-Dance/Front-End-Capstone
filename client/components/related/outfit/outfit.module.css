@@ -1,0 +1,110 @@
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.cardContainer {
+  display: block;
+  position: relative;
+  /* margin-top: 20rem; */
+
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+
+}
+
+.productItem {
+  position: relative;
+  height: 30rem;
+
+}
+
+.productItem button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 10px;
+  border: none;
+  background: none;
+
+}
+
+
+.productItem img {
+  height: 15rem;
+  width: 100%;
+
+  object-fit: cover;
+
+}
+
+
+
+.productImageContainer {
+  width: 100%;
+  background-color: lightgray;
+  display: flex;
+  justify-content: center;
+}
+
+.btnNext, .btnPrev {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+
+}
+.btnNext {
+  right: 0;
+  padding-right: 1rem;
+}
+
+
+.btnPrev {
+  left: 0;
+  padding-left: 1rem;
+
+}
+
+.nolineThrough,
+.salePrice,
+.lineThrough {
+  display: inline-block;
+}
+.salePrice {
+  color: red;
+
+}
+
+.lineThrough {
+  text-decoration: line-through;
+  margin-right: 5px;
+}
+
+.addBtn svg {
+  font-size: 100px;
+  padding: 20px
+
+}
+
+.addBtn {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  height: 30rem;
+}
+
+
+
+
+
+
+
