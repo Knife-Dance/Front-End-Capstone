@@ -3,13 +3,8 @@ import Overview from './OverviewComponent/Overview.jsx';
 import Ratings from './Ratings.jsx';
 import ReviewList from './ratings/ReviewList/ReviewList.jsx';
 import Relate from './related/product-card/Related-product.jsx'
-<<<<<<< HEAD
-import axios from 'axios';
-import Provider from './shared/context/Provider.jsx'
-=======
 import Provider from './shared/context/Provider.jsx';
 import MainContext from './shared/context/MainContext.js';
->>>>>>> e0b5115a6dbe07f2ea777e66b7aaa8f765d6481b
 import Outfit from './related/outfit/Outfit.jsx';
 
 
