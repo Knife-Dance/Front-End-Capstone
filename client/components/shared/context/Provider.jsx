@@ -17,27 +17,33 @@ const Provider = ({children}) => {
   //it gets the related array data
   const [related, setRelated] = useState([]);
 
-  const [productFeature, setProductFeature] = useState([])
+  const [productFeature, setProductFeature] = useState([]);
+
+  const [allReviews, setAllReviews] = useState(null);
+
+  const [metaReviews, setMetaReviews] = useState(null);
 
   const [outfits, setOutfits] = useState([]);
 
-  const[ selectedStyle, setSelectedStyle] = useState()
+  const[ selectedStyle, setSelectedStyle] = useState();
 
+  useEffect(() => {
+    axios.get('/products')
+      .then((data) => {
+        setProducts(data.data);
+        setSelectedProduct(data.data[0].id);
+        return axios.get(`/reviews/${data.data[0].id}`)
+      })
+      .then((data) => {
+        setAllReviews(data.data.results);
+        return axios.get(`/products/${data.data.product}/review`)
+      })
+      .then((data) => {
+        setMetaReviews(data.data);
+      })
+      .catch(err => console.log(err.message));
+  }, []);
 
-
-
-  useEffect( async() => {
-    try {
-      const {data} = await axios.get('/products')
-      setProducts(data);
-      // console.log(products)
-      setSelectedProduct(data[0].id)
-
-    }
-    catch(err) {
-    console.log(err.message)
-    }
-  }, [])
 
   const handleGetStyleById = async (id) => {
     try {
@@ -86,7 +92,7 @@ const Provider = ({children}) => {
         }
       }
       let rating = sum / count;
-      let temp = [rating, count]
+      let temp = [rating, count, data]
       return temp;
     }
     catch(err) {
@@ -161,13 +167,13 @@ const Provider = ({children}) => {
 
 
   return (
-    <MainContext.Provider value={{products, handleGetStyleById, selectedProduct, setSelectedProduct, styles, related, productFeature, handleGetProductById, handleGetRateById, setProductFeature, outfits, selectedStyle, setSelectedStyle, addOutfit, removeOutfit}}>
 
+    <MainContext.Provider value={{products, handleGetStyleById, selectedProduct, setSelectedProduct, styles, related, productFeature, handleGetProductById, handleGetRateById, allReviews, metaReviews, setAllReviews, setProductFeature, outfits, selectedStyle, setSelectedStyle, addOutfit, removeOutfit}}>
 
       {children}
 
     </MainContext.Provider>
-  )
+  );
 }
 
-export default Provider
+export default Provider;
