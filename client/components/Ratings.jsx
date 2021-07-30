@@ -6,7 +6,7 @@ import SortReviews from './ratings/SortReviews/SortReviews.jsx';
 import ModalPhoto from './ratings/ModalPhoto/ModalPhoto.jsx';
 import MainContext from './shared/context/MainContext.js';
 import axios from 'axios';
-import token from '../../server/config.js'
+import token from '../../server/config.js';
 
 function Ratings(props) {
 
@@ -16,7 +16,7 @@ function Ratings(props) {
   const [count, setCount] = useState();
   const [clickedPhoto, setClickedPhoto] = useState('');
   const [modal, setModal] = useState(false);
-  const { allReviews, metaReviews, setAllReviews, selectedProduct } = useContext(MainContext);
+  const { allReviews, metaReviews, setAllReviews, selectedProduct, setMetaReviews } = useContext(MainContext);
 
 
   //FILTER METHODS
@@ -44,6 +44,7 @@ function Ratings(props) {
   };
   const clearFilter = () => {
     setFiltered([]);
+    setStars([]);
   };
 
   //REVIEW LIST METHODS
@@ -61,14 +62,11 @@ function Ratings(props) {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/?count=100&sort=${selection}&product_id=${selectedProduct}`, {
       headers: {'Authorization': token}
     })
-    .then((results) => {
-      setAllReviews(results.data.results);
-      setCount(allReviews.length);
-      if (filtered.length > 0) {
-        setFiltered(allReviews.slice(0, filtered.length));
-      } else {
-        setReviews(allReviews.slice(0, reviews.length));
-      };
+    .then((data) => {
+      setAllReviews(data.data.results);
+      // setCount(allReviews.length);
+      // setFiltered(allReviews.slice(0, filtered.length));
+      // setReviews(allReviews.slice(0, reviews.length));
     })
     .catch((err) => console.log(err));
   };
@@ -85,9 +83,31 @@ function Ratings(props) {
       if (reviews === null) {
         setReviews(allReviews.slice(0, 2));
         setCount(allReviews.length);
+      } else {
+        setCount(allReviews.length);
+        setFiltered(allReviews.slice(0, filtered.length));
+        setReviews(allReviews.slice(0, reviews.length));
       }
     }
   }, [allReviews]);
+
+  //PRODUCT CHANGE RENDER
+  useEffect(() => {
+    if (selectedProduct && metaReviews && Number(metaReviews.product_id) !== selectedProduct) {
+      axios.get(`/reviews/${selectedProduct}`)
+      .then((data) => {
+        setAllReviews(data.data.results);
+        return axios.get(`/products/${selectedProduct}/review`)
+      })
+      .then((data) => {
+        setMetaReviews(data.data);
+        // setCount(allReviews.length);
+        // setFiltered([]);
+        // setReviews(allReviews.slice(0, 2));
+      })
+      .catch(err => console.log(err.message));
+    }
+  }, [selectedProduct]);
 
   // //REVIEWS ARE SORTED
   // useEffect(() => {
@@ -102,8 +122,8 @@ function Ratings(props) {
   if (allReviews && metaReviews && reviews) {
     return (
       <div>
-        <h1>Ratings & Reviews</h1>
-        <SortReviews sort={handleSort}/>
+        <h1 id="ratings">Ratings & Reviews</h1>
+        <SortReviews sort={handleSort} numberOfReviews={count} />
         <FilterRatings
           meta={metaReviews}
           handleClick={handleReviewFilter}
