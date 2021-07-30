@@ -2,14 +2,16 @@ const token = require('./config.js');
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
-const axios = require('axios')
+const axios = require('axios');
 
 const app = express();
 const port = 3000;
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '..', 'public')));
-app.use(cors())
+app.use(cors());
+
+const header = {headers: {'Authorization': token}};
 
 app.get('/products', (req, res) => {
   // console.log(req);
@@ -63,6 +65,7 @@ app.get('/styles', (req, res) => {
     .catch(err => res.status(400).send(err.message))
 })
 
+//META REVIEWS GET REQUEST
 app.get('/products/:id/review', (req, res) => {
   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/meta?product_id=${req.params.id}`, {
     headers: {
@@ -72,6 +75,14 @@ app.get('/products/:id/review', (req, res) => {
     .then(data => res.send(data.data))
     .catch(err => res.status(400).send(err.message))
 })
+
+//REVIEWS FOR SPECIFIC PRODUCT
+app.get('/reviews/:id', (req, res) => {
+  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/?product_id=${req.params.id}&count=250&sort=relevant`, header)
+    .then((data => res.send(data.data)))
+    .catch((err) => res.status(400).send(err));
+})
+
 
 
 

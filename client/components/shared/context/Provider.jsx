@@ -15,19 +15,27 @@ const Provider = ({children}) => {
   //it gets the related array data
   const [related, setRelated] = useState([]);
 
-  const [productFeature, setProductFeature] = useState([])
+  const [productFeature, setProductFeature] = useState([]);
 
+  const [allReviews, setAllReviews] = useState(null);
 
-  useEffect( async() => {
-    try {
-      const {data} = await axios.get('/products')
-      setProducts(data);
-      setSelectedProduct(data[0].id)
+  const [metaReviews, setMetaReviews] = useState(null);
 
-    }
-    catch(err) {
-    console.log(err)
-    }
+  useEffect(() => {
+    axios.get('/products')
+      .then((data) => {
+        setProducts(data.data);
+        setSelectedProduct(data.data[0].id);
+        return axios.get(`/reviews/${data.data[0].id}`)
+      })
+      .then((data) => {
+        setAllReviews(data.data.results);
+        return axios.get(`/products/${data.data.product}/review`)
+      })
+      .then((data) => {
+        setMetaReviews(data.data);
+      })
+      .catch(err => console.log(err.message));
   }, [])
 
   const handleGetStyleById = async (id) => {
@@ -65,7 +73,7 @@ const Provider = ({children}) => {
         }
       }
       let rating = sum / count;
-      let temp = [rating, count]
+      let temp = [rating, count, data]
       return temp;
     }
     catch(err) {
@@ -92,7 +100,7 @@ const Provider = ({children}) => {
           arr.push({product, style, rate})
         }
 
-        setRelated(arr)
+        setRelated(arr);
 
 
       } catch(err) {
@@ -103,7 +111,7 @@ const Provider = ({children}) => {
 
 
   return (
-    <MainContext.Provider value={{products, handleGetStyleById, selectedProduct, setSelectedProduct, styles, related, productFeature, handleGetStyleById, handleGetProductById, handleGetRateById}}>
+    <MainContext.Provider value={{products, handleGetStyleById, selectedProduct, setSelectedProduct, styles, related, productFeature, handleGetStyleById, handleGetProductById, handleGetRateById, allReviews, metaReviews, setAllReviews}}>
 
 
       {children}
