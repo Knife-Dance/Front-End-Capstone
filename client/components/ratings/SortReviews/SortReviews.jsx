@@ -5,7 +5,7 @@ function SortReviews(props) {
   return (
     <div>
       <label htmlFor="options">{props.numberOfReviews} reviews, sorted by </label>
-      <select id="sort-options">
+      <select id="sort-options" onChange={(e) => props.sort(e.target.value)}>
         <option value="relevance">relevance</option>
         <option value="helpful">helpful</option>
         <option value="newest">newest</option>
