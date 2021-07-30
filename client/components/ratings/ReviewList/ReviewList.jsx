@@ -11,6 +11,7 @@ function ReviewList(props) {
         {props.reviews.map((review) =>
           <ReviewItem
             key={review.review_id}
+            reviewId={review.review_id}
             rating={review.rating}
             date={moment(review.data).format('MMMM Do YYYY')}
             summary={review.summary}
