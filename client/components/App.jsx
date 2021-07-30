@@ -3,9 +3,6 @@ import Overview from './OverviewComponent/Overview.jsx';
 import Ratings from './Ratings.jsx';
 import ReviewList from './ratings/ReviewList/ReviewList.jsx';
 import Relate from './related/product-card/Related-product.jsx'
-import dataUrl from './related/sample-data.js'
-import { sampleData } from '../sampleData.js';
-import { metaData } from '../metaData.js';
 import axios from 'axios';
 import Provider from './shared/context/Provider.jsx'
 import Outfit from './related/outfit/Outfit.jsx';
