@@ -42,7 +42,7 @@ const Overview = (props) => {
   }
   const handleStyleSelect = (event, data) => {
     setSelectedStyle(data);
-    console.log('111111111111111111', data)
+    // console.log('111111111111111111', data)
     setMain(data.photos[0])
     // console.log(style);
   }
@@ -52,7 +52,7 @@ const Overview = (props) => {
   }
   useEffect(() => {
     if (selectedProduct) {
-      console.log(selectedProduct);
+      // console.log(selectedProduct);
       handleGetRateById(selectedProduct)
         .then(data => {
           setNum(data[1]);
@@ -66,8 +66,8 @@ const Overview = (props) => {
 
   useEffect(() => {
     if (selectedStyle) {
-      console.log(selectedStyle)
-      console.log(selectedStyle.photos[0].url)
+      // console.log(selectedStyle)
+      // console.log(selectedStyle.photos[0].url)
       setMain(selectedStyle.photos[0])
     }
   }, [selectedStyle])

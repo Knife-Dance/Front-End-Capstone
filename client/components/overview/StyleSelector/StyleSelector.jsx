@@ -8,10 +8,10 @@ const StyleSelector = (props) => {
     <div>
       <h4>{props.style.name}</h4>
       <div className={css.container}>
-        {props.styles.map((style) => {
+        {props.styles.map((style, index) => {
           key++;
           // console.log(style)
-          return <StyleImage key={key} style={style} handleStyleSelect={props.handleStyleSelect} />
+          return <StyleImage key={index} index={index} style={style} handleStyleSelect={props.handleStyleSelect} />
         })}
 
       </div>

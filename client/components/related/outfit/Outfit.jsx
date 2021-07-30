@@ -12,7 +12,7 @@ const Outfit = ({productData}) => {
 //just change the selecte dproduct to the new product
   const [firstItemIndexToShow, setFirstItemIndexToShow] = useState(0);
   const { outfits, addOutfit, removeOutfit } = useContext(MainContext);
-  console.log(outfits.slice(0,4))
+  // console.log(outfits.slice(0,4))
   const handlePrevClick = () => {
     setFirstItemIndexToShow(firstItemIndexToShow - 1)
   }
