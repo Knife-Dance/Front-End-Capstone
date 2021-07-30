@@ -1,4 +1,4 @@
-.container{
+.sidecontainer{
   position: absolute;
   top: 5px;
   left: 5px;
@@ -9,7 +9,7 @@
   overflow-x: hidden;
   overflow-y: scroll;
 }
-.gallerybigcontainer{
+.bigcontainer{
   position: relative;
   height: 100%;
   width: 100%;

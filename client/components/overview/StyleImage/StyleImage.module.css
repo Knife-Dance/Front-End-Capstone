@@ -12,3 +12,24 @@
   /* height: 64px;
   width: 64px; */
 }
+.current {
+  max-width: 64px;
+  max-height: 64px;
+  object-fit: cover;
+  display: inline-block;
+  margin: 5px;
+  border: solid 1px;
+  border-radius: 50%;
+  opacity: 0.3;
+}
+.checkMark {
+  bottom: auto;
+  color: black;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+
+}
+.container {
+  position: relative;
+}

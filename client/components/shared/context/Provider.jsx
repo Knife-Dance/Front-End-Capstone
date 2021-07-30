@@ -23,25 +23,34 @@ const Provider = ({children}) => {
 
   const[ selectedStyle, setSelectedStyle] = useState();
 
-  const [allReviews, setAllReviews] = useState()
+  const [allReviews, setAllReviews] = useState(null)
 
 
 
 
-  useEffect( async() => {
-    try {
-      const {data} = await axios.get('/products')
-      setProducts(data);
-      // console.log(products)
-      setSelectedProduct(data[0].id)
-      const response = await axios.get(`/review/${data[0].id}`)
-      setAllreviews(response.data)
+  const [metaReviews, setMetaReviews] = useState(null);
 
-    }
-    catch(err) {
-    console.log(err.message)
-    }
-  }, [])
+  const [outfits, setOutfits] = useState([]);
+
+  const[ selectedStyle, setSelectedStyle] = useState();
+
+  useEffect(() => {
+    axios.get('/products')
+      .then((data) => {
+        setProducts(data.data);
+        setSelectedProduct(data.data[0].id);
+        return axios.get(`/reviews/${data.data[0].id}`)
+      })
+      .then((data) => {
+        setAllReviews(data.data.results);
+        return axios.get(`/products/${data.data.product}/review`)
+      })
+      .then((data) => {
+        setMetaReviews(data.data);
+      })
+      .catch(err => console.log(err.message));
+  }, []);
+
 
   const handleGetStyleById = async (id) => {
     try {
@@ -52,7 +61,7 @@ const Provider = ({children}) => {
     console.log(err.message);
     }
 
-  }
+  };
 
   const handleGetProductById = async (id) => {
     try {
@@ -62,7 +71,7 @@ const Provider = ({children}) => {
     catch(err) {
       console.log(err.message);
     }
-  }
+  };
 
   const handleGetRateById = async(id) => {
     try {
@@ -76,8 +85,6 @@ const Provider = ({children}) => {
     }
   }
 
-
-
   const getRateById = (data) => {
     try {
       let sum = 0;
@@ -90,13 +97,13 @@ const Provider = ({children}) => {
         }
       }
       let rating = sum / count;
-      let temp = [rating, count]
+      let temp = [rating, count, data]
       return temp;
     }
     catch(err) {
       console.log(err.message);
     }
-  }
+  };
 
   useEffect (async () => {
     if (selectedProduct) {
@@ -145,7 +152,8 @@ const Provider = ({children}) => {
         console.error(err.message)
       }
     }
-  }, [selectedProduct])
+  }, [selectedProduct]);
+
 
   const addOutfit = async () => {
     let copyOutfit = [...outfits];
@@ -156,21 +164,22 @@ const Provider = ({children}) => {
         })
 
         setOutfits(copyOutfit)
-  }
+  };
 
   const removeOutfit = (id) => {
+    // console.log('~~~~~~~~~', id)
     setOutfits(outfits.filter(each => each.style.style_id !== id))
-  }
+  };
 
 
   return (
-    <MainContext.Provider value={{products, handleGetStyleById, selectedProduct, setSelectedProduct, styles, related, productFeature, handleGetProductById, handleGetRateById, setProductFeature, outfits, selectedStyle, setSelectedStyle, addOutfit, removeOutfit, allReviews, setAllReviews}}>
 
+    <MainContext.Provider value={{products, handleGetStyleById, selectedProduct, setSelectedProduct, styles, related, productFeature, handleGetProductById, handleGetRateById, allReviews, metaReviews, setAllReviews, setMetaReviews, setProductFeature, outfits, selectedStyle, setSelectedStyle, addOutfit, removeOutfit}}>
 
       {children}
 
     </MainContext.Provider>
-  )
+  );
 }
 
-export default Provider
+export default Provider;

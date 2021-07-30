@@ -1,31 +1,28 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Overview from './OverviewComponent/Overview.jsx';
 import Ratings from './Ratings.jsx';
 import ReviewList from './ratings/ReviewList/ReviewList.jsx';
 import Relate from './related/product-card/Related-product.jsx'
-import dataUrl from './related/sample-data.js'
-import { sampleData } from '../sampleData.js';
-import { metaData } from '../metaData.js';
-import axios from 'axios';
-import Provider from './shared/context/Provider.jsx'
+import Provider from './shared/context/Provider.jsx';
+import MainContext from './shared/context/MainContext.js';
 import Outfit from './related/outfit/Outfit.jsx';
 
 
 
 const App = (props) => {
-  const [data, setData] = useState(sampleData.results);
-  const [meta, setMeta] = useState(metaData);
+
+
 
   return (
     <Provider>
 
       <Overview />
-      <Relate  />
+      <Relate />
       <Outfit/>
-      <Ratings reviews={data} meta={meta} />
+      <Ratings />
 
     </Provider>
-  )
+  );
 }
 
 

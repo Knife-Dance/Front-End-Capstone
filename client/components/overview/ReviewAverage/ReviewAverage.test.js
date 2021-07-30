@@ -14,7 +14,7 @@ describe("ReviewAverage", () => {
     const wrapper = shallow(<ReviewAverage average={5}/>);
     expect(wrapper.find('div').children()).toHaveLength(5);
   });
-  it("should accept decimals and render 5 stars", () => {
+  it("should accept decimals and render 5 stars even when average passed in is smaller than 5", () => {
     const wrapper = shallow(<ReviewAverage average={1.02384}/>);
     expect(wrapper.find('div').children()).toHaveLength(5)
   })

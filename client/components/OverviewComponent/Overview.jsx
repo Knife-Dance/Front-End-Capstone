@@ -27,6 +27,7 @@ const Overview = (props) => {
   const [main, setMain] = useState(null);
   const [num, setNum] = useState(null);
   const [product, setProduct] = useState(null);
+  const [check, setCheck] = useState(0);
   const {productFeature, selectedProduct, styles, selectedStyle, setSelectedStyle, handleGetRateById} = useContext(MainContext);
   // console.log(selectedProduct, handleGetStyleById);
   const handlePrice = () => {
@@ -40,9 +41,11 @@ const Overview = (props) => {
       return (<div>{selectedStyle.original_price}</div>)
     }
   }
-  const handleStyleSelect = (event, data) => {
+  const handleStyleSelect = (event, data, index) => {
     setSelectedStyle(data);
-    console.log('111111111111111111', data)
+    console.log(index)
+    setCheck(index);
+    // console.log('111111111111111111', data)
     setMain(data.photos[0])
     // console.log(style);
   }
@@ -52,7 +55,7 @@ const Overview = (props) => {
   }
   useEffect(() => {
     if (selectedProduct) {
-      console.log(selectedProduct);
+      // console.log(selectedProduct);
       handleGetRateById(selectedProduct)
         .then(data => {
           setNum(data[1]);
@@ -66,8 +69,8 @@ const Overview = (props) => {
 
   useEffect(() => {
     if (selectedStyle) {
-      console.log(selectedStyle)
-      console.log(selectedStyle.photos[0].url)
+      // console.log(selectedStyle)
+      // console.log(selectedStyle.photos[0].url)
       setMain(selectedStyle.photos[0])
     }
   }, [selectedStyle])
@@ -89,7 +92,8 @@ const Overview = (props) => {
             <SocialMedia />
             <StyleSelector style={selectedStyle}
               handleStyleSelect={handleStyleSelect}
-              styles={styles.results} />
+              styles={styles.results}
+              check={check}/>
             <AddToCart style={selectedStyle} />
 
           </div>

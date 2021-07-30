@@ -12,7 +12,7 @@ const AddToCart = (props) => {
   const handleSize = (sizes) => {
     // console.log(sizes)
     if (sizes[null]) {
-      return '<option value="" disabled selected> OUT OF STOCK </option>'
+      return '<option value=""> OUT OF STOCK </option>'
     }
 
     let stock = false;
@@ -76,8 +76,8 @@ const AddToCart = (props) => {
   return (
     <form className={css.container} onSubmit={handleAdd}>
       <span>
-        <select id="size" onChange={handleSizeSelect}>
-          <option value="" disabled selected>Select Size</option>
+        <select defaultValue="start" id="size" onChange={handleSizeSelect}>
+          <option value="start" disabled >Select Size</option>
           {/* {console.log(props.style.skus)} */}
           {parser(handleSize(props.style.skus))}
         </select>
