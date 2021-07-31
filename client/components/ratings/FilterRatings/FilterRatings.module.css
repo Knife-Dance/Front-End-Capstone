@@ -1,5 +1,16 @@
 .averageRating {
   font-size: 34px;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+}
+
+.flexNum {
+
+}
+
+.flexStar {
+  padding-left: 5px;
 }
 
 .recommendPercent {

@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  margin: 10px;
+}
+
+.reviewFilter {
+  margin: 10px;
+}
+
+.reviewList {
+  margin: 10px;
+}

@@ -7,6 +7,7 @@ import ModalPhoto from './ratings/ModalPhoto/ModalPhoto.jsx';
 import MainContext from './shared/context/MainContext.js';
 import axios from 'axios';
 import token from '../../server/config.js';
+import styles from './Ratings.module.css';
 
 function Ratings(props) {
 
@@ -122,34 +123,38 @@ function Ratings(props) {
 
   if (allReviews && metaReviews && reviews) {
     return (
-      <div>
-        <h1 id="ratings">Ratings &amp; Reviews</h1>
-        <SortReviews
-          sort={handleSort}
-          numberOfReviews={count}
-        />
-        <FilterRatings
-          meta={metaReviews}
-          handleClick={handleReviewFilter}
-          clearFilter={clearFilter}
-        />
-        <ModalPhoto
-          photo={clickedPhoto}
-          showModal={modal}
-          hideModal={setModal}
-        />
-        <ReviewList
-          reviews={filtered.length === 0 ? reviews : filtered}
-          meta={metaReviews}
-          moreReviews={moreReviews}
-          lessReviews={lessReviews}
-          filtered={filtered}
-          count={count}
-          photoClick={handlePhotoClick}
-          showModal={reviewModal}
-          modalBoolean={setReviewModal}
-        />
-        {reviewModal && <CreateReview currentProductId={selectedProduct} currentProductName={productFeature.name} meta={metaReviews} updateReviews={setAllReviews} reviews={allReviews} modalBoolean={setReviewModal} />}
+      <div className={ styles.container }>
+        <div className={ styles.reviewFilter }>
+          <h1 id="ratings">Ratings &amp; Reviews</h1>
+          <FilterRatings
+            meta={metaReviews}
+            handleClick={handleReviewFilter}
+            clearFilter={clearFilter}
+          />
+        </div>
+        <div className = { styles.reviewList }>
+          <SortReviews
+            sort={handleSort}
+            numberOfReviews={count}
+          />
+          <ModalPhoto
+            photo={clickedPhoto}
+            showModal={modal}
+            hideModal={setModal}
+          />
+          <ReviewList
+            reviews={filtered.length === 0 ? reviews : filtered}
+            meta={metaReviews}
+            moreReviews={moreReviews}
+            lessReviews={lessReviews}
+            filtered={filtered}
+            count={count}
+            photoClick={handlePhotoClick}
+            showModal={reviewModal}
+            modalBoolean={setReviewModal}
+          />
+          {reviewModal && <CreateReview currentProductId={selectedProduct} currentProductName={productFeature.name} meta={metaReviews} updateReviews={setAllReviews} reviews={allReviews} modalBoolean={setReviewModal} />}
+        </div>
       </div>
     );
   } else {
