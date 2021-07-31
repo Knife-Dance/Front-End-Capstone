@@ -51,7 +51,7 @@ const Outfit = ({productData}) => {
                             style={{border: '1px solid gray'}} className={css.productItem}>
 
                                 <button onClick={() => {
-                                  
+
                                   removeOutfit(item.style.style_id)
                                   }}>
                                 <i className="fas fa-times"></i>
@@ -60,13 +60,15 @@ const Outfit = ({productData}) => {
                                 {item.style.photos[0].thumbnail_url ? <div  className={css.productImageContainer}><img  src={item.style.photos[0].thumbnail_url}/></div> :
                                 <div className={css.productImageContainer}>
                                     <img className={css.noImg} src={noImgFound}/> </div>}
-                                <p>{item.product.category}</p>
-                                <h5>{item.product.name}</h5>
+                                    <div className={css.cardInfo}>
+                                      <p>{item.product.category}</p>
+                                      <h5>{item.product.name}</h5>
 
-                                {item.style.sale_price ?  <p className={css.lineThrough}>${item.style.original_price}</p> : <p className={css.nolineThrough}>${item.style.original_price}</p>}
+                                      {item.style.sale_price ?  <p className={css.lineThrough}>${item.style.original_price}</p> : <p className={css.nolineThrough}>${item.style.original_price}</p>}
 
-                                {item.style.sale_price !== null ? <p className={css.salePrice}>{item.style.sale_price}</p> : null}
-                                <ReviewAverage average={item.rate}/>
+                                      {item.style.sale_price !== null ? <p className={css.salePrice}>{item.style.sale_price}</p> : null}
+                                      <ReviewAverage  average={item.rate}/>
+                                   </div>
 
 
                             </div>

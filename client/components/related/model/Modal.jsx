@@ -25,6 +25,8 @@ const Modal = ({setShowModal, productData, cardData}) => {
   }
 
 
+
+
   return (
     <div >
       { productData ? (

@@ -21,10 +21,6 @@ const MainContext = createContext({
   setSelectedStyle: () => {},
   addOutfit:() => {},
   removeOutfit:() => {},
-  allReviews: [],
-  setAllReviews: () => {}
-
-
 
 })
 

@@ -30,9 +30,7 @@ const Provider = ({children}) => {
 
   const [metaReviews, setMetaReviews] = useState(null);
 
-  const [outfits, setOutfits] = useState([]);
 
-  const[ selectedStyle, setSelectedStyle] = useState();
 
   useEffect(() => {
     axios.get('/products')
