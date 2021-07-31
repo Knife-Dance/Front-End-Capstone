@@ -139,7 +139,7 @@ function Ratings(props) {
           count={count}
           photoClick={handlePhotoClick}
         />
-        <CreateReview currentProductId={selectedProduct} currentProductName={productFeature.name} meta={metaReviews}/>
+        <CreateReview currentProductId={selectedProduct} currentProductName={productFeature.name} meta={metaReviews} updateReviews={setAllReviews} reviews={allReviews}/>
       </div>
     );
   } else {

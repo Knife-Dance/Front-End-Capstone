@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from './CreateReview.module.css';
+import axios from 'axios';
+import token from '../../../../server/config.js';
+import moment from 'moment';
 
 function CreateReview(props) {
   const [hoverStarOne, setHoverStarOne] = useState(['far', 'star']);
@@ -12,6 +15,12 @@ function CreateReview(props) {
   const [clicked, setClicked] = useState(false);
   const [recommend, setRecommend] = useState(false);
   const [characteristics, setCharacteristics] = useState({});
+  const [summary, setSummary] = useState(null);
+  const [body, setBody] = useState('');
+  const [photo, setPhoto] = useState([]);
+  const [nickname, setNickname] = useState(null);
+  const [email, setEmail] = useState(null);
+
 
   const handleHover = (star) => {
     if (!clicked) {
@@ -98,14 +107,66 @@ function CreateReview(props) {
     } else {
       setRecommend(false);
     }
-  }
+  };
 
   const handleCharacter = (id, rating) => {
     const ratingNum = Number(rating);
     setCharacteristics(characteristics => {
       return {...characteristics, [id]: ratingNum};
     });
-  }
+  };
+
+  const handleSubmit = () => {
+    if (!clicked) {
+      return alert('Please select a star rating before submitting your review');
+    }
+    if (Object.keys(characteristics).length === 0) {
+      return alert('Please select ratings for all product characteristics (i.e. fit, quality, comfort)');
+    }
+    const data = {
+      'product_id': props.currentProductId,
+      'rating': selectedStar,
+      'summary': summary,
+      'body': body,
+      'recommend': recommend,
+      'name': nickname,
+      'email': email,
+      'photos': photo,
+      'characteristics': characteristics
+    };
+    axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews', data, {
+      headers: {'Authorization': token}
+    })
+      .then((success) => {
+        const newItem = [
+          {
+            'review_id': Math.floor(Math.random() * (100000 - 10000) + 10000),
+            'rating': selectedStar,
+            'summary': summary,
+            'recommend': recommend,
+            'response': null,
+            'body': body,
+            'date': moment().format(),
+            'reviewer_name': nickname,
+            'helpfulness': 0,
+            'photos': [
+              {
+              'id': Math.floor(Math.random() * (100000 - 10000) + 10000),
+              'url': photo[0]
+              }
+            ]
+          }
+        ];
+        const newReviews = newItem.concat(props.reviews);
+        props.updateReviews(newReviews);
+        console.log(success);
+        alert('Your review has been submitted');
+      })
+      .catch((err) => {
+        alert('There was a problem submitting your review');
+        console.log(err);
+      });
+  };
 
   const characterDescriptionLow = (name) => {
     switch(name) {
@@ -168,7 +229,7 @@ function CreateReview(props) {
       <h4>About the {props.currentProductName}, {props.currentProductId}</h4>
       <form>
         <label>
-          Rating (1-5):&nbsp;
+          <b>Rating:</b>&nbsp;
             <span>
               <FontAwesomeIcon icon={hoverStarOne} onMouseEnter={() => handleHover(1)} onMouseLeave={() => handleExit()} onClick={() => handleStarClick(1)}/>
               <FontAwesomeIcon icon={hoverStarTwo} onMouseEnter={() => handleHover(2)} onMouseLeave={() => handleExit()} onClick={() => handleStarClick(2)}/>
@@ -184,7 +245,7 @@ function CreateReview(props) {
         </label>
         <br/>
         <label>
-          Do you recommend this product?
+          <b>Do you recommend this product?</b>
           <input type="radio" value="yes" checked={recommend} onChange={(e) => handleRecommend(e)}/>Yes
           <input type="radio" value="no" checked={!recommend} onChange={(e) => handleRecommend(e)}/>No
         </label>
@@ -193,7 +254,7 @@ function CreateReview(props) {
           return (
             <React.Fragment key={props.meta.characteristics[keyName].id}>
             <label>
-              {keyName}:&nbsp;
+              <b>{keyName}:</b>&nbsp;
               <div className={ styles.characterButtons }>
                 <div><input type="radio" value="1" checked={characteristics[props.meta.characteristics[keyName].id] === 1} onChange={(e) => handleCharacter(props.meta.characteristics[keyName].id, e.target.value)} />1 -&nbsp;{characterDescriptionLow(keyName)}</div>
                 <div><input type="radio" value="2" checked={characteristics[props.meta.characteristics[keyName].id] === 2} onChange={(e) => handleCharacter(props.meta.characteristics[keyName].id, e.target.value)} />2</div>
@@ -206,6 +267,39 @@ function CreateReview(props) {
             </React.Fragment>
           );
         })}
+        <label>
+          <b>Review Summary:&nbsp;</b>
+          <input type="text" maxLength="60" size="70" placeholder="Example: Best purchase ever!" onChange={(e) => setSummary(e.target.value)}/>
+        </label>
+        <br/>
+        <label>
+          <b>Review Body:&nbsp;</b>
+          <div>
+            <textarea rows="10" cols="100" maxLength="1000" minLength="50" placeholder="Why did you like the product or not?" onChange={(e) => setBody(e.target.value)} required/>
+          </div>
+          <div>
+            {body.length < 50 ? <span style={{color: "gray"}}><i>Minimum required characters left: {50 - body.length}</i></span> : <span><i>Minimum reached</i></span>}
+          </div>
+        </label>
+        <br/>
+        <label>
+          <b>Upload your photo:&nbsp;</b>
+          <input type="url" size="150" placeholder="Paste photo URL here" onChange={(e) => setPhoto([e.target.value])}/>
+        </label>
+        <br/>
+        <label>
+          <b>What is your nickname:&nbsp;</b>
+          <input type="text" maxLength="60" size="70" required placeholder="Example: jackson11!" onChange={(e) => setNickname(e.target.value)}/>
+          <div style={{color: "gray"}}><i>For privacy reasons, do not use your full name or email address</i></div>
+        </label>
+        <br/>
+        <label>
+          <b>Your e-mail:&nbsp;</b>
+          <input type="email" size="70" required placeholder="Example: jackson11@email.com" onChange={(e) => setEmail(e.target.value)}/>
+          <div style={{color: "gray"}}><i>For authentication reasons, you will not be emailed</i></div>
+        </label>
+        <br/>
+        <input type="submit" value="Submit review" onClick={() => handleSubmit()}/>
       </form>
     </div>
   );
