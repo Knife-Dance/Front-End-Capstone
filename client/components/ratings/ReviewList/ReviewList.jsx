@@ -29,7 +29,7 @@ function ReviewList(props) {
       <div>
         {props.filtered.length === 0 && props.reviews.length > 0 && props.count > props.reviews.length && <a href="#bottom"><button onClick={() => props.moreReviews()}>MORE REVIEWS</button></a>}
         {props.filtered.length === 0 && props.reviews.length > 2 && <button onClick={() => props.lessReviews()}>LESS REVIEWS</button>}
-        <button>ADD A REVIEW +</button>
+        <button onClick={() => props.modalBoolean(true)}>ADD A REVIEW +</button>
       </div>
     </div>
   );
