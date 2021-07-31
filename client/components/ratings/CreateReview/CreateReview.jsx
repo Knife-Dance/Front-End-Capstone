@@ -229,7 +229,7 @@ function CreateReview(props) {
     <div className={ styles.modalContainer }>
       <FontAwesomeIcon icon={'fas', 'window-close'} className={ styles.closeIcon } size="2x" onClick={() => props.modalBoolean(false)} />
       <h2>Write Your Review</h2>
-      <h4>About the {props.currentProductName}, {props.currentProductId}</h4>
+      <h4>About the {props.currentProductName}</h4>
       <form>
         <label>
           <b>Rating:</b>&nbsp;

@@ -6,8 +6,8 @@
 
 .modalContainer {
   position: fixed;
-  bottom: 10px;
-  left: 50px;
+  bottom: 10%;
+  left: 15%;
   z-index: 200;
   height: 700px;
   width: 900px;

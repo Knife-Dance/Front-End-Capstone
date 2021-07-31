@@ -2,6 +2,7 @@ import React from 'react';
 import ProductBreakdown from '../ProductBreakdown/ProductBreakdown.jsx';
 import styles from './FilterRatings.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import ReviewAverage from '../../overview/ReviewAverage/ReviewAverage.jsx';
 
 function FilterRatings(props) {
   const averageRating = () => {
@@ -25,8 +26,8 @@ function FilterRatings(props) {
     <div>
       <div>
         <div className={ styles.averageRating }>
-          <b>{averageRating()}</b>
-          <i className="fas fa-star"></i>
+          <div className={ styles.flexNum }><b>{averageRating()}</b></div>
+          <div className={ styles.flexStar }><ReviewAverage average={averageRating()} /></div>
         </div>
       </div>
       <div className={ styles.recommendPercent }>
