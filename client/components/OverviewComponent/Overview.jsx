@@ -47,7 +47,8 @@ const Overview = (props) => {
     console.log(index)
     setCheck(index);
     // console.log('111111111111111111', data)
-    if (data[highlight] === undefined) {
+    if (data.photos[highlight] === undefined) {
+      // console.log(data)
       setHighlight(0);
     }
     // console.log(style);
