@@ -23,6 +23,7 @@
   "homepage": "https://github.com/Knife-Dance/Front-End-Capstone#readme",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.3",
+    "@fortawesome/fontawesome-svg-core": "^1.2.35",
     "@fortawesome/react-fontawesome": "^0.1.14",
     "axios": "^0.21.1",
     "bootstrap": "^5.0.2",
