@@ -17,15 +17,20 @@ const Provider = ({children}) => {
   //it gets the related array data
   const [related, setRelated] = useState([]);
 
-  const [productFeature, setProductFeature] = useState([]);
-
-  const [allReviews, setAllReviews] = useState(null);
-
-  const [metaReviews, setMetaReviews] = useState(null);
+  const [productFeature, setProductFeature] = useState([])
 
   const [outfits, setOutfits] = useState([]);
 
   const[ selectedStyle, setSelectedStyle] = useState();
+
+  const [allReviews, setAllReviews] = useState(null);
+
+
+
+
+  const [metaReviews, setMetaReviews] = useState(null);
+
+
 
   useEffect(() => {
     axios.get('/products')
