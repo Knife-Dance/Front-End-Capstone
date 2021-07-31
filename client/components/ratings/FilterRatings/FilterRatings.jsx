@@ -1,6 +1,7 @@
 import React from 'react';
 import ProductBreakdown from '../ProductBreakdown/ProductBreakdown.jsx';
 import styles from './FilterRatings.module.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function FilterRatings(props) {
   const averageRating = () => {
@@ -23,7 +24,10 @@ function FilterRatings(props) {
   return (
     <div>
       <div>
-        <div className={ styles.averageRating }><b>{averageRating()}</b> <i className="fas fa-star"></i></div>
+        <div className={ styles.averageRating }>
+          <b>{averageRating()}</b>
+          <i className="fas fa-star"></i>
+        </div>
       </div>
       <div className={ styles.recommendPercent }>
         {recommendPercent()}% of reviews recommend this product
