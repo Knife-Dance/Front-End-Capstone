@@ -116,7 +116,8 @@ function CreateReview(props) {
     });
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault;
     if (!clicked) {
       return alert('Please select a star rating before submitting your review');
     }
@@ -159,6 +160,7 @@ function CreateReview(props) {
         ];
         const newReviews = newItem.concat(props.reviews);
         props.updateReviews(newReviews);
+        props.modalBoolean(false);
         console.log(success);
         alert('Your review has been submitted');
       })
@@ -224,7 +226,8 @@ function CreateReview(props) {
   };
 
   return (
-    <div>
+    <div className={ styles.modalContainer }>
+      <FontAwesomeIcon icon={'fas', 'window-close'} className={ styles.closeIcon } size="2x" onClick={() => props.modalBoolean(false)} />
       <h2>Write Your Review</h2>
       <h4>About the {props.currentProductName}, {props.currentProductId}</h4>
       <form>
@@ -284,7 +287,7 @@ function CreateReview(props) {
         <br/>
         <label>
           <b>Upload your photo:&nbsp;</b>
-          <input type="url" size="150" placeholder="Paste photo URL here" onChange={(e) => setPhoto([e.target.value])}/>
+          <input type="url" size="90" placeholder="Paste photo URL here" onChange={(e) => setPhoto([e.target.value])}/>
         </label>
         <br/>
         <label>
@@ -299,7 +302,7 @@ function CreateReview(props) {
           <div style={{color: "gray"}}><i>For authentication reasons, you will not be emailed</i></div>
         </label>
         <br/>
-        <input type="submit" value="Submit review" onClick={() => handleSubmit()}/>
+        <input type="submit" value="Submit review" onClick={(e) => handleSubmit(e)}/>
       </form>
     </div>
   );

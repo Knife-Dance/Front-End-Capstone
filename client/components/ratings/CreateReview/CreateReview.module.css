@@ -2,3 +2,21 @@
   display: flex;
   flex-direction: column;
 }
+
+
+.modalContainer {
+  position: fixed;
+  bottom: 10px;
+  left: 50px;
+  z-index: 200;
+  height: 700px;
+  width: 900px;
+  overflow: scroll;
+  background-color: lightgray;
+  padding: 15px;
+  border-radius: 5%;
+}
+
+.closeIcon {
+  float: right;
+}
