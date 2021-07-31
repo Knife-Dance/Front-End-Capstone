@@ -16,6 +16,7 @@ function Ratings(props) {
   const [count, setCount] = useState();
   const [clickedPhoto, setClickedPhoto] = useState('');
   const [modal, setModal] = useState(false);
+  const [reviewModal, setReviewModal] = useState(false);
   const { allReviews, metaReviews, setAllReviews, selectedProduct, setMetaReviews, productFeature } = useContext(MainContext);
 
 
@@ -123,13 +124,20 @@ function Ratings(props) {
     return (
       <div>
         <h1 id="ratings">Ratings &amp; Reviews</h1>
-        <SortReviews sort={handleSort} numberOfReviews={count} />
+        <SortReviews
+          sort={handleSort}
+          numberOfReviews={count}
+        />
         <FilterRatings
           meta={metaReviews}
           handleClick={handleReviewFilter}
           clearFilter={clearFilter}
         />
-        <ModalPhoto photo={clickedPhoto} showModal={modal} hideModal={setModal}/>
+        <ModalPhoto
+          photo={clickedPhoto}
+          showModal={modal}
+          hideModal={setModal}
+        />
         <ReviewList
           reviews={filtered.length === 0 ? reviews : filtered}
           meta={metaReviews}
@@ -138,8 +146,10 @@ function Ratings(props) {
           filtered={filtered}
           count={count}
           photoClick={handlePhotoClick}
+          showModal={reviewModal}
+          modalBoolean={setReviewModal}
         />
-        <CreateReview currentProductId={selectedProduct} currentProductName={productFeature.name} meta={metaReviews} updateReviews={setAllReviews} reviews={allReviews}/>
+        {reviewModal && <CreateReview currentProductId={selectedProduct} currentProductName={productFeature.name} meta={metaReviews} updateReviews={setAllReviews} reviews={allReviews} modalBoolean={setReviewModal} />}
       </div>
     );
   } else {
