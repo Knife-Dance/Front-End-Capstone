@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import FilterRatings from './ratings/FilterRatings/FilterRatings.jsx';
 import ReviewList from './ratings/ReviewList/ReviewList.jsx';
-import CreateReview from './ratings/CreateReview.jsx';
+import CreateReview from './ratings/CreateReview/CreateReview.jsx';
 import SortReviews from './ratings/SortReviews/SortReviews.jsx';
 import ModalPhoto from './ratings/ModalPhoto/ModalPhoto.jsx';
 import MainContext from './shared/context/MainContext.js';
@@ -16,7 +16,7 @@ function Ratings(props) {
   const [count, setCount] = useState();
   const [clickedPhoto, setClickedPhoto] = useState('');
   const [modal, setModal] = useState(false);
-  const { allReviews, metaReviews, setAllReviews, selectedProduct, setMetaReviews } = useContext(MainContext);
+  const { allReviews, metaReviews, setAllReviews, selectedProduct, setMetaReviews, productFeature } = useContext(MainContext);
 
 
   //FILTER METHODS
@@ -122,7 +122,7 @@ function Ratings(props) {
   if (allReviews && metaReviews && reviews) {
     return (
       <div>
-        <h1 id="ratings">Ratings & Reviews</h1>
+        <h1 id="ratings">Ratings &amp; Reviews</h1>
         <SortReviews sort={handleSort} numberOfReviews={count} />
         <FilterRatings
           meta={metaReviews}
@@ -139,7 +139,7 @@ function Ratings(props) {
           count={count}
           photoClick={handlePhotoClick}
         />
-        <CreateReview />
+        <CreateReview currentProductId={selectedProduct} currentProductName={productFeature.name} meta={metaReviews} updateReviews={setAllReviews} reviews={allReviews}/>
       </div>
     );
   } else {
