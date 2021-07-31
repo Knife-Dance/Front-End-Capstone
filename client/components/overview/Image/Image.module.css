@@ -8,3 +8,10 @@
 .thumb {
   cursor: zoom-in;
 }
+.selected {
+  border: solid 5px blue;
+  border-radius: 10px;
+  width: 75px;
+  height: 75px;
+  object-fit: cover;
+}

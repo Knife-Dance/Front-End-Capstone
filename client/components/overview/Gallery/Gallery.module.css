@@ -27,3 +27,20 @@
   border-radius: 20px;
 
 }
+.arrow {
+  height: 600px;
+  width: 100%;
+  max-width: 75%;
+  position: absolute;
+  display: flex;
+  left: 100px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+}
+.left, .right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: blue;
+}

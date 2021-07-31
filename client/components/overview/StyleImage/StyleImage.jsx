@@ -10,7 +10,7 @@ const StyleImage = (props) => {
         <img className={css.current} src={props.style.photos[0].thumbnail_url}
           style={{ height: 150, width: 100 }}
           onClick={(event) => { props.handleStyleSelect(event, data2, props.index) }} />
-        <span className={css.checkMark}><i className="fas fa-check"></i></span>
+        <span className={css.checkMark}><i className="far fa-check-circle"></i></span>
       </span>
     )
   } else {
@@ -18,7 +18,7 @@ const StyleImage = (props) => {
       <span>
         <img className={css.thumb} src={props.style.photos[0].thumbnail_url}
           style={{ height: 150, width: 100 }}
-          onClick={(event) => { props.handleStyleSelect(event, data2, props.index) }} />
+          onClick={(event) => { props.handleStyleSelect(event, data2, props.index, props.highlight) }} />
       </span>
     )
   }
