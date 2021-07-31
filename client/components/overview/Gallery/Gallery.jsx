@@ -5,16 +5,18 @@ import Image from '../Image/Image.jsx';
 const Gallery = (props) => {
   let element = document.getElementById('highlighted');
   const handleLeft = () => {
+    console.log(props.highlight);
     if (props.highlight > 0) {
       props.setHighlight(props.highlight - 1)
     }
-    element.scrollIntoView({behavior: "smooth", block: "end"})
+    element.scrollIntoView({ behavior: "smooth", block: "end" })
   }
   const handleRight = () => {
+    console.log(props.highlight);
     if (props.highlight < props.max) {
       props.setHighlight(props.highlight + 1)
     }
-    element.scrollIntoView({behavior: "smooth", block: "center"})
+    element.scrollIntoView({ behavior: "smooth", block: "center" })
   }
   return (
     <div className={css.bigcontainer}>
@@ -27,8 +29,16 @@ const Gallery = (props) => {
         })}
       </div>
       <div className={css.arrow}>
-        <span className={css.left}><i onClick={() => handleLeft()}className="far fa-caret-square-left fa-2x"></i></span>
-        <span className={css.right}><i onClick={() => handleRight()}className="far fa-caret-square-right fa-2x"></i></span>
+        <span className={css.left}>
+          <span onClick={() => handleLeft()}>
+            <i className="far fa-caret-square-left fa-2x"></i>
+          </span>
+        </span>
+        <span className={css.right}>
+          <span onClick={() => handleRight()}>
+            <i className="far fa-caret-square-right fa-2x"></i>
+          </span>
+        </span>
       </div>
       <span>
         <img className={css.main} src={props.main.url} />

@@ -11,10 +11,11 @@ import Outfit from '../outfit/Outfit.jsx';
 
 
 
-const Relate = ({cards}) => {
+const Relate = () => {
     const [showModal, setShowModal] = useState(false);
     const [selectedRelatedProduct, setSelectedRelatedProduct] = useState();
     const [firstItemIndexToShow, setFirstItemIndexToShow] = useState(0)
+
 
 
     ///How to import context
@@ -49,14 +50,6 @@ const Relate = ({cards}) => {
 
 
 
-        // const updatingOverview = (id, e) => {
-        //     setSelectedProduct(id);
-        //     e.stopPropagation();
-
-
-        // }
-
-
 
         return (
             <>
@@ -82,19 +75,23 @@ const Relate = ({cards}) => {
                             style={{border: '1px solid gray'}} className={css.productItem}>
 
                                 <button onClick={(e) => openModal(item,e)}>
-                                <i className="far fa-star star"></i>
+
+                                <i className="far fa-star star fa-lg "></i>
                                 </button>
+
 
                                 {item.photos[0].thumbnail_url ? <div  className={css.productImageContainer}><img  src={item.photos[0].thumbnail_url}/></div> :
                                 <div className={css.productImageContainer}>
                                     <img className={css.noImg} src={noImgFound}/> </div>}
-                                <p>{related.find(_ => _.product.id === +item.id).product.category}</p>
-                                <h5>{item.name}</h5>
+                                    <div className={css.cardInfo}>
+                                        <p>{related.find(_ => _.product.id === +item.id).product.category}</p>
+                                        <h5>{item.name}</h5>
 
-                                {item.sale_price ?  <p className={css.lineThrough}>${item.original_price}</p> : <p className={css.nolineThrough}>${item.original_price}</p>}
+                                        {item.sale_price ?  <p className={css.lineThrough}>${item.original_price}</p> : <p className={css.nolineThrough}>${item.original_price}</p>}
 
-                                {item.sale_price !== null ? <p className={css.salePrice}>{item.sale_price}</p> : null}
-                                <ReviewAverage average={related.find(each => each.product.id === item.id).rate[0]}/>
+                                        {item.sale_price !== null ? <p className={css.salePrice}>{item.sale_price}</p> : null}
+                                        <ReviewAverage average={related.find(each => each.product.id === item.id).rate[0]}/>
+                                    </div>
 
 
                             </div>
@@ -103,7 +100,7 @@ const Relate = ({cards}) => {
 
                 </div>
                 {showModal ? <Modal cardData={selectedRelatedProduct} productData={productFeature}  setShowModal={setShowModal}/> : null}
-                
+
 
             </div>
             </>

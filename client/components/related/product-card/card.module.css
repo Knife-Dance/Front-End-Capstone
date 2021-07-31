@@ -1,22 +1,22 @@
 .cardContainer {
   display: block;
   position: relative;
-  /* margin-top: 20rem; */
 
 }
 
 .gridContainer {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
+  gap: 2rem;
 
 }
 
 .productItem {
   position: relative;
   height: 30rem;
-
 }
+
+
 
 .productItem button {
   position: absolute;
@@ -25,16 +25,18 @@
   padding: 10px;
   border: none;
   background: none;
+}
 
+.productItem button i:hover{
+  font-weight: 600;
+  transform: scale(1.3);
 }
 
 
 .productItem img {
   height: 15rem;
   width: 100%;
-
   object-fit: cover;
-
 }
 
 
@@ -78,4 +80,9 @@
 .lineThrough {
   text-decoration: line-through;
   margin-right: 5px;
+}
+
+.cardInfo {
+  margin-left: 1rem;
+  text-align: left;
 }
