@@ -133,6 +133,8 @@ function Ratings(props) {
           />
         </div>
         <div className = { styles.reviewList }>
+          <br/>
+          <br/>
           <SortReviews
             sort={handleSort}
             numberOfReviews={count}

@@ -5,6 +5,11 @@
   padding: 5px;
 }
 
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
 .flexNum {
 
 }
@@ -18,30 +23,35 @@
 }
 
 .starBreakdown {
-  width: 75px;
+  align-items: left;
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
-.fiveStar:hover {
+.starFilter {
+  display: flex;
+  flex-direction: row;
+  float: left;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.starFilter:hover {
   color:blueviolet;
   cursor: pointer;
 }
 
-.fourStar:hover {
-  color:blueviolet;
-  cursor: pointer;
-}
-
-.threeStar:hover {
-  color:blueviolet;
-  cursor: pointer;
-}
-
-.twoStar:hover {
-  color:blueviolet;
-  cursor: pointer;
-}
-
-.oneStar:hover {
-  color:blueviolet;
-  cursor: pointer;
+.bar {
+  position: relative;
+  float: right;
+  height: 7px;
+  width: 200px;
+  background-color: lightgray;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  margin-left: 5px;
+  top: 2px;
 }

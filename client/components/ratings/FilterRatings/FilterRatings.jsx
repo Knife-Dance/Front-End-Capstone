@@ -21,27 +21,61 @@ function FilterRatings(props) {
     let ratio = Number(props.meta.recommended.true) / total * 100;
     return Math.floor(ratio);
   }
+  const barFillStyle = (star) => {
+    let total = 0;
+    const count = Number(props.meta.ratings[star]);
+    Object.keys(props.meta.ratings).map((keyName) => {
+      total += Number(props.meta.ratings[keyName]);
+    })
+    const percent = count / total;
+    const width = 200 * percent;
+    const style = {
+      position: 'relative',
+      height: '7px',
+      width: width,
+      backgroundColor: 'gray',
+      zIndex: '25',
+      paddingTop: '3px',
+      paddingBottom: '3px',
+      marginLeft: '5px',
+      top: '2px'
+    };
+    return style;
+  };
+  // const barFillStyle = {
+  //   position: 'relative',
+  //   height: '7px',
+  //   width: barWidth(star),
+  //   backgroundColor: 'gray',
+  //   zIndex: '25',
+  //   paddingTop: '3px',
+  //   paddingBottom: '3px',
+  //   marginLeft: '5px',
+  //   top: '2px'
+  // };
 
   return (
     <div>
-      <div>
-        <div className={ styles.averageRating }>
-          <div className={ styles.flexNum }><b>{averageRating()}</b></div>
-          <div className={ styles.flexStar }><ReviewAverage average={averageRating()} /></div>
+      <div className={ styles.container }>
+        <div>
+          <div className={ styles.averageRating }>
+            <div className={ styles.flexNum }><b>{averageRating()}</b></div>
+            <div className={ styles.flexStar }><ReviewAverage average={averageRating()} /></div>
+          </div>
         </div>
-      </div>
-      <div className={ styles.recommendPercent }>
-        {recommendPercent()}% of reviews recommend this product
-      </div>
-      <div className={ styles.starBreakdown }>
-        <div className={ styles.fiveStar } onClick={() => props.handleClick(5)}>5 stars: {props.meta.ratings[5]}</div>
-        <div className={ styles.fourStar } onClick={() => props.handleClick(4)}>4 stars: {props.meta.ratings[4]}</div>
-        <div className={ styles.threeStar } onClick={() => props.handleClick(3)}>3 stars: {props.meta.ratings[3]}</div>
-        <div className={ styles.twoStar } onClick={() => props.handleClick(2)}>2 stars: {props.meta.ratings[2]}</div>
-        <div className={ styles.oneStar } onClick={() => props.handleClick(1)}>1 stars: {props.meta.ratings[1]}</div>
-      </div>
-      <div>
-        <button onClick={() => props.clearFilter()}>Clear filter</button>
+        <div className={ styles.recommendPercent }>
+          {recommendPercent()}% of reviews recommend this product
+        </div>
+        <div className={ styles.starBreakdown }>
+          <div className={ styles.starFilter } onClick={() => props.handleClick(5)}>5 stars:&nbsp;<div><div className={ styles.bar }></div><div style={barFillStyle(5)}></div></div></div>
+          <div className={ styles.starFilter } onClick={() => props.handleClick(4)}>4 stars:&nbsp;<div><div className={ styles.bar }></div><div style={barFillStyle(4)}></div></div></div>
+          <div className={ styles.starFilter } onClick={() => props.handleClick(3)}>3 stars:&nbsp;<div><div className={ styles.bar }></div><div style={barFillStyle(3)}></div></div></div>
+          <div className={ styles.starFilter } onClick={() => props.handleClick(2)}>2 stars:&nbsp;<div><div className={ styles.bar }></div><div style={barFillStyle(2)}></div></div></div>
+          <div className={ styles.starFilter } onClick={() => props.handleClick(1)}>1 stars:&nbsp;<div><div className={ styles.bar }></div><div style={barFillStyle(1)}></div></div></div>
+        </div>
+        <div>
+          <button onClick={() => props.clearFilter()}>Clear filter</button>
+        </div>
       </div>
       <div>
         {Object.keys(props.meta.characteristics).map((item) =>

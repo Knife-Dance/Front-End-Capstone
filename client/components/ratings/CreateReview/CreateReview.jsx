@@ -116,6 +116,11 @@ function CreateReview(props) {
     });
   };
 
+  const validateEmail = (email) => {
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault;
     if (!clicked) {
@@ -124,6 +129,15 @@ function CreateReview(props) {
     if (Object.keys(characteristics).length === 0) {
       return alert('Please select ratings for all product characteristics (i.e. fit, quality, comfort)');
     }
+    if (body.length < 50) {
+      return alert('Please enter at least 50 characters in your review body');
+    }
+    if (nickname === null || nickname.length === 0) {
+      return alert('Please enter a nickname');
+    }
+    if (validateEmail(email) === false) {
+      return alert('Please enter a valid email');
+    };
     const data = {
       'product_id': props.currentProductId,
       'rating': selectedStar,
@@ -165,7 +179,7 @@ function CreateReview(props) {
         alert('Your review has been submitted');
       })
       .catch((err) => {
-        alert('There was a problem submitting your review');
+        alert('There was a problem submitting your review. Make sure you have filed out all required fields');
         console.log(err);
       });
   };
@@ -302,7 +316,7 @@ function CreateReview(props) {
           <div style={{color: "gray"}}><i>For authentication reasons, you will not be emailed</i></div>
         </label>
         <br/>
-        <input type="submit" value="Submit review" onClick={(e) => handleSubmit(e)}/>
+        <input type="button" value="Submit review" onClick={(e) => handleSubmit(e)}/>
       </form>
     </div>
   );

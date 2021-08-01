@@ -4,7 +4,7 @@ import styles from './ProductBreakdown.module.css';
 function ProductBreakdown(props) {
   const position = () => {
     let percentage = props.score / 5;
-    return 200 * percentage;
+    return 250 * percentage;
   }
   const caretStyle = {
     position: 'relative',
