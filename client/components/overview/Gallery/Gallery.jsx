@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import css from './Gallery.module.css';
 import Image from '../Image/Image.jsx';
 
+
 const Gallery = (props) => {
   let element = document.getElementById('highlighted');
   const handleLeft = () => {
@@ -12,12 +13,14 @@ const Gallery = (props) => {
     element.scrollIntoView({ behavior: "smooth", block: "end" })
   }
   const handleRight = () => {
-    console.log(props.highlight);
+    // console.log(props.highlight);
     if (props.highlight < props.max) {
       props.setHighlight(props.highlight + 1)
     }
     element.scrollIntoView({ behavior: "smooth", block: "center" })
   }
+
+
   return (
     <div className={css.bigcontainer}>
       <div className={css.sidecontainer}>
@@ -40,8 +43,8 @@ const Gallery = (props) => {
           </span>
         </span>
       </div>
-      <span>
-        <img className={css.main} src={props.main.url} />
+      <span onClick={() => handleMainImage()}>
+        <img id="mainImage" className={css.main} src={props.main.url} />
       </span>
     </div>
   )

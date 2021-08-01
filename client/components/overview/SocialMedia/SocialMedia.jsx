@@ -7,8 +7,8 @@ const SocialMedia = (props) => (
       <i style={{color: "#4267B2"}} className="fab fa-facebook-square fa-3x" ></i>
 
     </a>
-    <i className="fab fa-twitter-square fa-3x"></i>
-    <i className="fab fa-pinterest-square fa-3x"></i>
+    <i style={{color: "	#1DA1F2"}} className="fab fa-twitter-square fa-3x"></i>
+    <i style={{color: "#E60023"}} className="fab fa-pinterest-square fa-3x"></i>
   </div>
 
 )

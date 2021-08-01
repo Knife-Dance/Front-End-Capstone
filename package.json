@@ -4,7 +4,7 @@
   "description": "My webpack project",
   "main": "main.js",
   "scripts": {
-    "test": "npx jest",
+    "test": "npx jest --env=jsdom",
     "build": "npx webpack --mode=production --node-env=production",
     "build:dev": "npx webpack --mode=development",
     "build:prod": "npx webpack --mode=production --node-env=production",

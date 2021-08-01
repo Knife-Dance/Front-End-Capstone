@@ -44,7 +44,7 @@ const Overview = (props) => {
   }
   const handleStyleSelect = (event, data, index, highlight) => {
     setSelectedStyle(data);
-    console.log(index)
+    // console.log(index)
     setCheck(index);
     // console.log('111111111111111111', data)
     if (data.photos[highlight] === undefined) {
@@ -58,6 +58,7 @@ const Overview = (props) => {
     setHighlight(index);
     // setMain(data);
   }
+
   useEffect(() => {
     if (selectedProduct) {
       // console.log(selectedProduct);
@@ -94,7 +95,7 @@ const Overview = (props) => {
             handlePhotoClick={handlePhotoClick} />
           <div className={css.subContainer}>
             <ReviewAverage average={reviews} />
-            {num ? <span>see all {num} Reviews</span> : null}
+            {num ? <a href="#ratings">see all {num} Reviews</a> : null}
             <h3>{productFeature.category}</h3>
             <h2 className={css.name} >{productFeature.name}</h2>
             {handlePrice()}
@@ -112,8 +113,8 @@ const Overview = (props) => {
         <div className={css.banner}>
           <Slogan product={productFeature} />
           <div className={css.phrases}>
-            <p>{productFeature.features[0].value + '~~' + productFeature.features[0].feature}</p>
-            <p>{productFeature.features[1].value + '~~' + productFeature.features[1].feature}</p>
+            <p>{productFeature.features[0].value + '~' + productFeature.features[0].feature}</p>
+            <p>{productFeature.features[1].value + '~' + productFeature.features[1].feature}</p>
 
           </div>
         </div>

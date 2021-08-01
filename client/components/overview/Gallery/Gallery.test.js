@@ -1,5 +1,5 @@
 import Gallery from './Gallery.jsx';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import Enzyme from 'enzyme';
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 import React from 'react';
@@ -18,10 +18,10 @@ let example = {"photos": [
 ]}
 describe("Gallery", () => {
   it("should render Gallery component", () => {
-    const wrapper = shallow(<Gallery main={example.photos[0]} style={example}/>);
+    const wrapper = mount(<Gallery main={example.photos[0]} style={example} > <div id='highlighted'></div></Gallery>);
   });
   it("should render the main image", () => {
-    const wrapper = shallow(<Gallery main={example.photos[0]} style={example}/>);
+    const wrapper = mount(<Gallery main={example.photos[0]} style={example}>  <div id='highlighted'></div></Gallery>);
     expect(wrapper.find('img')).toBeTruthy()
   })
 })

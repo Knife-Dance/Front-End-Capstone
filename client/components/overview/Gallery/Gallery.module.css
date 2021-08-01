@@ -30,10 +30,10 @@
 .arrow {
   height: 600px;
   width: 100%;
-  max-width: 75%;
+  max-width: 85%;
   position: absolute;
   display: flex;
-  left: 100px;
+  left: 12%;
   flex-direction: row;
   justify-content: space-between;
   align-content: center;
