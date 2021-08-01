@@ -24,10 +24,11 @@ const exampleStyles = require('../overview/exampleStylesData.js');
 const Overview = (props) => {
   const [style, setStyle] = useState(null);
   const [reviews, setReviews] = useState(null);
-  const [main, setMain] = useState(null);
+  const [max, setMax] = useState(null);
   const [num, setNum] = useState(null);
   const [product, setProduct] = useState(null);
   const [check, setCheck] = useState(0);
+  const [highlight, setHighlight] = useState(0);
   const {productFeature, selectedProduct, styles, selectedStyle, setSelectedStyle, handleGetRateById} = useContext(MainContext);
   // console.log(selectedProduct, handleGetStyleById);
   const handlePrice = () => {
@@ -41,18 +42,23 @@ const Overview = (props) => {
       return (<div>{selectedStyle.original_price}</div>)
     }
   }
-  const handleStyleSelect = (event, data, index) => {
+  const handleStyleSelect = (event, data, index, highlight) => {
     setSelectedStyle(data);
-    console.log(index)
+    // console.log(index)
     setCheck(index);
     // console.log('111111111111111111', data)
-    setMain(data.photos[0])
+    if (data.photos[highlight] === undefined) {
+      // console.log(data)
+      setHighlight(0);
+    }
     // console.log(style);
   }
-  const handlePhotoClick = (event, data) => {
+  const handlePhotoClick = (event, data, index) => {
     // console.log(data);
-    setMain(data);
+    setHighlight(index);
+    // setMain(data);
   }
+
   useEffect(() => {
     if (selectedProduct) {
       // console.log(selectedProduct);
@@ -61,7 +67,7 @@ const Overview = (props) => {
           setNum(data[1]);
           setReviews(data[0]);
         })
-
+      setHighlight(0);
 
       // console.log(style);
     }
@@ -71,26 +77,31 @@ const Overview = (props) => {
     if (selectedStyle) {
       // console.log(selectedStyle)
       // console.log(selectedStyle.photos[0].url)
-      setMain(selectedStyle.photos[0])
+      // setHighlight(0)
+      setMax(selectedStyle.photos.length - 1)
     }
   }, [selectedStyle])
 
-  if (productFeature && selectedProduct && selectedStyle && styles && main) {
+  if (productFeature && selectedProduct && selectedStyle && styles) {
     // console.log('=============', productFeature)
     // console.log(styles)
     return (
       <div>
         <div className={css.overContainer}>
-          <Gallery style={selectedStyle} main={main}
+          <Gallery style={selectedStyle}
+            main={selectedStyle.photos[highlight]}
+            max={max}
+            highlight={highlight} setHighlight={setHighlight}
             handlePhotoClick={handlePhotoClick} />
           <div className={css.subContainer}>
             <ReviewAverage average={reviews} />
-            {num ? <span>see all {num} Reviews</span> : null}
+            {num ? <a href="#ratings">see all {num} Reviews</a> : null}
             <h3>{productFeature.category}</h3>
             <h2 className={css.name} >{productFeature.name}</h2>
             {handlePrice()}
             <SocialMedia />
             <StyleSelector style={selectedStyle}
+              highlight={highlight}
               handleStyleSelect={handleStyleSelect}
               styles={styles.results}
               check={check}/>
@@ -102,8 +113,8 @@ const Overview = (props) => {
         <div className={css.banner}>
           <Slogan product={productFeature} />
           <div className={css.phrases}>
-            <p>{productFeature.features[0].value + '~~' + productFeature.features[0].feature}</p>
-            <p>{productFeature.features[1].value + '~~' + productFeature.features[1].feature}</p>
+            <p>{productFeature.features[0].value + '~' + productFeature.features[0].feature}</p>
+            <p>{productFeature.features[1].value + '~' + productFeature.features[1].feature}</p>
 
           </div>
         </div>

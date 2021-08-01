@@ -3,14 +3,21 @@ import css from './Image.module.css';
 
 const Image = (props) => {
   let data = props.photo;
-  return (
-    <div style={{float: 'left'}}>
-      <img className={css.thumb} src={props.photo.thumbnail_url}
-      onClick={(event) => {props.handlePhotoClick(event, data)}}/>
-
-    </div>
-
-  )
+  if (props.highlight === props.index) {
+    return (
+      <div style={{float: 'left'}}>
+        <img id="highlighted" className={css.selected} src={props.photo.thumbnail_url}
+        onClick={(event) => {props.handlePhotoClick(event, data, props.index)}}/>
+      </div>
+    )
+  } else {
+    return (
+      <div style={{float: 'left'}}>
+        <img className={css.thumb} src={props.photo.thumbnail_url}
+        onClick={(event) => {props.handlePhotoClick(event, data, props.index)}}/>
+      </div>
+    )
+  }
 }
 
 

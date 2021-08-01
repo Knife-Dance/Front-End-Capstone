@@ -10,7 +10,7 @@ const StyleSelector = (props) => {
       <div className={css.container}>
         {props.styles.map((style, index) => {
           // console.log(style)
-          return <StyleImage key={index} check={props.check} index={index} style={style} handleStyleSelect={props.handleStyleSelect} />
+          return <StyleImage key={index} highlight={props.highlight} check={props.check} index={index} style={style} handleStyleSelect={props.handleStyleSelect} />
         })}
 
       </div>
