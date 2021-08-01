@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import styles from './ReviewItem.module.css';
 import axios from 'axios';
 import token from '../../../../server/config.js';
+import ReviewAverage from '../../overview/ReviewAverage/ReviewAverage.jsx';
+
 
 function ReviewItem(props) {
   const [helpful, setHelpful] = useState(props.helpful);
@@ -32,7 +34,7 @@ function ReviewItem(props) {
   return (
     <div>
       <div className={ styles.box }>
-        <div className={ styles.rating }>Star rating: {props.rating}</div>
+        <div className={ styles.rating }><ReviewAverage average={props.rating} /></div>
         <div className={ styles.author }>{props.author}, {props.date}</div>
       </div>
       <div className={ styles.boxCol }>
