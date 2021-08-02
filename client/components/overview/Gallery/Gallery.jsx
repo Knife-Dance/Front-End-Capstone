@@ -5,14 +5,16 @@ import Image from '../Image/Image.jsx';
 
 const Gallery = (props) => {
   let element = document.getElementById('highlighted');
-  const handleLeft = () => {
-    console.log(props.highlight);
+  const handleLeft = (e) => {
+    // console.log(props.highlight);
+    e.preventDefault()
     if (props.highlight > 0) {
       props.setHighlight(props.highlight - 1)
     }
     element.scrollIntoView({ behavior: "smooth", block: "end" })
   }
-  const handleRight = () => {
+  const handleRight = (e) => {
+    e.preventDefault()
     // console.log(props.highlight);
     if (props.highlight < props.max) {
       props.setHighlight(props.highlight + 1)
@@ -22,7 +24,7 @@ const Gallery = (props) => {
 
 
   return (
-    <div className={css.bigcontainer}>
+    <div className={props.clicked === 0 ? css.bigcontainer : css.only}>
       <div className={css.sidecontainer}>
         {props.style.photos.map((current, index) => {
 
@@ -31,20 +33,24 @@ const Gallery = (props) => {
             photo={current} handlePhotoClick={props.handlePhotoClick} />)
         })}
       </div>
-      <div className={css.arrow}>
+      <div className={css.arrow} >
         <span className={css.left}>
-          <span onClick={() => handleLeft()}>
+          <span onClick={(e) => handleLeft(e)}>
             <i className="far fa-caret-square-left fa-2x"></i>
           </span>
         </span>
         <span className={css.right}>
-          <span onClick={() => handleRight()}>
+
+          <span onClick={(e) => handleRight(e)}>
             <i className="far fa-caret-square-right fa-2x"></i>
           </span>
         </span>
       </div>
-      <span onClick={() => handleMainImage()}>
-        <img id="mainImage" className={css.main} src={props.main.url} />
+      <span >
+        <img id="mainImage"
+        onClick={(event) => props.handleClicked(event)}
+        className={props.clicked === 0 ? css.main : css.onlymain}
+         src={props.main.url} />
       </span>
     </div>
   )
