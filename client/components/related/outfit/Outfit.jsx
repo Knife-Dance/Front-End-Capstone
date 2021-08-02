@@ -40,7 +40,7 @@ const Outfit = ({productData}) => {
                 }
                 <div className={css.gridContainer}>
 
-                <div onClick={addOutfit} className={`${css.addBtn}`} style={{border: '1px solid gray'}}>
+                <div onClick={addOutfit} id={'addOutfit'} className={`${css.addBtn}`} style={{border: '1px solid gray'}}>
                    <h4>Add to Outfit</h4>
                     <i className={'fas fa-plus'}></i>
                  </div>

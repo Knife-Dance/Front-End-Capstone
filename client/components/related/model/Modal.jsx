@@ -5,8 +5,8 @@ import css from './modal.module.css'
 
 
 const Modal = ({setShowModal, productData, cardData}) => {
-  let dataA, dataB, featureArr;
 
+  let dataA, dataB, featureArr;
 
   if (productData && cardData) {
 
@@ -45,7 +45,7 @@ const Modal = ({setShowModal, productData, cardData}) => {
 
               {Array.from(featureArr).map((item, key) => (
                 <>
-                <tr>
+                <tr key={key}>
                 <td className={css.leftCheck}>{dataA.includes(item) ? <i className={"fas fa-check"}></i> : ''}</td>
 
                   <td>{item}</td>
