@@ -27,13 +27,13 @@ const Outfit = ({productData}) => {
 
 
     <div className={css.cardContainer}>
-                {firstItemIndexToShow !== 0 &&
+                {firstItemIndexToShow !== 0&&
                 <span className={css.btnPrev} onClick={handlePrevClick}>
                     <i className="fas fa-chevron-left"></i>
                 </span>}
 
 
-                {firstItemIndexToShow !== outfits.length - 4 &&
+                {firstItemIndexToShow !== outfits.length - 3 &&
                 <span className={css.btnNext} onClick={handleNextClick}>
                 <i className="fas fa-chevron-right slide"></i>
             </span>
@@ -50,7 +50,7 @@ const Outfit = ({productData}) => {
                             <div key={key}
                             style={{border: '1px solid gray'}} className={css.productItem}>
 
-                                <button id={outfitCloseBtn}className={css.closingBtn}onClick={() => {
+                                <button id={'outfitCloseBtn'}className= {css.closingBtn}onClick={() => {
 
                                   removeOutfit(item.style.style_id)
                                   }}>
