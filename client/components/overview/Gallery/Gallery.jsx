@@ -14,6 +14,7 @@ const Gallery = (props) => {
     element.scrollIntoView({ behavior: "smooth", block: "end" })
   }
   const handleRight = (e) => {
+    console.log(e.currentTarget)
     e.preventDefault()
     // console.log(props.highlight);
     if (props.highlight < props.max) {
@@ -33,7 +34,8 @@ const Gallery = (props) => {
             photo={current} handlePhotoClick={props.handlePhotoClick} />)
         })}
       </div>
-      <div className={css.arrow} >
+      <div className={css.expand}></div>
+      <div id="image" className={css.arrow}  onClick={(e) => props.handleClicked(e)}>
         <span className={css.left}>
           <span onClick={(e) => handleLeft(e)}>
             <i className="far fa-caret-square-left fa-2x"></i>
@@ -48,7 +50,7 @@ const Gallery = (props) => {
       </div>
       <span >
         <img id="mainImage"
-        onClick={(event) => props.handleClicked(event)}
+
         className={props.clicked === 0 ? css.main : css.onlymain}
          src={props.main.url} />
       </span>

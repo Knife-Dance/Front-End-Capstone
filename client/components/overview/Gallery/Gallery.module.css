@@ -8,6 +8,7 @@
   flex-direction: column;
   overflow-x: hidden;
   overflow-y: scroll;
+  pointer-events: auto;
 }
 .only {
   position: relative;
@@ -56,6 +57,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-content: center;
+  pointer-events: auto ;
   cursor: zoom-in;
 }
 .left, .right {

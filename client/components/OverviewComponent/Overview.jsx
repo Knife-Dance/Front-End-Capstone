@@ -59,14 +59,17 @@ const Overview = (props) => {
     setHighlight(index);
     // setMain(data);
   }
-  const handleClicked = (event) => {
+  const handleClicked = (e) => {
+    console.log(e.target.id)
+    if (event.target.id === 'image'){
+      if (clicked === 0 ) {
+        setClicked(clicked + 1);
+      }
+      if (clicked === 1) {
+        setClicked(0)
+      }
+    }
     console.log(clicked)
-    if (clicked === 0 ) {
-      setClicked(clicked + 1);
-    }
-    if (clicked === 1) {
-      setClicked(0)
-    }
   }
 
   useEffect(() => {
@@ -125,8 +128,8 @@ const Overview = (props) => {
         <div className={css.banner}>
           <Slogan product={productFeature} />
           <div className={css.phrases}>
-            <p>{productFeature.features[0].value + '~' + productFeature.features[0].feature}</p>
-            <p>{productFeature.features[1].value + '~' + productFeature.features[1].feature}</p>
+            <p>{productFeature.features[0].value + ' ~ ' + productFeature.features[0].feature}</p>
+            <p>{productFeature.features[1].value + ' ~ ' + productFeature.features[1].feature}</p>
 
           </div>
         </div>
