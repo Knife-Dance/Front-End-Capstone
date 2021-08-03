@@ -1,12 +1,14 @@
 import React, {useState, useEffect, useContext} from 'react';
 import {dataUrl, related} from '../sample-data';
 import css from './modal.module.css'
+import $ from 'jquery'
 
 
 
 const Modal = ({setShowModal, productData, cardData}) => {
 
   let dataA, dataB, featureArr;
+  const [interaction, setInteraction] = useState(null)
 
   if (productData && cardData) {
 
@@ -25,6 +27,35 @@ const Modal = ({setShowModal, productData, cardData}) => {
   }
 
 
+  if (setShowModal && productData && cardData) {
+    const arr = [];
+    $('div').click(e => {
+
+      const component ='Related Product Modal';
+      const target = e.target.id;
+      const time = new Date()
+
+      arr.push({component, target})
+      // setIntraction(arr)
+
+      const intractionFunc = (interaction) => {
+        return {...interaction, [time]: arr};
+      }
+      const res = intractionFunc(interaction)
+      setInteraction(res)
+
+
+
+      // console.log(`Related Product Modal, ${e.target.innerHTML}, ${new Date()}` )
+
+    })
+
+  }
+
+
+  if (interaction) {
+    console.log(interaction)
+  }
 
 
   return (
@@ -46,10 +77,10 @@ const Modal = ({setShowModal, productData, cardData}) => {
               {Array.from(featureArr).map((item, key) => (
                 <>
                 <tr key={key}>
-                <td className={css.leftCheck}>{dataA.includes(item) ? <i className={"fas fa-check"}></i> : ''}</td>
+                <td id={'check1'} className={css.leftCheck}>{dataA.includes(item) ? <i className={"fas fa-check"}></i> : ''}</td>
 
                   <td>{item}</td>
-                  <td className={css.rightCheck}>{dataB.includes(item) ? <i className={"fas fa-check"}></i> : ''}</td>
+                  <td id={'check2'} className={css.rightCheck}>{dataB.includes(item) ? <i className={"fas fa-check"}></i> : ''}</td>
                 </tr>
                 </>
               ))}

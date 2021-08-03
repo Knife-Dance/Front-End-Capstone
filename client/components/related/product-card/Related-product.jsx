@@ -1,13 +1,9 @@
 import React, {useState, useContext, useEffect, useMemo} from 'react';
-import {dataUrl, relatedProduct, review} from '../sample-data';
 import css from './card.module.css'
 import Modal from '../model/Modal.jsx'
 import ReviewAverage from '../../overview/ReviewAverage/ReviewAverage.jsx'
 import MainContext from '../../shared/context/MainContext';
-
 import { noImgFound } from './staticImg';
-import Outfit from '../outfit/Outfit.jsx';
-
 
 
 
@@ -17,12 +13,7 @@ const Relate = () => {
     const [firstItemIndexToShow, setFirstItemIndexToShow] = useState(0)
 
 
-
-    ///How to import context
-    //remember to import useContext and MainContext
     const { related,setSelectedProduct, products, selectedProduct, productFeature, handleGetStyleById, handleGetProductById } = useContext(MainContext)
-
-  
 
 
     // return useMemo(() => {
@@ -37,9 +28,6 @@ const Relate = () => {
         const dataToShow = related.reduce((acc, newItem) => {
             return [...acc, ...newItem.style.results.map(item => ({...item, id: newItem.product.id}))]
         }, []);
-
-        console.log(dataToShow)
-
 
 
         const openModal = (item, e) => {

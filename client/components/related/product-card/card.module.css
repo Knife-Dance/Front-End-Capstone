@@ -1,7 +1,13 @@
 .cardContainer {
   display: block;
   position: relative;
+  margin-right: 5rem;
+  margin-left: 5rem;
 
+}
+
+h3 {
+  margin-left: 5rem;
 }
 
 .gridContainer {
@@ -14,6 +20,9 @@
 .productItem {
   position: relative;
   height: 30rem;
+  border-radius: 1rem;
+  z-index: 2;
+
 }
 
 
@@ -37,22 +46,26 @@
   height: 15rem;
   width: 100%;
   object-fit: cover;
+  z-index: -1;
+  border-radius: 1rem;
 }
 
 
 
 .productImageContainer {
   width: 100%;
-  background-color: lightgray;
+
   display: flex;
   justify-content: center;
+  z-index: -1;
+
 }
 
 .btnNext, .btnPrev {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 2;
+  z-index: 5;
 
 }
 .btnNext {
