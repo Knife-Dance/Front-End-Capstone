@@ -4,7 +4,9 @@ import css from './modal.module.css'
 
 
 
+
 const Modal = ({setShowModal, productData, cardData}) => {
+
   let dataA, dataB, featureArr;
 
 
@@ -27,6 +29,7 @@ const Modal = ({setShowModal, productData, cardData}) => {
 
 
 
+
   return (
     <div >
       { productData ? (
@@ -45,11 +48,11 @@ const Modal = ({setShowModal, productData, cardData}) => {
 
               {Array.from(featureArr).map((item, key) => (
                 <>
-                <tr>
-                <td className={css.leftCheck}>{dataA.includes(item) ? <i className={"fas fa-check"}></i> : ''}</td>
+                <tr key={key}>
+                <td  className={css.leftCheck}>{dataA.includes(item) ? <i className={"fas fa-check"}></i> : ''}</td>
 
                   <td>{item}</td>
-                  <td className={css.rightCheck}>{dataB.includes(item) ? <i className={"fas fa-check"}></i> : ''}</td>
+                  <td  className={css.rightCheck}>{dataB.includes(item) ? <i className={"fas fa-check"}></i> : ''}</td>
                 </tr>
                 </>
               ))}

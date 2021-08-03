@@ -15,7 +15,7 @@ const App = (props) => {
 
       <Overview />
       <Relate />
-      <Outfit/>
+      <Outfit />
       <Ratings />
 
     </Provider>

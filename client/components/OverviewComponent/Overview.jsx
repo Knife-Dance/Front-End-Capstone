@@ -29,7 +29,8 @@ const Overview = (props) => {
   const [product, setProduct] = useState(null);
   const [check, setCheck] = useState(0);
   const [highlight, setHighlight] = useState(0);
-  const {productFeature, selectedProduct, styles, selectedStyle, setSelectedStyle, handleGetRateById} = useContext(MainContext);
+  const [clicked, setClicked] = useState(0);
+  const { productFeature, selectedProduct, styles, selectedStyle, setSelectedStyle, handleGetRateById } = useContext(MainContext);
   // console.log(selectedProduct, handleGetStyleById);
   const handlePrice = () => {
     if (selectedStyle.sale_price) {
@@ -57,6 +58,18 @@ const Overview = (props) => {
     // console.log(data);
     setHighlight(index);
     // setMain(data);
+  }
+  const handleClicked = (e) => {
+    console.log(e.target.id)
+    if (event.target.id === 'image'){
+      if (clicked === 0 ) {
+        setClicked(clicked + 1);
+      }
+      if (clicked === 1) {
+        setClicked(0)
+      }
+    }
+    // console.log(clicked)
   }
 
   useEffect(() => {
@@ -90,31 +103,33 @@ const Overview = (props) => {
         <div className={css.overContainer}>
           <Gallery style={selectedStyle}
             main={selectedStyle.photos[highlight]}
-            max={max}
+            max={max} clicked={clicked} handleClicked={handleClicked}
             highlight={highlight} setHighlight={setHighlight}
             handlePhotoClick={handlePhotoClick} />
-          <div className={css.subContainer}>
-            <ReviewAverage average={reviews} />
-            {num ? <a href="#ratings">see all {num} Reviews</a> : null}
-            <h3>{productFeature.category}</h3>
-            <h2 className={css.name} >{productFeature.name}</h2>
-            {handlePrice()}
-            <SocialMedia />
-            <StyleSelector style={selectedStyle}
-              highlight={highlight}
-              handleStyleSelect={handleStyleSelect}
-              styles={styles.results}
-              check={check}/>
-            <AddToCart style={selectedStyle} />
+          {clicked === 1 || clicked === 2 ? null :
+            <div className={css.subContainer}>
+              <ReviewAverage average={reviews} />
+              {num ? <a href="#ratings">see all {num} Reviews</a> : null}
+              <h3>{productFeature.category}</h3>
+              <h2 className={css.name} >{productFeature.name}</h2>
+              {handlePrice()}
+              <SocialMedia />
+              <StyleSelector style={selectedStyle}
+                highlight={highlight}
+                handleStyleSelect={handleStyleSelect}
+                styles={styles.results}
+                check={check} />
+              <AddToCart style={selectedStyle} />
+            </div>
+            }
 
-          </div>
 
         </div>
         <div className={css.banner}>
           <Slogan product={productFeature} />
           <div className={css.phrases}>
-            <p>{productFeature.features[0].value + '~' + productFeature.features[0].feature}</p>
-            <p>{productFeature.features[1].value + '~' + productFeature.features[1].feature}</p>
+            <p>{productFeature.features[0].value + ' ~ ' + productFeature.features[0].feature}</p>
+            <p>{productFeature.features[1].value + ' ~ ' + productFeature.features[1].feature}</p>
 
           </div>
         </div>

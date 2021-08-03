@@ -7,11 +7,11 @@ import ReviewAverage from '../../overview/ReviewAverage/ReviewAverage.jsx';
 
 
 
-const Outfit = ({productData}) => {
+const Outfit = (props) => {
 //selected product, handle getStyle by Id, handle get rate by id
 //just change the selecte dproduct to the new product
   const [firstItemIndexToShow, setFirstItemIndexToShow] = useState(0);
-  const { outfits, addOutfit, removeOutfit } = useContext(MainContext);
+  const { outfits, addOutfit, removeOutfit, clickListener } = useContext(MainContext);
   // console.log(outfits.slice(0,4))
   const handlePrevClick = () => {
     setFirstItemIndexToShow(firstItemIndexToShow - 1)
@@ -20,37 +20,38 @@ const Outfit = ({productData}) => {
     setFirstItemIndexToShow(firstItemIndexToShow + 1)
   }
 
+  const component = 'Outfit Component'
 
   return (
     <>
     <h3>YOUR OUTFIT</h3>
 
 
-    <div className={css.cardContainer}>
-                {firstItemIndexToShow !== 0 &&
+    <div className={css.cardContainer} onClick={(e) => clickListener(e, component)}>
+                {firstItemIndexToShow !== 0&&
                 <span className={css.btnPrev} onClick={handlePrevClick}>
                     <i className="fas fa-chevron-left"></i>
                 </span>}
 
 
-                {firstItemIndexToShow !== outfits.length - 4 &&
+                {firstItemIndexToShow !== outfits.length - 3 &&
                 <span className={css.btnNext} onClick={handleNextClick}>
                 <i className="fas fa-chevron-right slide"></i>
             </span>
                 }
                 <div className={css.gridContainer}>
 
-                <div onClick={addOutfit} className={`${css.addBtn}`} style={{border: '1px solid gray'}}>
+                <div onClick={addOutfit} id={'addOutfit'} className={`${css.addBtn}`} style={{border: '1px solid gray'}}>
                    <h4>Add to Outfit</h4>
                     <i className={'fas fa-plus'}></i>
                  </div>
 
                     {
-                        outfits.slice(firstItemIndexToShow, firstItemIndexToShow + 4).map((item, key) => (
+                        outfits.slice(firstItemIndexToShow, firstItemIndexToShow + 3).map((item, key) => (
                             <div key={key}
                             style={{border: '1px solid gray'}} className={css.productItem}>
 
-                                <button onClick={() => {
+                                <button id={'outfitCloseBtn'}className= {css.closingBtn}onClick={() => {
 
                                   removeOutfit(item.style.style_id)
                                   }}>

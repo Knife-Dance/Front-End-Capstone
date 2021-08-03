@@ -1,13 +1,9 @@
 import React, {useState, useContext, useEffect, useMemo} from 'react';
-import {dataUrl, relatedProduct, review} from '../sample-data';
 import css from './card.module.css'
 import Modal from '../model/Modal.jsx'
 import ReviewAverage from '../../overview/ReviewAverage/ReviewAverage.jsx'
 import MainContext from '../../shared/context/MainContext';
-
 import { noImgFound } from './staticImg';
-import Outfit from '../outfit/Outfit.jsx';
-
 
 
 
@@ -16,11 +12,7 @@ const Relate = () => {
     const [selectedRelatedProduct, setSelectedRelatedProduct] = useState();
     const [firstItemIndexToShow, setFirstItemIndexToShow] = useState(0)
 
-
-
-    ///How to import context
-    //remember to import useContext and MainContext
-    const { related,setSelectedProduct, products, selectedProduct, productFeature, handleGetStyleById, handleGetProductById } = useContext(MainContext)
+    const { related,setSelectedProduct, products, selectedProduct, productFeature, handleGetStyleById, handleGetProductById, clickListener } = useContext(MainContext)
 
 
     // return useMemo(() => {
@@ -37,25 +29,21 @@ const Relate = () => {
         }, []);
 
 
-
-
         const openModal = (item, e) => {
             const findProduct = related.find(each => each.product.id === item.id).product;
             setSelectedRelatedProduct(findProduct);
             setShowModal(true);
             e.stopPropagation();
-
-
         }
 
 
 
-
+        const component = 'Related Product'
         return (
             <>
             <h3>RELATED PRODUCTS</h3>
 
-            <div className={css.cardContainer}>
+            <div onClick={(e) => clickListener(e, component)} className={css.cardContainer}>
                 {firstItemIndexToShow !== 0 &&
                 <span className={css.btnPrev} onClick={handlePrevClick}>
                     <i className="fas fa-chevron-left"></i>

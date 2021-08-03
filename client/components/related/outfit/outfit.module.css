@@ -9,21 +9,27 @@
 .cardContainer {
   display: block;
   position: relative;
-  /* margin-top: 20rem; */
+  margin-right: 5rem;
+  margin-left: 5rem;
 
+}
+
+
+h3 {
+  margin-left: 5rem;
 }
 
 .gridContainer {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
-
 }
 
 .productItem {
   position: relative;
   height: 30rem;
-
+  border-radius: 1rem;
+  z-index: 2;
 }
 
 .productItem button {
@@ -40,7 +46,8 @@
 .productItem img {
   height: 15rem;
   width: 100%;
-
+  z-index: -1;
+  border-radius: 1rem;
   object-fit: cover;
 
 }
@@ -49,16 +56,16 @@
 
 .productImageContainer {
   width: 100%;
-  background-color: lightgray;
   display: flex;
   justify-content: center;
+  z-index: -1;
 }
 
 .btnNext, .btnPrev {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 2;
+  z-index: 5;
 
 }
 .btnNext {
@@ -70,7 +77,6 @@
 .btnPrev {
   left: 0;
   padding-left: 1rem;
-
 }
 
 .nolineThrough,
@@ -80,7 +86,6 @@
 }
 .salePrice {
   color: red;
-
 }
 
 .lineThrough {
@@ -90,8 +95,7 @@
 
 .addBtn svg {
   font-size: 100px;
-  padding: 20px
-
+  padding: 20px;
 }
 
 .addBtn {
@@ -100,6 +104,7 @@
   flex-direction: column;
   justify-content: center;
   height: 30rem;
+  border-radius: 1rem;
 }
 
 .cardInfo {
@@ -107,6 +112,10 @@
   text-align: left;
 }
 
+.closingBtn svg {
+  color: black;
+
+}
 
 
 
