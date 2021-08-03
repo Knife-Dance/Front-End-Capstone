@@ -9,12 +9,16 @@ import $ from 'jquery';
 import Relate from '../product-card/Related-product';
 import Outfit from './Outfit';
 import css from './outfit.module.css';
-jest.mock('./Outfit');
+import TestProvider from '../../shared/context/TestProvider.jsx'
+import {addOutfit} from '../../shared/context/TestProvider.jsx'
+import {removeOutfit} from '../../shared/context/TestProvider.jsx'
+// console.log(addOutfit)
 
 Enzyme.configure({ adapter: new Adapter() });
 
 
 describe('Outfit Component', () => {
+
 
   it('Renders Modal component', () => {
     const wrapper = shallow( <Outfit/>);;
@@ -38,32 +42,34 @@ describe('Outfit Component', () => {
     expect(btn).toBeTruthy()
   });
 
-  // it('Test click event', () => {
-  //   const mockCallBack = jest.fn();
-  //   const button = mount((
-  //     <Outfit>
-  //       <div onClick={mockCallBack} id={'addOutfit'}/>
-  //     </Outfit>
-  //   ));
-  //   button.find('#addOutfit').simulate('click');
-  //   expect(mockCallBack.mock.calls.length).toBe(1);
-
-
-  // });
-
-
-  it('Test click event', () => {
-    Outfit.prototype.onClick = jest.fn();
+  it('Test click event for add button', () => {
+   //create an event handler
     // const mockCallBack = jest.fn();
-    let button = shallow( <Outfit />);
+     //render the component
 
-    button.find('#addOutfit').simulate('click');
-    expect(button.find('#addOutfit').length).toEqual(1);
-    expect(Outfit.prototype.onClick ).toHaveBeenCalled();
+    const button = mount((
+      <TestProvider>
+        <Outfit />
+      </TestProvider>
 
 
+    ));
+        // console.log(button.debug())
 
+    //find the element div
+    const btn = button.find('#addOutfit');
+
+    //simulate theclick event on the element
+    btn.simulate('click')
+
+      //test to see if simulation goes thru
+      expect(addOutfit.mock.calls.length).toBe(1);
   });
+
+
+
+
+
 
 
 });

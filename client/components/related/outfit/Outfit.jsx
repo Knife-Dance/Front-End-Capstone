@@ -46,11 +46,11 @@ const Outfit = ({productData}) => {
                  </div>
 
                     {
-                        outfits.slice(firstItemIndexToShow, firstItemIndexToShow + 4).map((item, key) => (
+                        outfits.slice(firstItemIndexToShow, firstItemIndexToShow + 3).map((item, key) => (
                             <div key={key}
                             style={{border: '1px solid gray'}} className={css.productItem}>
 
-                                <button onClick={() => {
+                                <button id={outfitCloseBtn}className={css.closingBtn}onClick={() => {
 
                                   removeOutfit(item.style.style_id)
                                   }}>
