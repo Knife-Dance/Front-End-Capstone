@@ -69,7 +69,7 @@ const Overview = (props) => {
         setClicked(0)
       }
     }
-    console.log(clicked)
+    // console.log(clicked)
   }
 
   useEffect(() => {
