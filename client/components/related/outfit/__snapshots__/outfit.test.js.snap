@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Outfit Component Renders Modal component 1`] = `ShallowWrapper {}`;
+
+exports[`Outfit Component Test click event 1`] = `ReactWrapper {}`;

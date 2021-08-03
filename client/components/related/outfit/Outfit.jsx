@@ -40,17 +40,17 @@ const Outfit = ({productData}) => {
                 }
                 <div className={css.gridContainer}>
 
-                <div onClick={addOutfit} className={`${css.addBtn}`} style={{border: '1px solid gray'}}>
+                <div onClick={addOutfit} id={'addOutfit'} className={`${css.addBtn}`} style={{border: '1px solid gray'}}>
                    <h4>Add to Outfit</h4>
                     <i className={'fas fa-plus'}></i>
                  </div>
 
                     {
-                        outfits.slice(firstItemIndexToShow, firstItemIndexToShow + 4).map((item, key) => (
+                        outfits.slice(firstItemIndexToShow, firstItemIndexToShow + 3).map((item, key) => (
                             <div key={key}
                             style={{border: '1px solid gray'}} className={css.productItem}>
 
-                                <button onClick={() => {
+                                <button id={outfitCloseBtn}className={css.closingBtn}onClick={() => {
 
                                   removeOutfit(item.style.style_id)
                                   }}>
