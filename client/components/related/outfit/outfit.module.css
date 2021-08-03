@@ -90,7 +90,8 @@
 
 .addBtn svg {
   font-size: 100px;
-  padding: 20px
+  padding: 20px;
+
 
 }
 
@@ -107,6 +108,10 @@
   text-align: left;
 }
 
+.closingBtn svg {
+color: black;
+background-color: white;
+}
 
 
 

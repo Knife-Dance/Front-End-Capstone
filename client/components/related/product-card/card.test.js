@@ -12,12 +12,13 @@ Enzyme.configure({ adapter: new Adapter() });
 
 describe('Relate', () => {
   it('should render the related product card component', () => {
-    const wrapper = shallow((
-      <Relate>
-        <div className="productItem"/>
-      </Relate>
-    ));
-    expect(wrapper.find(<div className="productItem" />)).toBeTruthy();
+    shallow(<Relate/>);
+  });
+
+  it('should render the header', () => {
+    const wrapper = shallow(<Relate/>);
+    const header =  (<h3>RELATED PRODUCTS</h3>)
+    expect(wrapper.contains(header)).toBeTruthy();
   });
 
   it('related card should have star button', () => {

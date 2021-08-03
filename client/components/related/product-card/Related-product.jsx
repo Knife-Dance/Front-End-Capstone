@@ -22,6 +22,8 @@ const Relate = () => {
     //remember to import useContext and MainContext
     const { related,setSelectedProduct, products, selectedProduct, productFeature, handleGetStyleById, handleGetProductById } = useContext(MainContext)
 
+  
+
 
     // return useMemo(() => {
 
@@ -36,6 +38,7 @@ const Relate = () => {
             return [...acc, ...newItem.style.results.map(item => ({...item, id: newItem.product.id}))]
         }, []);
 
+        console.log(dataToShow)
 
 
 
