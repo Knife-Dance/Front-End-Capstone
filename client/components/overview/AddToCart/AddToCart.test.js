@@ -68,4 +68,11 @@ describe('AddToCart', () => {
   it('should render AddToCart component', () => {
     const wrapper = shallow(<AddToCart style={example}/>);
   });
+  it('should render AddToCart component', () => {
+    const wrapper = shallow(<AddToCart style={example}/>);
+    const button = wrapper.find('button')
+    button.simulate('click')
+    expect(wrapper.find('#size')).toBeTruthy()
+    // expect(getComputedStyle(wrapper.find('#size')).getPropertyValue('size')).toBe(3)
+  });
 });
