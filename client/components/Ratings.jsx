@@ -122,6 +122,7 @@ function Ratings(props) {
 
 
   if (allReviews && metaReviews && reviews) {
+
     return (
       <div className={ styles.container }>
         <div className={ styles.reviewFilter }>
