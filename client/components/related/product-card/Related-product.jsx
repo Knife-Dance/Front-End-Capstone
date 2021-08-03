@@ -12,8 +12,7 @@ const Relate = () => {
     const [selectedRelatedProduct, setSelectedRelatedProduct] = useState();
     const [firstItemIndexToShow, setFirstItemIndexToShow] = useState(0)
 
-
-    const { related,setSelectedProduct, products, selectedProduct, productFeature, handleGetStyleById, handleGetProductById } = useContext(MainContext)
+    const { related,setSelectedProduct, products, selectedProduct, productFeature, handleGetStyleById, handleGetProductById, clickListener } = useContext(MainContext)
 
 
     // return useMemo(() => {
@@ -35,18 +34,16 @@ const Relate = () => {
             setSelectedRelatedProduct(findProduct);
             setShowModal(true);
             e.stopPropagation();
-
-
         }
 
 
 
-
+        const component = 'Related Product'
         return (
             <>
             <h3>RELATED PRODUCTS</h3>
 
-            <div className={css.cardContainer}>
+            <div onClick={(e) => clickListener(e, component)} className={css.cardContainer}>
                 {firstItemIndexToShow !== 0 &&
                 <span className={css.btnPrev} onClick={handlePrevClick}>
                     <i className="fas fa-chevron-left"></i>
