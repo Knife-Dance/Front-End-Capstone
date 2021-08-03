@@ -5,16 +5,13 @@ import axios from 'axios';
 
 
 const Provider = ({children}) => {
-  //the whole product
+
   const [products, setProducts] = useState([]);
 
-  //the whole style obj with url
   const [styles, setStyles] = useState(null);
 
-  //it is set to the overview component at first and then it changes when user clicks on a card
   const [selectedProduct, setSelectedProduct] = useState();
 
-  //it gets the related array data
   const [related, setRelated] = useState([]);
 
   const [productFeature, setProductFeature] = useState([])
@@ -25,10 +22,10 @@ const Provider = ({children}) => {
 
   const [allReviews, setAllReviews] = useState(null);
 
-
-
-
   const [metaReviews, setMetaReviews] = useState(null);
+
+  const [interaction, setInteraction] = useState(null)
+
 
 
 
@@ -47,7 +44,38 @@ const Provider = ({children}) => {
         setMetaReviews(data.data);
       })
       .catch(err => console.log(err.message));
+
+      document.getElementsByTagName('div')
+
   }, []);
+
+  // const handleGetInteraction = (e) => {
+  //   const arr = [];
+  //   const component ='Related Product Modal';
+  //   const target = e.target.innerHTML;
+  //   arr.push({component, target})
+  //   const res = {...interaction, [time]: arr};
+  //   setInteraction(res)
+  // }
+
+  const arrayWithElements = new Array();
+  const clickListener = (e, comp) => {
+    let clickedEl = (window.e) ? window.e.tagName : e.target;
+    let tags = document.getElementsByTagName(clickedEl.tagName)
+
+    for (let i = 0;i < tags.length; i++) {
+      if (tags[i] === clickedEl) {
+        arrayWithElements.push({tag:clickedEl.tagName,index:i, time: new Date(), component: comp})
+        console.log(arrayWithElements);
+      }
+    }
+    setInteraction(arrayWithElements)
+  }
+
+  // document.onclick = clickListener;
+
+  // console.log(document.getElementsByTagName('div')[30]);
+  // console.log(document.getElementsByTagName('p')[7]);
 
 
   const handleGetStyleById = async (id) => {
@@ -108,12 +136,8 @@ const Provider = ({children}) => {
       try {
         let productStyle = await handleGetStyleById(selectedProduct);
         setStyles(productStyle);
-
-        // console.log('--------------', productStyle)
         const response = await handleGetProductById(selectedProduct);
         setProductFeature(response);
-        // console.log('==============', response);
-
         const {data} = await axios.get(`/products/${selectedProduct}/related`);
         let arr = [];
 
@@ -146,6 +170,7 @@ const Provider = ({children}) => {
         setRelated(arr)
 
 
+
       } catch(err) {
         console.error(err.message)
       }
@@ -165,14 +190,13 @@ const Provider = ({children}) => {
   };
 
   const removeOutfit = (id) => {
-    // console.log('~~~~~~~~~', id)
     setOutfits(outfits.filter(each => each.style.style_id !== id))
   };
 
 
   return (
 
-    <MainContext.Provider value={{products, handleGetStyleById, selectedProduct, setSelectedProduct, styles, related, productFeature, handleGetProductById, handleGetRateById, allReviews, metaReviews, setAllReviews, setMetaReviews, setProductFeature, outfits, selectedStyle, setSelectedStyle, addOutfit, removeOutfit}}>
+    <MainContext.Provider value={{products, handleGetStyleById, selectedProduct, setSelectedProduct, styles, related, productFeature, handleGetProductById, handleGetRateById, allReviews, metaReviews, setAllReviews, setMetaReviews, setProductFeature, outfits, selectedStyle, setSelectedStyle, addOutfit, removeOutfit, interaction, setInteraction,  clickListener}}>
 
       {children}
 
