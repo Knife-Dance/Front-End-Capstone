@@ -66,6 +66,21 @@ describe('Outfit Component', () => {
       expect(addOutfit.mock.calls.length).toBe(1);
   });
 
+  it('Test click event for closing button ', () => {
+     const button = mount((
+       <TestProvider>
+         <Outfit />
+       </TestProvider>
+     ));
+
+     const btn = button.find('#outfitCloseBtn');
+
+     //simulate theclick event on the element
+     btn.simulate('click')
+
+       //test to see if simulation goes thru
+       expect(removeOutfit.mock.calls.length).toBe(1);
+   });
 
 
 
