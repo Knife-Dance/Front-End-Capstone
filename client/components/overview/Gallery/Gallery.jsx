@@ -38,13 +38,13 @@ const Gallery = (props) => {
       <div id="image" className={css.arrow}  onClick={(e) => props.handleClicked(e)}>
         <span className={css.left}>
           <span onClick={(e) => handleLeft(e)}>
-            <i className="far fa-caret-square-left fa-2x"></i>
+            <i alt="left" className="far fa-caret-square-left fa-2x"></i>
           </span>
         </span>
         <span className={css.right}>
 
           <span onClick={(e) => handleRight(e)}>
-            <i className="far fa-caret-square-right fa-2x"></i>
+            <i alt="right" className="far fa-caret-square-right fa-2x"></i>
           </span>
         </span>
       </div>
