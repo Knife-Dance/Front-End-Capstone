@@ -10,9 +10,6 @@ import Outfit from './related/outfit/Outfit.jsx';
 
 
 const App = (props) => {
-
-
-
   return (
     <Provider>
       <Overview />
@@ -24,28 +21,4 @@ const App = (props) => {
   );
 }
 
-
-
-// class App extends React.Component{
-//   constructor(props) {
-//     super(props);
-//     this.state =  {
-//       reviews: sampleData.results,
-//       meta: metaData
-//     }
-//   }
-//   // hello is it me youre looking for
-
-//   render() {
-//     return (
-//       <div>
-//         {/* <h1>THIS IS KNIFE DANCE!</h1> */}
-//         {/* <Overview /> */}
-//         <Relate cards={dataUrl}/>
-
-//         {/* <ReviewList reviews={this.state.reviews} meta={this.state.meta} /> */}
-//       </div>
-//     );
-//   }
-// }
 export default App;

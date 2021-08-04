@@ -50,7 +50,6 @@ const Gallery = (props) => {
       </div>
       <span >
         <img id="mainImage"
-
         className={props.clicked === 0 ? css.main : css.onlymain}
          src={props.main.url} />
       </span>
