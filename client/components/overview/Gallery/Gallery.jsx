@@ -49,7 +49,7 @@ const Gallery = (props) => {
         </span>
       </div>
       <span >
-        <img id="mainImage"
+        <img id="mainImage" alt="main image"
         className={props.clicked === 0 ? css.main : css.onlymain}
          src={props.main.url} />
       </span>
