@@ -10,8 +10,8 @@ import Relate from '../product-card/Related-product';
 import Outfit from './Outfit';
 import css from './outfit.module.css';
 import TestProvider from '../../shared/context/TestProvider.jsx'
-import {addOutfit} from '../../shared/context/TestProvider.jsx'
-import {removeOutfit} from '../../shared/context/TestProvider.jsx'
+import {removeOutfit, clickListener, setInteraction, addOutfit} from '../../shared/context/TestProvider.jsx'
+
 // console.log(addOutfit)
 
 Enzyme.configure({ adapter: new Adapter() });
@@ -66,21 +66,21 @@ describe('Outfit Component', () => {
       expect(addOutfit.mock.calls.length).toBe(1);
   });
 
-  it('Test click event for closing button ', () => {
-     const button = mount((
-       <TestProvider>
-         <Outfit />
-       </TestProvider>
-     ));
+  // it('Test click event for closing button ', () => {
+  //    const button = mount((
+  //      <TestProvider>
+  //        <Outfit />
+  //      </TestProvider>
+  //    ));
 
-     const btn = button.find('#outfitCloseBtn');
+  //    const btn = button.find('#outfitCloseBtn');
 
-     //simulate theclick event on the element
-     btn.simulate('click')
+  //    //simulate theclick event on the element
+  //    btn.simulate('click')
 
-       //test to see if simulation goes thru
-       expect(removeOutfit.mock.calls.length).toBe(1);
-   });
+  //      //test to see if simulation goes thru
+  //      expect(removeOutfit.mock.calls.length).toBe(1);
+  //  });
 
 
 

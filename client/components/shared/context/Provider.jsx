@@ -1,6 +1,7 @@
 import React, { useState, useEffect} from 'react';
 import MainContext from './MainContext';
 import axios from 'axios';
+import css from './provider.module.css'
 
 
 
@@ -24,7 +25,11 @@ const Provider = ({children}) => {
 
   const [metaReviews, setMetaReviews] = useState(null);
 
-  const [interaction, setInteraction] = useState(null)
+  const [interaction, setInteraction] = useState(null);
+
+  const [darkMode, setDarkMode] = useState(false);
+
+
 
 
 
@@ -49,14 +54,6 @@ const Provider = ({children}) => {
 
   }, []);
 
-  // const handleGetInteraction = (e) => {
-  //   const arr = [];
-  //   const component ='Related Product Modal';
-  //   const target = e.target.innerHTML;
-  //   arr.push({component, target})
-  //   const res = {...interaction, [time]: arr};
-  //   setInteraction(res)
-  // }
 
   const arrayWithElements = new Array();
   const clickListener = (e, comp) => {
@@ -193,12 +190,23 @@ const Provider = ({children}) => {
     setOutfits(outfits.filter(each => each.style.style_id !== id))
   };
 
+  const handleDarkMode = () => {
+    setDarkMode(!darkMode)
+  }
+
 
   return (
 
-    <MainContext.Provider value={{products, handleGetStyleById, selectedProduct, setSelectedProduct, styles, related, productFeature, handleGetProductById, handleGetRateById, allReviews, metaReviews, setAllReviews, setMetaReviews, setProductFeature, outfits, selectedStyle, setSelectedStyle, addOutfit, removeOutfit, interaction, setInteraction,  clickListener}}>
+    <MainContext.Provider value={{products, handleGetStyleById, selectedProduct, setSelectedProduct, styles, related, productFeature, handleGetProductById, handleGetRateById, allReviews, metaReviews, setAllReviews, setMetaReviews, setProductFeature, outfits, selectedStyle, setSelectedStyle, addOutfit, removeOutfit, interaction, setInteraction,  clickListener, darkMode, setDarkMode}}>
 
-      {children}
+      <>
+
+      <button className={css.darkBtn} onClick={handleDarkMode}>Dark Mode</button>
+      {darkMode ? <div className={css.darkMode}>{children}</div> : <div>{children}</div>}
+
+
+      </>
+
 
     </MainContext.Provider>
   );
