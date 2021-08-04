@@ -58,12 +58,12 @@ const Outfit = (props) => {
                                 <i className="fas fa-times"></i>
                                 </button>
 
-                                {item.style.photos[0].thumbnail_url ? <div  className={css.productImageContainer}><img  src={item.style.photos[0].thumbnail_url}/></div> :
+                                {item.style.photos[0].thumbnail_url ? <div  className={css.productImageContainer}><img  alt='outfit img' src={item.style.photos[0].thumbnail_url}/></div> :
                                 <div className={css.productImageContainer}>
-                                    <img className={css.noImg} src={noImgFound}/> </div>}
+                                    <img alt='no img found'className={css.noImg} src={noImgFound}/> </div>}
                                     <div className={css.cardInfo}>
-                                      <p>{item.product.category}</p>
-                                      <h5>{item.product.name}</h5>
+                                      <p className={css.category}>{item.product.category}</p>
+                                      <p className={css.name}>{item.product.name}</p>
 
                                       {item.style.sale_price ?  <p className={css.lineThrough}>${item.style.original_price}</p> : <p className={css.nolineThrough}>${item.style.original_price}</p>}
 
