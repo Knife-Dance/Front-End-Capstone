@@ -73,7 +73,7 @@ const Relate = () => {
                                     <img alt='No img found' className={css.noImg} src={noImgFound}/> </div>}
                                     <div className={css.cardInfo}>
                                         <p className={css.category}>{related.find(_ => _.product.id === +item.id).product.category}</p>
-                                        <p class={css.name}>{item.name}</p>
+                                        <p className={css.name}>{item.name}</p>
 
                                         {item.sale_price ?  <p className={css.lineThrough}>${item.original_price}</p> : <p className={css.nolineThrough}>${item.original_price}</p>}
 
