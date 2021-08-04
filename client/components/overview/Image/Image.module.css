@@ -7,7 +7,7 @@
 }
 
 .selected {
-  border: solid 5px blue;
+  border: solid 5px #1167b1;
   border-radius: 10px;
   width: 75px;
   height: 75px;
