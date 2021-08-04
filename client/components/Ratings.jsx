@@ -18,7 +18,7 @@ function Ratings(props) {
   const [clickedPhoto, setClickedPhoto] = useState('');
   const [modal, setModal] = useState(false);
   const [reviewModal, setReviewModal] = useState(false);
-  const { allReviews, metaReviews, setAllReviews, selectedProduct, setMetaReviews, productFeature } = useContext(MainContext);
+  const { allReviews, metaReviews, setAllReviews, selectedProduct, setMetaReviews, productFeature, clickListener} = useContext(MainContext);
 
 
   //FILTER METHODS
@@ -103,28 +103,18 @@ function Ratings(props) {
       })
       .then((data) => {
         setMetaReviews(data.data);
-        // setCount(allReviews.length);
-        // setFiltered([]);
-        // setReviews(allReviews.slice(0, 2));
+
       })
       .catch(err => console.log(err.message));
     }
   }, [selectedProduct]);
 
-  // //REVIEWS ARE SORTED
-  // useEffect(() => {
-  //   if (filtered.length > 0) {
-  //     setFiltered(allReviews.slice(0, filtered.length));
-  //   } else {
-  //     setReviews(allReviews.slice(0, reviews.length));
-  //   }
-  // }, [allReviews]);
-
+  const component = 'Ratings and Reviews'
 
   if (allReviews && metaReviews && reviews) {
 
     return (
-      <div className={ styles.container }>
+      <div className={ styles.container } onClick={(e) => clickListener(e, component)}>
         <div className={ styles.reviewFilter }>
           <h1 id="ratings">Ratings &amp; Reviews</h1>
           <FilterRatings
