@@ -1,0 +1,17 @@
+.darkMode {
+  background-color: black;
+  color: white !important;
+}
+
+.darkMode a{
+  color: white !important;
+}
+.darkMode u{
+  color: white !important;
+}
+
+.darkBtn {
+  border: none;
+  background: none;
+  cursor: pointer;
+}

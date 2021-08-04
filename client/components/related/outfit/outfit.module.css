@@ -30,6 +30,7 @@ h3 {
   height: 30rem;
   border-radius: 1rem;
   z-index: 2;
+  padding-bottom: 2rem;
 }
 
 .productItem button {
@@ -44,7 +45,7 @@ h3 {
 
 
 .productItem img {
-  height: 15rem;
+  height: 20rem;
   width: 100%;
   z-index: -1;
   border-radius: 1rem;
@@ -83,6 +84,8 @@ h3 {
 .salePrice,
 .lineThrough {
   display: inline-block;
+  font-size: 1.2rem;
+  margin-top: 0;
 }
 .salePrice {
   color: red;
@@ -105,6 +108,7 @@ h3 {
   justify-content: center;
   height: 30rem;
   border-radius: 1rem;
+  padding-bottom: 2rem;
 }
 
 .cardInfo {
@@ -115,6 +119,15 @@ h3 {
 .closingBtn svg {
   color: black;
 
+}
+
+.name {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.category {
+  font-size: 18px
 }
 
 

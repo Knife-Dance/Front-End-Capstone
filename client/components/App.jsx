@@ -12,7 +12,6 @@ import Outfit from './related/outfit/Outfit.jsx';
 const App = (props) => {
   return (
     <Provider>
-
       <Overview />
       <Relate />
       <Outfit />

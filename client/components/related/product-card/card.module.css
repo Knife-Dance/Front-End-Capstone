@@ -22,6 +22,7 @@ h3 {
   height: 30rem;
   border-radius: 1rem;
   z-index: 2;
+  padding-bottom: 2rem;
 
 }
 
@@ -43,7 +44,7 @@ h3 {
 
 
 .productItem img {
-  height: 15rem;
+  height: 20rem;
   width: 100%;
   object-fit: cover;
   z-index: -1;
@@ -84,10 +85,11 @@ h3 {
 .salePrice,
 .lineThrough {
   display: inline-block;
+  font-size: 1.2rem;
+  margin-top: 0;
 }
 .salePrice {
   color: red;
-
 }
 
 .lineThrough {
@@ -98,4 +100,12 @@ h3 {
 .cardInfo {
   margin-left: 1rem;
   text-align: left;
+}
+.name {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.category {
+  font-size: 18px
 }

@@ -68,12 +68,12 @@ const Relate = () => {
                                 </button>
 
 
-                                {item.photos[0].thumbnail_url ? <div  className={css.productImageContainer}><img  src={item.photos[0].thumbnail_url}/></div> :
+                                {item.photos[0].thumbnail_url ? <div  className={css.productImageContainer}><img  alt='related product card' src={item.photos[0].thumbnail_url}/></div> :
                                 <div className={css.productImageContainer}>
-                                    <img className={css.noImg} src={noImgFound}/> </div>}
+                                    <img alt='No img found' className={css.noImg} src={noImgFound}/> </div>}
                                     <div className={css.cardInfo}>
-                                        <p>{related.find(_ => _.product.id === +item.id).product.category}</p>
-                                        <h5>{item.name}</h5>
+                                        <p className={css.category}>{related.find(_ => _.product.id === +item.id).product.category}</p>
+                                        <p class={css.name}>{item.name}</p>
 
                                         {item.sale_price ?  <p className={css.lineThrough}>${item.original_price}</p> : <p className={css.nolineThrough}>${item.original_price}</p>}
 
