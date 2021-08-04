@@ -83,6 +83,14 @@ app.get('/reviews/:id', (req, res) => {
     .catch((err) => res.status(400).send(err));
 })
 
+//POST INTERACTIONS
+// app.post('/interactions', (req, res) => {
+//   debugger;
+//   axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/interactions', req.body, header)
+//     .then(success => res.send(success))
+//     .catch(err => res.status(404).send(err));
+// })
+
 
 
 

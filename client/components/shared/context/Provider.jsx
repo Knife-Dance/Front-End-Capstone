@@ -1,6 +1,7 @@
 import React, { useState, useEffect} from 'react';
 import MainContext from './MainContext';
 import axios from 'axios';
+const token = require('../../../../server/config.js');
 
 
 
@@ -23,10 +24,6 @@ const Provider = ({children}) => {
   const [allReviews, setAllReviews] = useState(null);
 
   const [metaReviews, setMetaReviews] = useState(null);
-
-  const [interaction, setInteraction] = useState(null)
-
-
 
 
   useEffect(() => {
@@ -58,25 +55,25 @@ const Provider = ({children}) => {
   //   setInteraction(res)
   // }
 
-  const arrayWithElements = new Array();
+  const header = {headers: {'Authorization': token}};
+  let data = {};
   const clickListener = (e, comp) => {
     let clickedEl = (window.e) ? window.e.tagName : e.target;
     let tags = document.getElementsByTagName(clickedEl.tagName)
 
     for (let i = 0;i < tags.length; i++) {
       if (tags[i] === clickedEl) {
-        arrayWithElements.push({tag:clickedEl.tagName,index:i, time: new Date(), component: comp})
-        console.log(arrayWithElements);
+        data = {
+          'element': clickedEl.tagName,
+          'widget': comp,
+          'time': new Date().toString()
+        };
       }
     }
-    setInteraction(arrayWithElements)
+    axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/interactions', data, header)
+    .then(success => console.log('Success: ', data))
+    .catch(err => console.log('Error: ', err));
   }
-
-  // document.onclick = clickListener;
-
-  // console.log(document.getElementsByTagName('div')[30]);
-  // console.log(document.getElementsByTagName('p')[7]);
-
 
   const handleGetStyleById = async (id) => {
     try {
@@ -196,7 +193,7 @@ const Provider = ({children}) => {
 
   return (
 
-    <MainContext.Provider value={{products, handleGetStyleById, selectedProduct, setSelectedProduct, styles, related, productFeature, handleGetProductById, handleGetRateById, allReviews, metaReviews, setAllReviews, setMetaReviews, setProductFeature, outfits, selectedStyle, setSelectedStyle, addOutfit, removeOutfit, interaction, setInteraction,  clickListener}}>
+    <MainContext.Provider value={{products, handleGetStyleById, selectedProduct, setSelectedProduct, styles, related, productFeature, handleGetProductById, handleGetRateById, allReviews, metaReviews, setAllReviews, setMetaReviews, setProductFeature, outfits, selectedStyle, setSelectedStyle, addOutfit, removeOutfit, clickListener}}>
 
       {children}
 
