@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect, createContext} from 'react';
 import MainContext from './MainContext';
 import axios from 'axios';
 
@@ -30,6 +30,7 @@ const Provider = ({children}) => {
   const [metaReviews, setMetaReviews] = useState(null);
 
 
+ const [interaction, setInteraction] = useState(null)
 
   useEffect(() => {
     axios.get('/products')
@@ -160,7 +161,8 @@ const Provider = ({children}) => {
 
   return (
 
-    <MainContext.Provider value={{products, handleGetStyleById, selectedProduct, setSelectedProduct, styles, related, productFeature, handleGetProductById, handleGetRateById, allReviews, metaReviews, setAllReviews, setMetaReviews, setProductFeature, outfits, selectedStyle, setSelectedStyle, addOutfit, removeOutfit}}>
+
+    <MainContext.Provider value={{products, handleGetStyleById, selectedProduct, setSelectedProduct, styles, related, productFeature, handleGetProductById, handleGetRateById, allReviews, metaReviews, setAllReviews, setMetaReviews, setProductFeature, outfits, selectedStyle, setSelectedStyle, addOutfit, removeOutfit, interaction, setInteraction,  clickListener}}>
 
       {children}
 
@@ -168,9 +170,26 @@ const Provider = ({children}) => {
   );
 }
 
+export const arrayWithElements = new Array();
+
+  export const clickListener = (e, comp) => {
+    let clickedEl = (window.e) ? window.e.tagName : e.target;
+    let tags = document.getElementsByTagName(clickedEl.tagName)
+
+    for (let i = 0;i < tags.length; i++) {
+      if (tags[i] === clickedEl) {
+        arrayWithElements.push({tag:clickedEl.tagName,index:i, time: new Date(), component: comp})
+        console.log(arrayWithElements);
+      }
+    }
+    setInteraction(arrayWithElements)
+  }
+
 export  const removeOutfit = (id) => {
   setOutfits(outfits.filter(each => each.style.style_id !== id))
 };
+
+export  const setInteraction = () => {}
 
 export const addOutfit = jest.fn()
 

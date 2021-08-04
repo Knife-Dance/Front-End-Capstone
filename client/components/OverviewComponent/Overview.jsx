@@ -16,8 +16,7 @@ import AddToCart from '../overview/AddToCart/AddToCart.jsx';
 
 import MainContext from '../shared/context/MainContext.js';
 
-const exampleReviews = require('../overview/exampleReviewsData.js');
-const exampleStyles = require('../overview/exampleStylesData.js');
+
 
 
 
@@ -30,7 +29,8 @@ const Overview = (props) => {
   const [check, setCheck] = useState(0);
   const [highlight, setHighlight] = useState(0);
   const [clicked, setClicked] = useState(0);
-  const { productFeature, selectedProduct, styles, selectedStyle, setSelectedStyle, handleGetRateById } = useContext(MainContext);
+  const { productFeature, selectedProduct, styles, selectedStyle, setSelectedStyle, handleGetRateById, clickListener } = useContext(MainContext);
+  const component = "Overview Component"
   // console.log(selectedProduct, handleGetStyleById);
   const handlePrice = () => {
     if (selectedStyle.sale_price) {
@@ -99,7 +99,15 @@ const Overview = (props) => {
     // console.log('=============', productFeature)
     // console.log(styles)
     return (
-      <div>
+      <div onClick={(e) => clickListener(e, component)}>
+        <div className={css.header}>
+          <span className={css.logo}>
+            <i className="fas fa-cat fa-3x"></i>
+          </span>
+          <span className={css.team}>
+            Team Zeus
+          </span>
+        </div>
         <div className={css.overContainer}>
           <Gallery style={selectedStyle}
             main={selectedStyle.photos[highlight]}
@@ -110,8 +118,8 @@ const Overview = (props) => {
             <div className={css.subContainer}>
               <ReviewAverage average={reviews} />
               {num ? <a href="#ratings">see all {num} Reviews</a> : null}
-              <h3>{productFeature.category}</h3>
-              <h2 className={css.name} >{productFeature.name}</h2>
+              <h2>{productFeature.category}</h2>
+              <h3 className={css.name} >{productFeature.name}</h3>
               {handlePrice()}
               <SocialMedia />
               <StyleSelector style={selectedStyle}

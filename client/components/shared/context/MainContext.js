@@ -21,7 +21,9 @@ const MainContext = createContext({
   setSelectedStyle: () => {},
   addOutfit:() => {},
   removeOutfit:() => {},
-  clickListener: () => {}
+  clickListener: () => {},
+  darkMode: false,
+  setDarkMode: () => {}
 
 
 })
