@@ -7,7 +7,7 @@ const StyleImage = (props) => {
   if (props.index === props.check) {
     return (
       <span className={css.container}>
-        <img className={css.current} src={props.style.photos[0].thumbnail_url}
+        <img alt="current style" className={css.current} src={props.style.photos[0].thumbnail_url}
           style={{ height: 150, width: 100 }}
           onClick={(event) => { props.handleStyleSelect(event, data2, props.index) }} />
         <span className={css.checkMark}><i className="far fa-check-circle"></i></span>
@@ -16,7 +16,7 @@ const StyleImage = (props) => {
   } else {
     return (
       <span>
-        <img className={css.thumb} src={props.style.photos[0].thumbnail_url}
+        <img alt="other styles" className={css.thumb} src={props.style.photos[0].thumbnail_url}
           style={{ height: 150, width: 100 }}
           onClick={(event) => { props.handleStyleSelect(event, data2, props.index, props.highlight) }} />
       </span>
