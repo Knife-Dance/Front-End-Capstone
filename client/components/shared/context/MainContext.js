@@ -23,7 +23,9 @@ const MainContext = createContext({
   removeOutfit:() => {},
   interaction: [],
   setInteraction: () => {},
-  clickListener: () => {}
+  clickListener: () => {},
+  darkMode: false,
+  setDarkMode: () => {}
 
 
 })

@@ -15,7 +15,6 @@ const App = (props) => {
 
   return (
     <Provider>
-
       <Overview />
       <Relate />
       <Outfit />
