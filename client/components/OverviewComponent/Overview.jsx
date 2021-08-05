@@ -61,8 +61,8 @@ const Overview = (props) => {
   }
   const handleClicked = (e) => {
     console.log(e.target.id)
-    if (event.target.id === 'image'){
-      if (clicked === 0 ) {
+    if (event.target.id === 'image') {
+      if (clicked === 0) {
         setClicked(clicked + 1);
       }
       if (clicked === 1) {
@@ -131,15 +131,23 @@ const Overview = (props) => {
                 check={check} />
               <AddToCart style={selectedStyle} />
             </div>
-            }
+          }
 
 
         </div>
         <div className={css.banner}>
           <Slogan product={productFeature} />
           <div className={css.phrases}>
-            <p>{productFeature.features[0].value + ' ~ ' + productFeature.features[0].feature}</p>
-            <p>{productFeature.features[1].value + ' ~ ' + productFeature.features[1].feature}</p>
+            <div>
+              <i style={{ float: "right" }} alt="check" className="fas fa-check"></i>
+              <span><p>{productFeature.features[0].value + ' ~ ' + productFeature.features[0].feature}</p></span>
+
+            </div>
+            <div>
+              <i style={{ float: "right" }} alt="check" className="fas fa-check"></i>
+              <span><p>{productFeature.features[1].value + ' ~ ' + productFeature.features[1].feature}</p></span>
+
+            </div>
 
           </div>
         </div>
