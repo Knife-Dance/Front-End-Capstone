@@ -1,11 +1,10 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, Suspense } from 'react';
 import Overview from './OverviewComponent/Overview.jsx';
-import Ratings from './Ratings.jsx';
-import ReviewList from './ratings/ReviewList/ReviewList.jsx';
-import Relate from './related/product-card/Related-product.jsx'
+const Ratings = React.lazy(() => import('./Ratings.jsx'));
+const Relate = React.lazy(() => import('./related/product-card/Related-product.jsx'));
 import Provider from './shared/context/Provider.jsx';
 import MainContext from './shared/context/MainContext.js';
-import Outfit from './related/outfit/Outfit.jsx';
+const Outfit = React.lazy(() => import('./related/outfit/Outfit.jsx'));
 
 
 
@@ -13,9 +12,13 @@ const App = (props) => {
   return (
     <Provider>
       <Overview />
-      <Relate />
-      <Outfit />
-      <Ratings />
+      <Suspense fallback={<div>Loading...</div>}>
+        <section>
+          <Relate />
+          <Outfit />
+          <Ratings />
+        </section>
+      </Suspense>
 
     </Provider>
   );
