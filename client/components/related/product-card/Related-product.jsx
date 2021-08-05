@@ -15,7 +15,7 @@ const Relate = () => {
     const { related,setSelectedProduct, products, selectedProduct, productFeature, handleGetStyleById, handleGetProductById, clickListener } = useContext(MainContext)
 
 
-    // return useMemo(() => {
+    return useMemo(() => {
 
         const handlePrevClick = () => {
             setFirstItemIndexToShow(firstItemIndexToShow - 1)
@@ -93,7 +93,7 @@ const Relate = () => {
             </div>
             </>
         );
-    // }, [related, firstItemIndexToShow, showModal, productFeature])
+    }, [related, firstItemIndexToShow, showModal])
 
 }
 
