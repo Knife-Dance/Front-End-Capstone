@@ -73,13 +73,16 @@
   z-index: 10;
   background: none;
   border: none;
+  color: #a4d0ca;
 
 }
 
 .leftCheck {
   text-align: left !important;
+  color: #a4d0ca;
 }
 .rightCheck {
   text-align: right !important;
+  color: #a4d0ca;
 }
 

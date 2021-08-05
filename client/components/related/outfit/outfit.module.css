@@ -42,6 +42,7 @@ h3 {
   border: none;
   background: none;
 
+
 }
 
 
@@ -100,6 +101,7 @@ h3 {
 .addBtn svg {
   font-size: 100px;
   padding: 20px;
+  color: #a4d0ca;
 }
 
 .addBtn {

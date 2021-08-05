@@ -17,8 +17,9 @@
   color: #0f4466
 }
 .team {
-  margin-right: 30px;
-  color: #0f4466
+  padding-left: 2rem;
+  color: #0f4466;
+  font-size: 3rem;
 
 }
 .original {

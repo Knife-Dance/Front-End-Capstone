@@ -35,7 +35,7 @@ const Modal = ({setShowModal, productData, cardData}) => {
       { productData ? (
         <div className={css.modalBox}>
           <div className={css.modalContainer}>
-          <button onClick={() => setShowModal(prev => !prev)}className={css.closeModalBtn}>X</button>
+          <button aria-label="closing button " onClick={() => setShowModal(prev => !prev)}className={css.closeModalBtn}>X</button>
 
           <div >
             <h3>Comparing</h3>
