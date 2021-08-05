@@ -51,7 +51,7 @@ const Outfit = (props) => {
                             <div key={key}
                             style={{border: '1px solid #a4d0ca'}} className={css.productItem}>
 
-                                <button aria-label="removing button" id={'outfitCloseBtn'}className= {css.closingBtn}onClick={() => {
+                                <button aria-label="button" id={'outfitCloseBtn'}className= {css.closingBtn}onClick={() => {
 
                                   removeOutfit(item.style.style_id)
                                   }}>

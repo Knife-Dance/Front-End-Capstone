@@ -62,7 +62,7 @@ const Relate = () => {
                             <div onClick={() => setSelectedProduct(item.id)} key={key}
                             style={{border: '1px solid #a4d0ca'}} className={css.productItem}>
 
-                                <button aria-label="pop-up modal" onClick={(e) => openModal(item,e)}>
+                                <button aria-label="button" onClick={(e) => openModal(item,e)}>
 
                                 <i className="far fa-star star fa-lg "></i>
                                 </button>

@@ -66,13 +66,6 @@ const AddToCart = (props) => {
     }
   }
 
-  const handleButton = () => {
-    if (sku) {
-      return (<button>Add To Cart</button>)
-    }
-  }
-
-
   return (
     <form className={css.container} onSubmit={handleAdd}>
       <span>
@@ -88,7 +81,7 @@ const AddToCart = (props) => {
         </select>
       </span>
       <span>
-        <button>Add To Cart</button>
+        <button aria-label="button">Add To Cart</button>
       </span>
     </form>
 
