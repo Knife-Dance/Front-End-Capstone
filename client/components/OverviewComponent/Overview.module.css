@@ -49,3 +49,12 @@
   flex-direction: column;
   justify-content: space-around;
 }
+.name {
+  font-size: 50px;
+}
+.category {
+  font-size: 25px;
+}
+.seeAll {
+  color: black;
+}

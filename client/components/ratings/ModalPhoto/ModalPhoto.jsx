@@ -17,7 +17,7 @@ function ModalPhoto(props) {
       {props.showModal &&
         <>
           <div onClick={() => props.hideModal(false)}><i className="fas fa-window-close" style={buttonStyle}></i></div>
-          <img className={ styles.modal } src={props.photo}/>
+          <img alt="modal photo" className={ styles.modal } src={props.photo}/>
         </>
       }
     </div>
