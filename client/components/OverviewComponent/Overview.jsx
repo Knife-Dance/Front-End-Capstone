@@ -102,7 +102,7 @@ const Overview = (props) => {
       <div onClick={(e) => clickListener(e, component)}>
         <div className={css.header}>
           <span className={css.logo}>
-          <i className="fas fa-shoe-prints fa-3x"></i>
+          <i alt="logo" className="fas fa-shoe-prints fa-3x"></i>
           </span>
           <span className={css.team}>
             Team Zeus

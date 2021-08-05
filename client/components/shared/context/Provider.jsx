@@ -198,13 +198,16 @@ const Provider = ({children}) => {
 
     <MainContext.Provider value={{products, handleGetStyleById, selectedProduct, setSelectedProduct, styles, related, productFeature, handleGetProductById, handleGetRateById, allReviews, metaReviews, setAllReviews, setMetaReviews, setProductFeature, outfits, selectedStyle, setSelectedStyle, addOutfit, removeOutfit, clickListener, darkMode, setDarkMode}}>
 
+      {darkMode ?
       <>
+        <button className={css.darkBtn} onClick={handleDarkMode}>Light Mode</button>
+        <div className={css.darkMode}>{children}</div>
+      </>:
+       <>
+        <button className={css.darkBtn} onClick={handleDarkMode}>Dark Mode</button>
+        <div>{children}</div>
+      </>}
 
-      <button className={css.darkBtn} onClick={handleDarkMode}>Dark Mode</button>
-      {darkMode ? <div className={css.darkMode}>{children}</div> : <div>{children}</div>}
-
-
-      </>
 
 
     </MainContext.Provider>

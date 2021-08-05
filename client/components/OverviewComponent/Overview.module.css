@@ -9,13 +9,16 @@
   align-items: center;
   font-weight: 800;
   font-size: 80px;
+
 }
 .logo{
   margin-left: 30px;
   font-size: 20px;
+  color: #0f4466
 }
 .team {
   margin-right: 30px;
+  color: #0f4466
 
 }
 .original {
