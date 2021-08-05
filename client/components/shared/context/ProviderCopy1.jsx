@@ -59,7 +59,7 @@ useEffect(() => {
       ])
       .then((promisesArray) => {
         let relatedId = promisesArray[4].data;
-        for (let id in relatedId) {
+        for (let id = 0; id <= 3; id++) {
           axios.all([axios.get(`/products/${relatedId[id]}`),axios.get(`/products/${relatedId[id]}/styles`),  axios.get(`/products/${relatedId[id]}/review`)]).then((dataArray) => {
             let relatedObj = {
               'product': dataArray[0].data,
@@ -117,15 +117,15 @@ useEffect(() => {
   useEffect (() => {
     if (selectedProduct) {
       axios.all([
-        axios.get(`/reviews/${selectedProduct}`).then(reviews => setAllReviews(reviews.data.results)),
-        axios.get(`/products/${selectedProduct}/review`).then(meta => setMetaReviews(meta.data)),
+        // axios.get(`/reviews/${selectedProduct}`).then(reviews => setAllReviews(reviews.data.results)),
+        // axios.get(`/products/${selectedProduct}/review`).then(meta => setMetaReviews(meta.data)),
         axios.get(`/products/${selectedProduct}/styles`).then((styles) => {setStyles(styles.data); setSelectedStyle(styles.data.results[0]);}),
         axios.get(`/products/${selectedProduct}`).then(feature => setProductFeature(feature.data)),
         axios.get(`/products/${selectedProduct}/related`)
       ])
       .then((promisesArray) => {
         let relatedId = promisesArray[4].data;
-        for (let id in relatedId) {
+        for (let id = 0; id <= 3; id++) {
           axios.all([axios.get(`/products/${relatedId[id]}`),axios.get(`/products/${relatedId[id]}/styles`),  axios.get(`/products/${relatedId[id]}/review`)]).then((dataArray) => {
             let relatedObj = {
               'product': dataArray[0].data,
