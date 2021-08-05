@@ -1,5 +1,5 @@
 .reviewList {
-  width: 725px;
+  width: auto;
   min-height: auto;
   max-height: 600px;
   overflow-y: scroll;
