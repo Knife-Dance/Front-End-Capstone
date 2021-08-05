@@ -1,13 +1,14 @@
 .container {
   display: flex;
-  margin: 10px;
+  margin-left: 5em;
+  margin-right: 5em;
   justify-content: center;
 }
 
 .reviewFilter {
-  margin: 30px;
+  margin: 1em;
 }
 
 .reviewList {
-  margin: 30px;
+  margin: 1em;
 }

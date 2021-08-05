@@ -6,11 +6,13 @@
 
 .modalContainer {
   position: fixed;
-  bottom: 10%;
-  left: 15%;
+  top: 20%;
+  bottom: 20%;
+  right: 20%;
+  left: 20%;
   z-index: 200;
-  height: 700px;
-  width: 900px;
+  height: auto;
+  width: auto;
   overflow: scroll;
   background-color: lightgray;
   padding: 15px;
