@@ -200,11 +200,11 @@ const Provider = ({children}) => {
 
       {darkMode ?
       <>
-        <button className={css.darkBtn} onClick={handleDarkMode}>Light Mode</button>
+        <button aria-label="button" className={css.darkBtn} onClick={handleDarkMode}>Light Mode</button>
         <div className={css.darkMode}>{children}</div>
       </>:
        <>
-        <button className={css.darkBtn} onClick={handleDarkMode}>Dark Mode</button>
+        <button aria-label="button" className={css.darkBtn} onClick={handleDarkMode}>Dark Mode</button>
         <div>{children}</div>
       </>}
 

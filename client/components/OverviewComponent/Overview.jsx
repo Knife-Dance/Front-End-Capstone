@@ -117,9 +117,9 @@ const Overview = (props) => {
           {clicked === 1 || clicked === 2 ? null :
             <div className={css.subContainer}>
               <ReviewAverage average={reviews} />
-              {num ? <a href="#ratings">see all {num} Reviews</a> : null}
-              <h2>{productFeature.category}</h2>
-              <h3 className={css.name} >{productFeature.name}</h3>
+              {num ? <a className={css.seeAll} href="#ratings">see all {num} Reviews</a> : null}
+              <p className={css.category}>{productFeature.category}</p>
+              <p className={css.name} >{productFeature.name}</p>
               {handlePrice()}
               <SocialMedia />
               <StyleSelector style={selectedStyle}
