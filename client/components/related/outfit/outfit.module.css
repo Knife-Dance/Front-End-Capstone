@@ -15,8 +15,9 @@
 }
 
 
-h3 {
+h1 {
   margin-left: 5rem;
+  font-size: 1.5rem;
 
 }
 
@@ -41,6 +42,7 @@ h3 {
   padding: 10px;
   border: none;
   background: none;
+
 
 }
 
@@ -100,6 +102,7 @@ h3 {
 .addBtn svg {
   font-size: 100px;
   padding: 20px;
+  color: #a4d0ca;
 }
 
 .addBtn {

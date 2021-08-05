@@ -101,13 +101,15 @@ const Overview = (props) => {
     return (
       <div onClick={(e) => clickListener(e, component)}>
         <div className={css.header}>
-          <span className={css.logo}>
+          {/* <span className={css.logo}>
           <i alt="logo" className="fas fa-shoe-prints fa-3x"></i>
-          </span>
+          </span> */}
           <span className={css.team}>
             Team Zeus
           </span>
+
         </div>
+
         <div className={css.overContainer}>
           <Gallery style={selectedStyle}
             main={selectedStyle.photos[highlight]}

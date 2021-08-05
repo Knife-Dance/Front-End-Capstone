@@ -15,7 +15,7 @@ const Relate = () => {
     const { related,setSelectedProduct, products, selectedProduct, productFeature, handleGetStyleById, handleGetProductById, clickListener } = useContext(MainContext)
 
 
-    return useMemo(() => {
+    // return useMemo(() => {
 
         const handlePrevClick = () => {
             setFirstItemIndexToShow(firstItemIndexToShow - 1)
@@ -41,7 +41,7 @@ const Relate = () => {
         const component = 'Related Product'
         return (
             <>
-            <h3>RELATED PRODUCTS</h3>
+            <h1>RELATED PRODUCTS</h1>
 
             <div onClick={(e) => clickListener(e, component)} className={css.cardContainer}>
                 {firstItemIndexToShow !== 0 &&
@@ -60,7 +60,7 @@ const Relate = () => {
                     {
                         dataToShow.slice(firstItemIndexToShow, firstItemIndexToShow + 4).map((item, key) => (
                             <div onClick={() => setSelectedProduct(item.id)} key={key}
-                            style={{border: '1px solid gray'}} className={css.productItem}>
+                            style={{border: '1px solid #a4d0ca'}} className={css.productItem}>
 
                                 <button aria-label="button" onClick={(e) => openModal(item,e)}>
 
@@ -93,7 +93,7 @@ const Relate = () => {
             </div>
             </>
         );
-    }, [related, firstItemIndexToShow, showModal])
+    // }, [related, firstItemIndexToShow, showModal])
 
 }
 
