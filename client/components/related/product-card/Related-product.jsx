@@ -41,7 +41,7 @@ const Relate = () => {
         const component = 'Related Product'
         return (
             <>
-            <h3>RELATED PRODUCTS</h3>
+            <h1>RELATED PRODUCTS</h1>
 
             <div onClick={(e) => clickListener(e, component)} className={css.cardContainer}>
                 {firstItemIndexToShow !== 0 &&

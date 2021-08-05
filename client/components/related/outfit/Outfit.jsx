@@ -24,7 +24,7 @@ const Outfit = (props) => {
 
   return (
     <>
-    <h3>YOUR OUTFIT</h3>
+    <h1>YOUR OUTFIT</h1>
 
 
     <div className={css.cardContainer} onClick={(e) => clickListener(e, component)}>
