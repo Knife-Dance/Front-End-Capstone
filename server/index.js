@@ -3,10 +3,12 @@ const express = require('express');
 const path = require('path');
 const cors = require('cors');
 const axios = require('axios');
+const compression = require('compression');
+
 
 const app = express();
 const port = 3000;
-
+app.use(compression());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '..', 'public')));
 app.use(cors());
