@@ -60,7 +60,7 @@ const AddToCart = (props) => {
     <form className={css.container} onSubmit={handleAdd}>
       <span>
         <select defaultValue="start" id="size" onChange={handleSizeSelect}>
-          <option value="start" disabled >Select Size</option>
+          <option value="start" disabled >Size</option>
           {parser(handleSize(props.style.skus))}
         </select>
       </span>
@@ -70,7 +70,7 @@ const AddToCart = (props) => {
         </select>
       </span>
       <span>
-        <button aria-label="button">Add To Cart</button>
+        <button aria-label="button">Add to Cart</button>
       </span>
     </form>
   )

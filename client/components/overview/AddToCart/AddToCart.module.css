@@ -3,3 +3,40 @@
   flex-direction: row;
   justify-content: space-around;
 }
+button {
+  display:inline-block;
+  padding:0.35em 1.2em;
+  border:0.1em solid black;
+  margin:0 0.3em 0.3em 0;
+  border-radius:0.12em;
+  box-sizing: border-box;
+  text-decoration:none;
+  /* font-family:'Roboto',sans-serif; */
+  font-size: larger;
+  font-weight: 900;
+  color:#FFFFFF;
+  text-align:center;
+  transition: all 0.2s;
+  background-color: #A4D0CA;
+}
+button:hover {
+  color:#000000;
+  background-color:#FFFFFF;
+  border-color: black;
+}
+select {
+  display:inline-block;
+  padding:0.35em 1.2em;
+  border:0.1em solid black;
+  margin:0 0.3em 0.3em 0;
+  border-radius:0.12em;
+  box-sizing: border-box;
+  text-decoration:none;
+  /* font-family:'Roboto',sans-serif; */
+  font-size: larger;
+  font-weight: 900;
+  color:#FFFFFF;
+  text-align:center;
+  transition: all 0.2s;
+  background-color: #A4D0CA;
+}
