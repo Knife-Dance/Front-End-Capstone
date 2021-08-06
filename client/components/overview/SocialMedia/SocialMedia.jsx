@@ -1,7 +1,6 @@
 import React from 'react';
 import css from './SocialMedia.module.css';
 import $ from 'jquery'
-
 const SocialMedia = (props) => {
   const fbClick = (e) => {
     window.open("https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A3000%2F&amp;src=sdkpreparse", 'fbShareWindow', 'height=450, width=550, top=' + ($(window).height() / 2 - 275) + ', left=' + ($(window).width() / 2 - 225) + ', toolbar=0, location=0, menubar=0, directories=0, scrollbars=0')
@@ -12,7 +11,6 @@ const SocialMedia = (props) => {
   const pnClick = (e) => {
     window.open("https://www.pinterest.com/pin/create/button/", 'pnShareWindow', 'height=450, width=550, top=' + ($(window).height() / 2 - 275) + ', left=' + ($(window).width() / 2 - 225) + ', toolbar=0, location=0, menubar=0, directories=0, scrollbars=0')
   }
-
   return (
     <div className={css.social}>
       <span onClick={(e) => fbClick(e)}>
@@ -25,7 +23,6 @@ const SocialMedia = (props) => {
       <i style={{ color: "#E60023" }} alt="pintrest" className="fab fa-pinterest-square fa-3x"></i>
       </span>
     </div>
-
   )
 }
 export default SocialMedia;

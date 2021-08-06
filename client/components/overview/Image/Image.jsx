@@ -1,6 +1,5 @@
 import React from 'react';
 import css from './Image.module.css';
-
 const Image = (props) => {
   let data = props.photo;
   if (props.highlight === props.index) {
@@ -21,6 +20,4 @@ const Image = (props) => {
     )
   }
 }
-
-
 export default Image;

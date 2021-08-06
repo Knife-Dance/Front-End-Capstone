@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import css from './Gallery.module.css';
 import Image from '../Image/Image.jsx';
-
-
 const Gallery = (props) => {
   let element = document.getElementById('highlighted');
   const handleLeft = (e) => {
@@ -22,13 +20,10 @@ const Gallery = (props) => {
     }
     element.scrollIntoView({ behavior: "smooth", block: "center" })
   }
-
-
   return (
     <div className={props.clicked === 0 ? css.bigcontainer : css.only}>
       <div className={css.sidecontainer}>
         {props.style.photos.map((current, index) => {
-
           return (<Image key={index} index={index}
             highlight={props.highlight}
             photo={current} handlePhotoClick={props.handlePhotoClick} />)
