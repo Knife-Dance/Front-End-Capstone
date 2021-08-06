@@ -33,7 +33,7 @@ function FilterRatings(props) {
       position: 'relative',
       height: '7px',
       width: width,
-      backgroundColor: '#216b36',
+      backgroundColor: '#a4d0ca',
       zIndex: '25',
       paddingTop: '3px',
       paddingBottom: '3px',

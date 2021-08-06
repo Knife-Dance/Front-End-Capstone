@@ -45,41 +45,41 @@ const Provider = ({children}) => {
     return temp;
   };
 
-useEffect(() => {
-  axios.get('/products')
-    .then((data) => {
-      setProducts(data.data);
-      setSelectedProduct(data.data[0].id);
-      return axios.all([
-        axios.get(`/reviews/${data.data[0].id}`).then(reviews => setAllReviews(reviews.data.results)),
-        axios.get(`/products/${data.data[0].id}/review`).then(meta => setMetaReviews(meta.data)),
-        axios.get(`/products/${data.data[0].id}/styles`).then((styles) => {setStyles(styles.data); setSelectedStyle(styles.data.results[0]);}),
-        axios.get(`/products/${data.data[0].id}`).then(feature => setProductFeature(feature.data)),
-        axios.get(`/products/${data.data[0].id}/related`)
-      ])
-      .then((promisesArray) => {
-        let relatedId = promisesArray[4].data;
-        for (let id = 0; id <= 3; id++) {
-          axios.all([axios.get(`/products/${relatedId[id]}`),axios.get(`/products/${relatedId[id]}/styles`),  axios.get(`/products/${relatedId[id]}/review`)]).then((dataArray) => {
-            let relatedObj = {
-              'product': dataArray[0].data,
-              'style': dataArray[1].data,
-              'rate': getRateById(dataArray[2].data)
-            };
-            setRelated((related) => {
-              return [...related, relatedObj];
-            });
-          })
-          .catch(err => console.log('Error retrieving related products: ', err));
-        }
-      })
-      .catch(err => console.log('Error with promises array: ', err));
-    })
-    .catch(err => console.log('Initial API Request Error: ', err));
-}, []);
-
-
   const header = {headers: {'Authorization': token}};
+
+  useEffect(() => {
+    let currentId;
+    let arr = [];
+    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/', header)
+      .then((data) => {
+        currentId = data.data[0].id;
+        setProducts(data.data);
+        setSelectedProduct(currentId);
+      })
+    .then(() => {
+      axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/?product_id=${currentId}&count=250&sort=relevant`, header).then(reviews => setAllReviews(reviews.data.results));
+      axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/meta?product_id=${currentId}`, header).then(meta => setMetaReviews(meta.data));
+      axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${currentId}/styles`, header).then((styles) => {setStyles(styles.data); setSelectedStyle(styles.data.results[0]);});
+      axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${currentId}`, header).then(feature => setProductFeature(feature.data));
+      return axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${currentId}/related`, header);
+    })
+    .then((related) => {
+      for (let id of related.data) {
+        axios.all([axios.get(`/products/${id}`),axios.get(`/products/${id}/styles`),  axios.get(`/products/${id}/review`)])
+          .then((data) => {
+            arr.push({
+              'product': data[0].data,
+              'style': data[1].data,
+              'rate': getRateById(data[2].data)
+            });
+          });
+        }
+        setRelated(arr);
+      })
+    .catch((err) => console.log('Error on initial API calls: ', err));
+  }, []);
+
+
   let data = {};
   const clickListener = (e, comp) => {
     let clickedEl = (window.e) ? window.e.tagName : e.target;
@@ -114,33 +114,34 @@ useEffect(() => {
   }
 
 
-  useEffect (() => {
-    if (selectedProduct) {
-      axios.all([
-        // axios.get(`/reviews/${selectedProduct}`).then(reviews => setAllReviews(reviews.data.results)),
-        // axios.get(`/products/${selectedProduct}/review`).then(meta => setMetaReviews(meta.data)),
-        axios.get(`/products/${selectedProduct}/styles`).then((styles) => {setStyles(styles.data); setSelectedStyle(styles.data.results[0]);}),
-        axios.get(`/products/${selectedProduct}`).then(feature => setProductFeature(feature.data)),
-        axios.get(`/products/${selectedProduct}/related`)
-      ])
-      .then((promisesArray) => {
-        let relatedId = promisesArray[4].data;
-        for (let id = 0; id <= 3; id++) {
-          axios.all([axios.get(`/products/${relatedId[id]}`),axios.get(`/products/${relatedId[id]}/styles`),  axios.get(`/products/${relatedId[id]}/review`)]).then((dataArray) => {
-            let relatedObj = {
-              'product': dataArray[0].data,
-              'style': dataArray[1].data,
-              'rate': getRateById(dataArray[2].data)
-            };
-            setRelated((related) => {
-              return [...related, relatedObj];
-            });
-          })
-          .catch(err => console.log('Error retrieving related products: ', err));
-        }
-      })
-    }
-  }, [selectedProduct]);
+  // useEffect (() => {
+  //   if (selectedProduct) {
+  //     axios.all([
+  //       // axios.get(`/reviews/${selectedProduct}`).then(reviews => setAllReviews(reviews.data.results)),
+  //       // axios.get(`/products/${selectedProduct}/review`).then(meta => setMetaReviews(meta.data)),
+  //       axios.get(`/products/${selectedProduct}/styles`).then((styles) => {setStyles(styles.data); setSelectedStyle(styles.data.results[0]);}),
+  //       axios.get(`/products/${selectedProduct}`).then(feature => setProductFeature(feature.data)),
+  //       axios.get(`/products/${selectedProduct}/related`)
+  //     ])
+  //     .then((promisesArray) => {
+  //       let relatedId = promisesArray[2].data;
+  //       let arr = [];
+  //       for (let id = 0; id <= 3; id++) {
+  //         axios.all([axios.get(`/products/${relatedId[id]}`),axios.get(`/products/${relatedId[id]}/styles`),  axios.get(`/products/${relatedId[id]}/review`)]).then((dataArray) => {
+  //           arr.push({
+  //             'product': dataArray[0].data,
+  //             'style': dataArray[1].data,
+  //             'rate': getRateById(dataArray[2].data)
+  //           });
+  //         })
+  //         .catch(err => console.log('Error retrieving related products: ', err));
+  //       }
+  //       setRelated((related) => {
+  //         return [...related, arr];
+  //       });
+  //     })
+  //   }
+  // }, [selectedProduct]);
 
 
   const addOutfit = async () => {

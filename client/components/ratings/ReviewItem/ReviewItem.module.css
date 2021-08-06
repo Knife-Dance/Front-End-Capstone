@@ -37,6 +37,7 @@
 .photos {
   height: 100px;
   width: 100px;
+  object-fit: cover;
   border: 1px solid;
   margin: 5px;
 }
@@ -55,7 +56,7 @@
 
 .helpful {
   padding-bottom: 10px;
-  border-bottom: .5px solid;
+  border-bottom: .5px solid #a4d0ca;
 }
 
 .helpfulLink {
