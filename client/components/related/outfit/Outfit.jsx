@@ -24,7 +24,7 @@ const Outfit = (props) => {
 
   return (
     <>
-    <h3>YOUR OUTFIT</h3>
+    <h1>YOUR OUTFIT</h1>
 
 
     <div className={css.cardContainer} onClick={(e) => clickListener(e, component)}>
@@ -41,7 +41,7 @@ const Outfit = (props) => {
                 }
                 <div className={css.gridContainer}>
 
-                <div onClick={addOutfit} id={'addOutfit'} className={`${css.addBtn}`} style={{border: '1px solid gray'}}>
+                <div onClick={addOutfit} id={'addOutfit'} className={`${css.addBtn}`} style={{border: '1px solid #a4d0ca'}}>
                    <h4>Add to Outfit</h4>
                     <i className={'fas fa-plus'}></i>
                  </div>
@@ -49,9 +49,9 @@ const Outfit = (props) => {
                     {
                         outfits.slice(firstItemIndexToShow, firstItemIndexToShow + 3).map((item, key) => (
                             <div key={key}
-                            style={{border: '1px solid gray'}} className={css.productItem}>
+                            style={{border: '1px solid #a4d0ca'}} className={css.productItem}>
 
-                                <button id={'outfitCloseBtn'}className= {css.closingBtn}onClick={() => {
+                                <button aria-label="button" id={'outfitCloseBtn'}className= {css.closingBtn}onClick={() => {
 
                                   removeOutfit(item.style.style_id)
                                   }}>

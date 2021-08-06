@@ -2,12 +2,8 @@ import React from 'react';
 import parser from 'html-react-parser';
 const ReviewAverage = (props) => {
   let total = 0;
-  // console.log(props.average)
-
   let average = props.average
   average = Math.round(average/0.25) * 0.25;
-// console.log(average)
-
   const handleStar = (num) => {
     let htmlString = '';
     for ( var i = 0; i < 5; i++) {
@@ -27,7 +23,6 @@ const ReviewAverage = (props) => {
         htmlString += '<svg  width="20.25" height="18" viewBox="0 0 141.81667 135.46667" version="1.1" id="svg5" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"> <defs id="defs2" /> <g id="layer1"> <path fill="currentColor" d="M 134.51533,45.421362 95.801759,39.777285 78.498555,4.6939455 c -3.100258,-6.2535267 -12.083084,-6.3330212 -15.209848,0 L 45.985515,39.777285 7.2719505,45.421362 C 0.32947771,46.428286 -2.4528121,54.987133 2.5818006,59.889263 L 30.590182,87.182195 23.965689,125.73676 c -1.192416,6.96898 6.147526,12.18907 12.295064,8.92984 l 34.632878,-18.20415 34.632889,18.20415 c 6.14753,3.23274 13.48746,-1.96086 12.29507,-8.92984 l -6.62451,-38.554565 28.00839,-27.292932 c 5.03461,-4.90213 2.25232,-13.460977 -4.69014,-14.467901 z M 97.550625,82.730539 103.83064,119.40375 70.893631,102.10057 37.884518,119.55117 44.924075,83.652264 20.641541,57.109415 54.411909,51.409909 v 0 l 16.481752,-33.387471 16.481751,33.387471 36.832218,5.352589 z" id="path17" style="stroke-width:0.26498" /> </g> </svg>'
       }
     }
-
     return htmlString;
   }
   return (

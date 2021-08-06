@@ -6,6 +6,4 @@ const Slogan = (props) => (
     <p>{props.product.description}</p>
   </div>
 )
-
-
 export default Slogan;

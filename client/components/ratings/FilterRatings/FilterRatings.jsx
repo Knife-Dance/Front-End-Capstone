@@ -74,7 +74,7 @@ function FilterRatings(props) {
           <div className={ styles.starFilter } onClick={() => props.handleClick(1)}>1 stars:&nbsp;<div><div className={ styles.bar }></div><div style={barFillStyle(1)}></div></div></div>
         </div>
         <div>
-          <button onClick={() => props.clearFilter()}>Clear filter</button>
+          <button aria-label="button" onClick={() => props.clearFilter()}>Clear filter</button>
         </div>
       </div>
       <div>

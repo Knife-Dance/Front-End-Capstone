@@ -1,28 +1,41 @@
 * {
   font-family: 'Rajdhani', sans-serif;
+  color : #0f4466;
 }
 .darkMode {
-  background-color: black;
+  background-color: #101010;
   color: white !important;
   margin: 0 auto;
 }
 
-.darkMode a{
+.darkMode a,
+.darkMode u,
+.darkMode p,
+.darkMode h1,
+.darkMode h2,
+.darkMode h3,
+.darkMode h4,
+.darkMode h5,
+.darkMode svg,
+.darkMode path,
+.darkMode b,
+.darkMode div,
+.darkMode label,
+.darkMode span{
   color: white !important;
 }
-.darkMode u{
-  color: white !important;
-}
+
 
 .darkBtn {
   border: none;
   background: none;
   cursor: pointer;
   position: absolute;
-  top: 5rem;
-  left: 7rem;
-  color: white;
+  top: 4rem;
+  right: 7rem;
+
   font-size: 20px;
+
 }
 
 .darkBtn:hover {
