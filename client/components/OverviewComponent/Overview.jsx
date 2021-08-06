@@ -1,25 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react';
-
 import Slogan from '../overview/Slogan/Slogan.jsx';
-
 import Gallery from '../overview/Gallery/Gallery.jsx';
-
 import css from './Overview.module.css';
-
 import ReviewAverage from '../overview/ReviewAverage/ReviewAverage.jsx';
-
 import StyleSelector from '../overview/StyleSelector/StyleSelector.jsx';
-
 import SocialMedia from '../overview/SocialMedia/SocialMedia.jsx';
-
 import AddToCart from '../overview/AddToCart/AddToCart.jsx';
-
 import MainContext from '../shared/context/MainContext.js';
-
-
-
-
-
 const Overview = (props) => {
   const [style, setStyle] = useState(null);
   const [reviews, setReviews] = useState(null);
@@ -31,7 +18,6 @@ const Overview = (props) => {
   const [clicked, setClicked] = useState(0);
   const { productFeature, selectedProduct, styles, selectedStyle, setSelectedStyle, handleGetRateById, clickListener } = useContext(MainContext);
   const component = "Overview Component"
-  // console.log(selectedProduct, handleGetStyleById);
   const handlePrice = () => {
     if (selectedStyle.sale_price) {
       return (
@@ -45,19 +31,13 @@ const Overview = (props) => {
   }
   const handleStyleSelect = (event, data, index, highlight) => {
     setSelectedStyle(data);
-    // console.log(index)
     setCheck(index);
-    // console.log('111111111111111111', data)
     if (data.photos[highlight] === undefined) {
-      // console.log(data)
       setHighlight(0);
     }
-    // console.log(style);
   }
   const handlePhotoClick = (event, data, index) => {
-    // console.log(data);
     setHighlight(index);
-    // setMain(data);
   }
   const handleClicked = (e) => {
     console.log(e.target.id)
@@ -69,47 +49,31 @@ const Overview = (props) => {
         setClicked(0)
       }
     }
-    // console.log(clicked)
   }
-
   useEffect(() => {
     if (selectedProduct) {
-      // console.log(selectedProduct);
       handleGetRateById(selectedProduct)
         .then(data => {
           setNum(data[1]);
           setReviews(data[0]);
         })
       setHighlight(0);
-
-      // console.log(style);
     }
   }, [selectedProduct])
-
   useEffect(() => {
     if (selectedStyle) {
-      // console.log(selectedStyle)
-      // console.log(selectedStyle.photos[0].url)
-      // setHighlight(0)
       setMax(selectedStyle.photos.length - 1)
     }
   }, [selectedStyle])
-
-  if (productFeature && selectedProduct && selectedStyle && styles) {
-    // console.log('=============', productFeature)
-    // console.log(styles)
+  if (productFeature && selectedStyle && styles) {
+    console.log(styles)
     return (
       <div onClick={(e) => clickListener(e, component)}>
         <div className={css.header}>
-          {/* <span className={css.logo}>
-          <i alt="logo" className="fas fa-shoe-prints fa-3x"></i>
-          </span> */}
           <span className={css.team}>
             Team Zeus
           </span>
-
         </div>
-
         <div className={css.overContainer}>
           <Gallery style={selectedStyle}
             main={selectedStyle.photos[highlight]}
@@ -132,8 +96,6 @@ const Overview = (props) => {
               <AddToCart style={selectedStyle} />
             </div>
           }
-
-
         </div>
         <div className={css.banner}>
           <Slogan product={productFeature} />
@@ -141,14 +103,11 @@ const Overview = (props) => {
             <div>
               <i style={{ float: "right" }} alt="check" className="fas fa-check"></i>
               <span><p>{productFeature.features[0].value + ' ~ ' + productFeature.features[0].feature}</p></span>
-
             </div>
             <div>
               <i style={{ float: "right" }} alt="check" className="fas fa-check"></i>
               <span><p>{productFeature.features[1].value + ' ~ ' + productFeature.features[1].feature}</p></span>
-
             </div>
-
           </div>
         </div>
       </div>
@@ -157,5 +116,4 @@ const Overview = (props) => {
     return (<div></div>)
   }
 }
-
 export default Overview

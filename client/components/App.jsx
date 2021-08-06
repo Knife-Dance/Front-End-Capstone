@@ -19,7 +19,6 @@ const App = (props) => {
           <Ratings />
         </section>
       </Suspense>
-
     </Provider>
   );
 }

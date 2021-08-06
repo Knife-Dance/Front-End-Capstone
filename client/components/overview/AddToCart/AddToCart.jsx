@@ -4,13 +4,10 @@ import css from './AddToCart.module.css';
 import $ from "jquery";
 
 const AddToCart = (props) => {
-  // console.log(props.style.skus)
   const [size, setSize] = useState(null);
   const [sku, setSku] = useState(null);
   const [amount, setAmount] = useState(1);
-  // console.log(size)
   const handleSize = (sizes) => {
-    // console.log(sizes)
     if (sizes[null]) {
       return '<option value=""> OUT OF STOCK </option>'
     }
@@ -32,12 +29,8 @@ const AddToCart = (props) => {
     $('#size').attr('size', '1');
     setSize(temp[1].quantity)
     setSku(temp[0])
-    // console.log(size)
-    // console.log(sku)
   }
-
   const handleQuantity = (stock) => {
-    // console.log(stock);
     let quantityString = '';
     if (stock > 15) {
       for (var i = 1; i <= 15; i++) {
@@ -50,11 +43,9 @@ const AddToCart = (props) => {
     }
     return quantityString;
   }
-
   const handleQuantitySelect = (e) => {
     setAmount(e.target.value);
   }
-
   const handleAdd = (e) => {
     e.preventDefault();
     console.log(size)
@@ -65,13 +56,11 @@ const AddToCart = (props) => {
       console.log({ sku, amount }) // post request to API to save cart
     }
   }
-
   return (
     <form className={css.container} onSubmit={handleAdd}>
       <span>
         <select defaultValue="start" id="size" onChange={handleSizeSelect}>
           <option value="start" disabled >Select Size</option>
-          {/* {console.log(props.style.skus)} */}
           {parser(handleSize(props.style.skus))}
         </select>
       </span>
@@ -84,7 +73,6 @@ const AddToCart = (props) => {
         <button aria-label="button">Add To Cart</button>
       </span>
     </form>
-
   )
 }
 
