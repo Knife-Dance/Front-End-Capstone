@@ -1,7 +1,6 @@
 .box {
   display: flex;
   flex-direction: row;
-  width: 700px;
   padding-top: 10px;
   padding-bottom: 10px;
 }
@@ -9,7 +8,7 @@
 .boxCol {
   display: flex;
   flex-direction: column;
-  width: 700px;
+  width: auto;
   gap: 10px;
 }
 

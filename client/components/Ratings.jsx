@@ -116,12 +116,12 @@ function Ratings(props) {
     return (
       <div className={ styles.container } onClick={(e) => clickListener(e, component)}>
         <div className={ styles.reviewFilter }>
-          <h1 id="ratings">Ratings &amp; Reviews</h1>
-          <FilterRatings
-            meta={metaReviews}
-            handleClick={handleReviewFilter}
-            clearFilter={clearFilter}
-          />
+          <div><p id="ratings" style={{fontSize: '30px'}}><b>Ratings &amp; Reviews</b></p></div>
+            <FilterRatings
+              meta={metaReviews}
+              handleClick={handleReviewFilter}
+              clearFilter={clearFilter}
+            />
         </div>
         <div className = { styles.reviewList }>
           <br/>
