@@ -10,7 +10,7 @@
 
 
 <p align="center">
-  <img alt="app demo" src="public/demo.gif">
+  <img alt="app demo" src="client/demo.gif">
 </p>
 
 # Project Catwalk
